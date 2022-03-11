@@ -60,3 +60,6 @@ crashlytics-build.properties
 
 # visual studio
 .vsconfig
+
+#Rider
+.idea
