@@ -19,8 +19,8 @@ public class Gun : MonoBehaviour
     
     [SerializeField]
     private Camera fpsCam;
-    [SerializeField]
-    private ParticleSystem muzzleFlash;
+    //[SerializeField]
+    //private ParticleSystem muzzleFlash;
     [SerializeField] 
     private GameObject impactEffect;
 
@@ -30,7 +30,7 @@ public class Gun : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetButtonDown("Fire1") 
+        if (Input.GetButton("Fire1") 
             && Time.time >= nexTimeToFire
             && amunition > 0)
         {
@@ -55,7 +55,7 @@ public class Gun : MonoBehaviour
     
     void Shoot()
     {
-        muzzleFlash.Play();
+        //muzzleFlash.Play();
         amunition--;
         RaycastHit hit;
         if (Physics.Raycast(fpsCam.transform.position, fpsCam.transform.forward, out hit, range))
