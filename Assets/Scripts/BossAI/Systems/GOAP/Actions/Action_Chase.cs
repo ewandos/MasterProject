@@ -15,7 +15,7 @@ public class Action_Chase : Action_Base
 
     public override float GetCost()
     {
-        return 0f;
+        return 0;
     }
 
     public override void OnActivated(Goal_Base _linkedGoal)
@@ -25,7 +25,7 @@ public class Action_Chase : Action_Base
         // cache the chase goal
         ChaseGoal = (Goal_Chase)LinkedGoal;
 
-        Agent.MoveTo(ChaseGoal.MoveTarget);
+        //Agent.MoveTo(ChaseGoal.MoveTarget);
     }
 
     public override void OnDeactivated()
@@ -37,6 +37,6 @@ public class Action_Chase : Action_Base
 
     public override void OnTick()
     {
-        Agent.MoveTo(ChaseGoal.MoveTarget);
+        //Agent.MoveTo(ChaseGoal.MoveTarget);
     }    
 }

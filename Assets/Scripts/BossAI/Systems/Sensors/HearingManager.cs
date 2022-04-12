@@ -1,7 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+/*
 public enum EHeardSoundCategory
 {
     EFootstep,
@@ -56,4 +56,4 @@ public class HearingManager : MonoBehaviour
             sensor.OnHeardSound(source, location, category, intensity);
         }
     }
-}
+}*/

@@ -15,7 +15,7 @@ public class Action_Wander : Action_Base
 
     public override float GetCost()
     {
-        return 0f;
+        return 1f;
     }
 
     public override void OnActivated(Goal_Base _linkedGoal)

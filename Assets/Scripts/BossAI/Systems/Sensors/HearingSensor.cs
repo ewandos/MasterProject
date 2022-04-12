@@ -1,4 +1,4 @@
-using System.Collections;
+/*using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -35,3 +35,4 @@ public class HearingSensor : MonoBehaviour
         LinkedAI.ReportCanHear(source, location, category, intensity);
     }
 }
+*/

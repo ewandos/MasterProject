@@ -10,6 +10,8 @@ public class GOAPPlanner : MonoBehaviour
     Goal_Base ActiveGoal;
     Action_Base ActiveAction;
 
+    private Goal_Base bestGoal = null;
+    private Action_Base bestAction = null;
     void Awake()
     {
         Goals = GetComponents<Goal_Base>();
@@ -18,9 +20,6 @@ public class GOAPPlanner : MonoBehaviour
 
     void Update()
     {
-        Goal_Base bestGoal = null;
-        Action_Base bestAction = null;
-
         // find the highest priority goal that can be activated
         foreach(var goal in Goals)
         {

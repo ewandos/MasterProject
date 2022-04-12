@@ -54,12 +54,13 @@ public class TrackedTarget
 [RequireComponent(typeof(EnemyAI))]
 public class AwarenessSystem : MonoBehaviour
 {
+    /*
     [SerializeField] AnimationCurve VisionSensitivity;
     [SerializeField] float VisionMinimumAwareness = 1f;
     [SerializeField] float VisionAwarenessBuildRate = 10f;
 
     [SerializeField] float HearingMinimumAwareness = 0f;
-    [SerializeField] float HearingAwarenessBuildRate = 0.5f;
+    [SerializeField] float HearingAwarenessBuildRate = 0.5f;*/
 
     [SerializeField] float ProximityMinimumAwareness = 0f;
     [SerializeField] float ProximityAwarenessBuildRate = 1f;
@@ -84,8 +85,10 @@ public class AwarenessSystem : MonoBehaviour
         List<GameObject> toCleanup = new List<GameObject>();
         foreach(var targetGO in Targets.Keys)
         {
+            //check after awareness was decayed
             if (Targets[targetGO].DecayAwareness(AwarenessDecayDelay, AwarenessDecayRate * Time.deltaTime))
             {
+                //did we loose the target
                 if (Targets[targetGO].Awareness <= 0f)
                 {
                     LinkedAI.OnFullyLost();
@@ -124,7 +127,7 @@ public class AwarenessSystem : MonoBehaviour
         }
     }
 
-    public void ReportCanSee(DetectableTarget seen)
+    /*public void ReportCanSee(DetectableTarget seen)
     {
         // determine where the target is in the field of view
         var vectorToTarget = (seen.transform.position - LinkedAI.EyeLocation).normalized;
@@ -141,11 +144,12 @@ public class AwarenessSystem : MonoBehaviour
         var awareness = intensity * HearingAwarenessBuildRate * Time.deltaTime;
 
         UpdateAwareness(source, null, location, awareness, HearingMinimumAwareness);
-    }
+    }*/
 
     public void ReportInProximity(DetectableTarget target)
     {
         var awareness = ProximityAwarenessBuildRate * Time.deltaTime;
+        
 
         UpdateAwareness(target.gameObject, target, target.transform.position, awareness, ProximityMinimumAwareness);
     }    

@@ -1,16 +1,16 @@
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Goal_Chase : Goal_Base
+public class Goal_Melee_Attack : Goal_Base
 {
-    [SerializeField] int ChasePriority = 60;
+    [SerializeField] int AttackPriority = 70;
     [SerializeField] float MinAwarenessToChase = 1.5f;
     [SerializeField] float AwarenessToStopChase = 1f;
-    [SerializeField] private float stoppingDistance = 5f;
-    [SerializeField] private float distanceBetween = 0;
+    [SerializeField] public float attackRange = 5f;
     DetectableTarget CurrentTarget;
     int CurrentPriority = 0;
+    [SerializeField] public float distanceBetween = 0;
 
     public Vector3 MoveTarget => CurrentTarget != null ? CurrentTarget.transform.position : transform.position;
 
@@ -29,7 +29,7 @@ public class Goal_Chase : Goal_Base
             {
                 if (candidate.Detectable == CurrentTarget)
                 {
-                    CurrentPriority = candidate.Awareness < AwarenessToStopChase ? 0 : ChasePriority;
+                    CurrentPriority = candidate.Awareness < AwarenessToStopChase ? 0 : AttackPriority;
                     return;
                 }
             }
@@ -45,7 +45,7 @@ public class Goal_Chase : Goal_Base
             if (candidate.Awareness >= MinAwarenessToChase)
             {
                 CurrentTarget = candidate.Detectable;
-                CurrentPriority = ChasePriority;
+                CurrentPriority = AttackPriority;
                 return;
             }
         }
@@ -65,20 +65,22 @@ public class Goal_Chase : Goal_Base
 
     public override bool CanRun()
     {
+        
         // no targets
         if (Sensors.ActiveTargets == null || Sensors.ActiveTargets.Count == 0)
             return false;
 
         // check if we have anything we are aware of
-        foreach(var candidate in Sensors.ActiveTargets.Values)
+        foreach(var candidate in Sensors.ActiveTargets.Values )
         {
             var agentPos = Agent.transform.position;
-            distanceBetween =  Vector3.Distance(candidate.RawPosition, agentPos);
+            distanceBetween = Vector3.Distance(candidate.RawPosition, agentPos);
 
-            if (candidate.Awareness >= MinAwarenessToChase && distanceBetween > stoppingDistance)
+            if (candidate.Awareness >= MinAwarenessToChase && distanceBetween <= attackRange)
             {
                 return true;
             }
+               
         }
 
         return false;
