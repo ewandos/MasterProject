@@ -2,11 +2,11 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Action_Melee_Attack : Action_Base
+public class Action_Attack_Melee : Action_Base
 {
-    List<System.Type> SupportedGoals = new List<System.Type>(new System.Type[] { typeof(Goal_Melee_Attack) });
+    List<System.Type> SupportedGoals = new List<System.Type>(new System.Type[] { typeof(Goal_Attack_Melee) });
 
-    Goal_Melee_Attack MeleeAttackGoal;
+    Goal_Attack_Melee MeleeAttackGoal;
 
     public override List<System.Type> GetSupportedGoals()
     {

@@ -390,8 +390,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 89b9fd93bdf8440d93bc387e964c4b03, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rangeAttackPerformed: 0
-  meleeAttackPerformed: 0
 --- !u!4 &665939425
 Transform:
   m_ObjectHideFlags: 0
@@ -648,6 +646,70 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Health: 50
+--- !u!1 &960167831 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2018894370174465621, guid: a1ec09e702b3ad14ab6883bd36f8372c, type: 3}
+  m_PrefabInstance: {fileID: 355938338234272845}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &960167851
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 960167831}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 74df474deaa9427180511a8fd31a921d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ChasePriority: 59
+  MinAwarenessToChase: 1.5
+  AwarenessToStopChase: 1
+  retreatDistance: 5
+  distanceBetween: 0
+--- !u!114 &960167852
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 960167831}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: da187fa110584001be716b444afcb3c2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &960167853
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 960167831}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c4385a2b3e824e82a621653fbdd6a20d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  AttackPriority: 70
+  MinAwarenessToChase: 1.5
+  AwarenessToStopChase: 1
+  minDistanceToAttack: 10
+  distanceBetween: 0
+--- !u!114 &960167854
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 960167831}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8104a8eb678f462db08b61c66693d22a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  RetreatRange: 10
 --- !u!1 &1341760413
 GameObject:
   m_ObjectHideFlags: 0
