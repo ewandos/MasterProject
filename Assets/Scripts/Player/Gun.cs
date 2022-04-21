@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 public class Gun : MonoBehaviour
@@ -27,7 +28,7 @@ public class Gun : MonoBehaviour
 
     [SerializeField] private float nexTimeToFire = 0f;
     
-    // Update is called once per frame
+    
     void Update()
     {
         if (Input.GetButton("Fire1") 
@@ -56,6 +57,7 @@ public class Gun : MonoBehaviour
     void Shoot()
     {
         //muzzleFlash.Play();
+        StatTracker.Instance.RangeAttackPerformed();
         amunition--;
         RaycastHit hit;
         if (Physics.Raycast(fpsCam.transform.position, fpsCam.transform.forward, out hit, range))

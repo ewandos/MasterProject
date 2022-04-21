@@ -12,7 +12,7 @@ public class Melee : MonoBehaviour
     [SerializeField] private AudioClip MeleeAudio;
 
     [SerializeField] private float nexTimeToFire = 0f;
-
+    
     void Update()
     {
         if (Input.GetButtonDown("Fire1")
@@ -27,6 +27,7 @@ public class Melee : MonoBehaviour
     {
         Animator anim = GetComponent<Animator>();
         AudioSource audio = GetComponent<AudioSource>();
+        StatTracker.Instance.MeleeAttackPerformed();
         audio.PlayOneShot(MeleeAudio);
         anim.SetTrigger("Attack");
     }

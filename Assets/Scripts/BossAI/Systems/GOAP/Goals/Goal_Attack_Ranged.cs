@@ -2,22 +2,21 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Goal_Melee_Attack : Goal_Base
+public class Goal_Attack_Ranged : Goal_Base
 {
     [SerializeField] int AttackPriority = 70;
     [SerializeField] float MinAwarenessToChase = 1.5f;
     [SerializeField] float AwarenessToStopChase = 1f;
-    [SerializeField] public float attackRange = 5f;
+    [SerializeField] public float minDistanceToAttack = 10f;
     DetectableTarget CurrentTarget;
     int CurrentPriority = 0;
     [SerializeField] public float distanceBetween = 0;
-
     public Vector3 MoveTarget => CurrentTarget != null ? CurrentTarget.transform.position : transform.position;
-
+    
     public override void OnTickGoal()
     {
         CurrentPriority = 0;
-
+        
         // no targets
         if (Sensors.ActiveTargets == null || Sensors.ActiveTargets.Count == 0)
             return;
@@ -60,7 +59,7 @@ public class Goal_Melee_Attack : Goal_Base
 
     public override int CalculatePriority()
     {
-        return CurrentPriority;
+        return CurrentPriority + StatTracker.Instance.getMeleeAttackPerformed();
     }
 
     public override bool CanRun()
@@ -76,7 +75,7 @@ public class Goal_Melee_Attack : Goal_Base
             var agentPos = Agent.transform.position;
             distanceBetween = Vector3.Distance(candidate.RawPosition, agentPos);
 
-            if (candidate.Awareness >= MinAwarenessToChase && distanceBetween <= attackRange)
+            if (candidate.Awareness >= MinAwarenessToChase && distanceBetween >= minDistanceToAttack)
             {
                 return true;
             }
