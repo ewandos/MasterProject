@@ -7,11 +7,11 @@ public class GOAPPlanner : MonoBehaviour
     Goal_Base[] Goals;
     Action_Base[] Actions;
 
-    Goal_Base ActiveGoal;
-    Action_Base ActiveAction;
+    [SerializeField] Goal_Base ActiveGoal;
+    [SerializeField] Action_Base ActiveAction;
 
-    private Goal_Base bestGoal = null;
-    private Action_Base bestAction = null;
+    [SerializeField] private Goal_Base bestGoal = null;
+    [SerializeField] private Action_Base bestAction = null;
     void Awake()
     {
         Goals = GetComponents<Goal_Base>();

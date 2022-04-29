@@ -1,16 +1,16 @@
-﻿using System.Collections;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Goal_Retreat : Goal_Base
+public class Goal_Movement : Goal_Base
 {
-    [SerializeField] int ChasePriority = 59;
+    [SerializeField] int ChasePriority = 60;
     [SerializeField] float MinAwarenessToChase = 1.5f;
     [SerializeField] float AwarenessToStopChase = 1f;
-    [SerializeField] private float retreatDistance = 5f;
+    [SerializeField] private float stoppingDistance = 5f;
     [SerializeField] private float distanceBetween = 0;
     DetectableTarget CurrentTarget;
-    int CurrentPriority = 0;
+    [SerializeField] int CurrentPriority = 0;
 
     public Vector3 MoveTarget => CurrentTarget != null ? CurrentTarget.transform.position : transform.position;
 
@@ -30,6 +30,32 @@ public class Goal_Retreat : Goal_Base
                 if (candidate.Detectable == CurrentTarget)
                 {
                     CurrentPriority = candidate.Awareness < AwarenessToStopChase ? 0 : ChasePriority;
+                    
+                    var agentPos = Agent.transform.position;
+                    distanceBetween = Vector3.Distance(candidate.RawPosition, agentPos);
+
+                    var moreRanged = StatTracker.Instance.getMoreRangedAttacksPerformed();
+                    var moreMelee = StatTracker.Instance.getMoreMeleeAttacksPerformed();
+                    
+                    if (distanceBetween > stoppingDistance 
+                        && CurrentPriority < 100
+                        && moreRanged)
+                    {
+                        CurrentPriority += 1;
+                    }
+                    
+                    else if (distanceBetween < stoppingDistance 
+                        && CurrentPriority < 100
+                        && moreMelee)
+                    {
+                        CurrentPriority += 1;
+                    }
+                    
+                    
+                    else if (CurrentPriority > 50)
+                    {
+                        CurrentPriority -= 1;
+                    }
                     return;
                 }
             }
@@ -60,7 +86,7 @@ public class Goal_Retreat : Goal_Base
 
     public override int CalculatePriority()
     {
-        return CurrentPriority + StatTracker.Instance.getMeleeAttackPerformed();
+        return CurrentPriority;
     }
 
     public override bool CanRun()
@@ -73,9 +99,18 @@ public class Goal_Retreat : Goal_Base
         foreach(var candidate in Sensors.ActiveTargets.Values)
         {
             var agentPos = Agent.transform.position;
-            distanceBetween =  Vector3.Distance(candidate.RawPosition, agentPos);
+            distanceBetween = Vector3.Distance(candidate.RawPosition, agentPos);
 
-            if (candidate.Awareness >= MinAwarenessToChase && distanceBetween < retreatDistance)
+            if (candidate.Awareness >= MinAwarenessToChase 
+                && distanceBetween >= stoppingDistance 
+                && StatTracker.Instance.getMoreRangedAttacksPerformed())
+            {
+                return true;
+            }
+            
+            if (candidate.Awareness >= MinAwarenessToChase 
+                && distanceBetween <= stoppingDistance 
+                && StatTracker.Instance.getMoreMeleeAttacksPerformed())
             {
                 return true;
             }

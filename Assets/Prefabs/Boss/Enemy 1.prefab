@@ -1573,17 +1573,9 @@ GameObject:
   - component: {fileID: 2019656436881259408}
   - component: {fileID: 2019656436881259407}
   - component: {fileID: 2019656436881259406}
-  - component: {fileID: 2018894370174465613}
-  - component: {fileID: 2018894370174465614}
   - component: {fileID: 2019656436881259403}
-  - component: {fileID: 2019656436881259402}
-  - component: {fileID: 2018894370174465617}
-  - component: {fileID: 2018894370174465616}
   - component: {fileID: 2018894370174465615}
-  - component: {fileID: 4519744144702644754}
   - component: {fileID: 355938338158959213}
-  - component: {fileID: 355938338158959212}
-  - component: {fileID: 355938338158959231}
   m_Layer: 0
   m_Name: Enemy 1
   m_TagString: Target
@@ -1714,36 +1706,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _Faction: 1
   NearestPointSearchRange: 5
---- !u!114 &2018894370174465613
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2018894370174465621}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7c5de062bcd1453794966707cd66a536, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  WanderPriority: 30
-  PriorityBuildRate: 1
-  PriorityDecayRate: 0.1
---- !u!114 &2018894370174465614
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2018894370174465621}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fee350ef55cf4be79805bcaebcd805dc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  ChasePriority: 60
-  MinAwarenessToChase: 1.5
-  AwarenessToStopChase: 1
 --- !u!195 &2019656436881259403
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -1766,43 +1728,6 @@ NavMeshAgent:
   m_BaseOffset: 0
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
---- !u!114 &2019656436881259402
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2018894370174465621}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 48da871d72614087b34a122979060a81, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Priority: 10
---- !u!114 &2018894370174465617
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2018894370174465621}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cb402290de1149d695452c06b717053d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &2018894370174465616
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2018894370174465621}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: eb9f372965294bfc98514a57296f52b7, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &2018894370174465615
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1815,19 +1740,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 20032e6605ec422da2736de88fc8f3a7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &4519744144702644754
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2018894370174465621}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a0296f4d95e04ce4be6c5b8763f8ec14, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  SearchRange: 10
+  ActiveGoal: {fileID: 0}
+  ActiveAction: {fileID: 0}
+  bestGoal: {fileID: 0}
+  bestAction: {fileID: 0}
 --- !u!114 &355938338158959213
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1841,34 +1757,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Health: 50
---- !u!114 &355938338158959212
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2018894370174465621}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 30b95b2289984024847e6a1c3cdda4e3, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  AttackPriority: 70
-  MinAwarenessToChase: 1.5
-  AwarenessToStopChase: 1
-  attackRange: 5
---- !u!114 &355938338158959231
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2018894370174465621}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 30ae1c0001d8421abd34e67d65e6921c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &2018913364846115659
 GameObject:
   m_ObjectHideFlags: 0

@@ -2,11 +2,11 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Action_Attack_Melee : Action_Base
+public class Action_Attack : Action_Base
 {
-    List<System.Type> SupportedGoals = new List<System.Type>(new System.Type[] { typeof(Goal_Attack_Melee) });
+    List<System.Type> SupportedGoals = new List<System.Type>(new System.Type[] { typeof(Goal_Attack) });
 
-    Goal_Attack_Melee MeleeAttackGoal;
+    Goal_Attack _attackGoal;
 
     public override List<System.Type> GetSupportedGoals()
     {
@@ -22,6 +22,8 @@ public class Action_Attack_Melee : Action_Base
     {
         base.OnActivated(_linkedGoal);
         
+        //choose attack animation to play
+        
         //Actually Attack here
         //then change AttackPriority
         Debug.Log("Attack");
@@ -31,7 +33,7 @@ public class Action_Attack_Melee : Action_Base
     {
         base.OnDeactivated();
         
-        MeleeAttackGoal = null;
+        _attackGoal = null;
     }
 
     public override void OnTick()

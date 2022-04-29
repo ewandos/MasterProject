@@ -2,21 +2,22 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Goal_Attack_Ranged : Goal_Base
+public class Goal_Attack : Goal_Base
 {
     [SerializeField] int AttackPriority = 70;
     [SerializeField] float MinAwarenessToChase = 1.5f;
     [SerializeField] float AwarenessToStopChase = 1f;
-    [SerializeField] public float minDistanceToAttack = 10f;
+    [SerializeField] public float attackRange = 5f;
     DetectableTarget CurrentTarget;
-    int CurrentPriority = 0;
+    [SerializeField] int CurrentPriority = 0;
     [SerializeField] public float distanceBetween = 0;
+
     public Vector3 MoveTarget => CurrentTarget != null ? CurrentTarget.transform.position : transform.position;
-    
+
     public override void OnTickGoal()
     {
         CurrentPriority = 0;
-        
+
         // no targets
         if (Sensors.ActiveTargets == null || Sensors.ActiveTargets.Count == 0)
             return;
@@ -29,6 +30,31 @@ public class Goal_Attack_Ranged : Goal_Base
                 if (candidate.Detectable == CurrentTarget)
                 {
                     CurrentPriority = candidate.Awareness < AwarenessToStopChase ? 0 : AttackPriority;
+                    
+                    var agentPos = Agent.transform.position;
+                    distanceBetween = Vector3.Distance(candidate.RawPosition, agentPos);
+
+                    var moreRanged = StatTracker.Instance.getMoreRangedAttacksPerformed();
+                    var moreMelee = StatTracker.Instance.getMoreMeleeAttacksPerformed();
+                    
+                    if (distanceBetween <= attackRange 
+                        && CurrentPriority < 100
+                        && moreRanged)
+                    {
+                        CurrentPriority += 1;
+                    }
+                    
+                    else if (distanceBetween >= attackRange 
+                             && CurrentPriority < 100
+                             && moreMelee)
+                    {
+                        CurrentPriority += 1;
+                    }
+                    else if (CurrentPriority > 50) 
+                    {
+                        CurrentPriority -= 1;
+                    }
+
                     return;
                 }
             }
@@ -59,7 +85,7 @@ public class Goal_Attack_Ranged : Goal_Base
 
     public override int CalculatePriority()
     {
-        return CurrentPriority + StatTracker.Instance.getMeleeAttackPerformed();
+        return CurrentPriority;
     }
 
     public override bool CanRun()
@@ -75,13 +101,21 @@ public class Goal_Attack_Ranged : Goal_Base
             var agentPos = Agent.transform.position;
             distanceBetween = Vector3.Distance(candidate.RawPosition, agentPos);
 
-            if (candidate.Awareness >= MinAwarenessToChase && distanceBetween >= minDistanceToAttack)
+            if (candidate.Awareness >= MinAwarenessToChase 
+                && distanceBetween <= attackRange 
+                && StatTracker.Instance.getMoreRangedAttacksPerformed())
             {
                 return true;
             }
-               
+            
+            if (candidate.Awareness >= MinAwarenessToChase 
+                && distanceBetween >= attackRange 
+                && StatTracker.Instance.getMoreMeleeAttacksPerformed())
+            {
+                return true;
+            }
         }
-
+        
         return false;
     }
 }

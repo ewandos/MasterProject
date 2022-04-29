@@ -32,4 +32,22 @@ public class StatTracker: MonoBehaviour
     {
         meleeAttackPerformed++;
     }
+
+    public bool getMoreMeleeAttacksPerformed()
+    {
+        if (meleeAttackPerformed > rangeAttackPerformed)
+        {
+            return true;
+        }
+        return false;
+    }
+    
+    public bool getMoreRangedAttacksPerformed()
+    {
+        if (rangeAttackPerformed > meleeAttackPerformed)
+        {
+            return true;
+        }
+        return false;
+    }
 }

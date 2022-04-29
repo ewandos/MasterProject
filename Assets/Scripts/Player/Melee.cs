@@ -9,7 +9,7 @@ public class Melee : MonoBehaviour
     [SerializeField] private float firerate = 15f;
     
     [SerializeField] private GameObject impactEffect;
-    [SerializeField] private AudioClip MeleeAudio;
+    //[SerializeField] private AudioClip MeleeAudio;
 
     [SerializeField] private float nexTimeToFire = 0f;
     
@@ -26,9 +26,9 @@ public class Melee : MonoBehaviour
     public void Attack()
     {
         Animator anim = GetComponent<Animator>();
-        AudioSource audio = GetComponent<AudioSource>();
+        //AudioSource audio = GetComponent<AudioSource>();
         StatTracker.Instance.MeleeAttackPerformed();
-        audio.PlayOneShot(MeleeAudio);
+        //audio.PlayOneShot(MeleeAudio);
         anim.SetTrigger("Attack");
     }
 

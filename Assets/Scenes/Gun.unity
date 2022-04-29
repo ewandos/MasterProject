@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 1481.7754, g: 1835.8867, b: 2430.4492, a: 1}
+  m_IndirectSpecularColor: {r: 0.12780404, g: 0.1583252, b: 0.20960474, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -390,6 +390,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 89b9fd93bdf8440d93bc387e964c4b03, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  rangeAttackPerformed: 0
+  meleeAttackPerformed: 0
 --- !u!4 &665939425
 Transform:
   m_ObjectHideFlags: 0
@@ -651,7 +653,7 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 2018894370174465621, guid: a1ec09e702b3ad14ab6883bd36f8372c, type: 3}
   m_PrefabInstance: {fileID: 355938338234272845}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &960167851
+--- !u!114 &960167832
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -660,15 +662,65 @@ MonoBehaviour:
   m_GameObject: {fileID: 960167831}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 74df474deaa9427180511a8fd31a921d, type: 3}
+  m_Script: {fileID: 11500000, guid: 30ae1c0001d8421abd34e67d65e6921c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ChasePriority: 59
+--- !u!114 &960167833
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 960167831}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: eb9f372965294bfc98514a57296f52b7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &960167834
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 960167831}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a0296f4d95e04ce4be6c5b8763f8ec14, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  SearchRange: 10
+--- !u!114 &960167836
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 960167831}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cb402290de1149d695452c06b717053d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &960167838
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 960167831}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 30b95b2289984024847e6a1c3cdda4e3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  AttackPriority: 60
   MinAwarenessToChase: 1.5
   AwarenessToStopChase: 1
-  retreatDistance: 5
+  attackRange: 5
+  CurrentPriority: 0
   distanceBetween: 0
---- !u!114 &960167852
+--- !u!114 &960167839
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -677,27 +729,16 @@ MonoBehaviour:
   m_GameObject: {fileID: 960167831}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: da187fa110584001be716b444afcb3c2, type: 3}
+  m_Script: {fileID: 11500000, guid: fee350ef55cf4be79805bcaebcd805dc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &960167853
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 960167831}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c4385a2b3e824e82a621653fbdd6a20d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  AttackPriority: 70
+  ChasePriority: 60
   MinAwarenessToChase: 1.5
   AwarenessToStopChase: 1
-  minDistanceToAttack: 10
+  stoppingDistance: 5
   distanceBetween: 0
---- !u!114 &960167854
+  CurrentPriority: 0
+--- !u!114 &960167840
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -706,10 +747,25 @@ MonoBehaviour:
   m_GameObject: {fileID: 960167831}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8104a8eb678f462db08b61c66693d22a, type: 3}
+  m_Script: {fileID: 11500000, guid: 7c5de062bcd1453794966707cd66a536, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  RetreatRange: 10
+  WanderPriority: 30
+  PriorityBuildRate: 1
+  PriorityDecayRate: 0.1
+--- !u!114 &960167842
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 960167831}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 48da871d72614087b34a122979060a81, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Priority: 10
 --- !u!1 &1341760413
 GameObject:
   m_ObjectHideFlags: 0
@@ -1272,9 +1328,29 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2018894370174465619, guid: a1ec09e702b3ad14ab6883bd36f8372c, type: 3}
+      propertyPath: m_Mass
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 2018894370174465619, guid: a1ec09e702b3ad14ab6883bd36f8372c, type: 3}
+      propertyPath: m_Constraints
+      value: 64
+      objectReference: {fileID: 0}
     - target: {fileID: 2018894370174465621, guid: a1ec09e702b3ad14ab6883bd36f8372c, type: 3}
       propertyPath: m_Name
       value: Enemy
+      objectReference: {fileID: 0}
+    - target: {fileID: 2019656436881259411, guid: a1ec09e702b3ad14ab6883bd36f8372c, type: 3}
+      propertyPath: _ProximityRangeColour.b
+      value: 0.12224099
+      objectReference: {fileID: 0}
+    - target: {fileID: 2019656436881259411, guid: a1ec09e702b3ad14ab6883bd36f8372c, type: 3}
+      propertyPath: _ProximityRangeColour.g
+      value: 0.12224099
+      objectReference: {fileID: 0}
+    - target: {fileID: 2019656436881259411, guid: a1ec09e702b3ad14ab6883bd36f8372c, type: 3}
+      propertyPath: _ProximityRangeColour.r
+      value: 0.6320754
       objectReference: {fileID: 0}
     - target: {fileID: 2024115475865847223, guid: a1ec09e702b3ad14ab6883bd36f8372c, type: 3}
       propertyPath: m_RootOrder
