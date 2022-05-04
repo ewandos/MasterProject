@@ -7,7 +7,7 @@ public class Action_Movement : Action_Base
     List<System.Type> SupportedGoals = new List<System.Type>(new System.Type[] { typeof(Goal_Movement) });
 
     Goal_Movement _movementGoal;
-
+    [SerializeField] float SearchRange = 10f;
     public override List<System.Type> GetSupportedGoals()
     {
         return SupportedGoals;
@@ -26,18 +26,18 @@ public class Action_Movement : Action_Base
         _movementGoal = (Goal_Movement)LinkedGoal;
 
 
-        if (StatTracker.Instance.getMoreMeleeAttacksPerformed())
+        if (StatTracker.Instance.getMoreRangedAttacksPerformed())
         {
-            Vector3 location = Agent.PickLocationInRange(5);
+            Agent.MoveTo(_movementGoal.MoveTarget);
+        }
+        else
+        {
+            //move away from player
+            Vector3 location = Agent.PickLocationInRange(SearchRange);
+
             Agent.MoveTo(location);
         }
 
-        if (StatTracker.Instance.getMoreRangedAttacksPerformed())
-        {
-            //move to spot within 5 feet of player
-            Agent.MoveTo(_movementGoal.MoveTarget);
-        }
-        
     }
 
     public override void OnDeactivated()
@@ -49,16 +49,16 @@ public class Action_Movement : Action_Base
 
     public override void OnTick()
     {
-        if (StatTracker.Instance.getMoreMeleeAttacksPerformed())
-        {
-            Vector3 location = Agent.PickLocationInRange(5);
-            Agent.MoveTo(location);
-        }
-
         if (StatTracker.Instance.getMoreRangedAttacksPerformed())
         {
-            //move to spot within 5 feet of player
             Agent.MoveTo(_movementGoal.MoveTarget);
+        }
+        else
+        {
+            //move away from player
+            Vector3 location = Agent.PickLocationInRange(SearchRange);
+
+            Agent.MoveTo(location);
         }
     }    
 }

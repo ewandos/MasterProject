@@ -28,7 +28,7 @@ public class Player_Movement : MonoBehaviour
 		HandleMovement();
 		HandleMouseLook();
 
-		Debug.Log("Sprint Energy: " + sprintEnergy);
+		//Debug.Log("Sprint Energy: " + sprintEnergy);
 	}
 
 	void HandleMovement()
