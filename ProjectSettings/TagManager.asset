@@ -13,8 +13,8 @@ TagManager:
   - Target
   - Water
   - UI
-  - 
-  - 
+  - Player Layer
+  - Creep Layer
   - PostProcessing
   - Not in Reflection
   - 
