@@ -55,6 +55,7 @@ public class Gun : MonoBehaviour
     
     void Shoot()
     {
+        Debug.Log("shooting");
         //muzzleFlash.Play();
         StatTracker.Instance.RangeAttackPerformed();
         amunition--;

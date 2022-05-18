@@ -23,7 +23,11 @@ public class Action_Attack : Action_Base
         base.OnActivated(_linkedGoal);
         
         //choose attack animation to play
-        
+        Animator anim = GetComponent<GameObject>().GetComponent<Animator>();
+        //AudioSource audio = GetComponent<AudioSource>();
+        //audio.PlayOneShot(MeleeAudio);
+        anim.SetTrigger("Attack");
+
         //Actually Attack here
         //then change AttackPriority
         Debug.Log("Attack");
@@ -38,9 +42,11 @@ public class Action_Attack : Action_Base
 
     public override void OnTick()
     {
+        //var agentPos = Agent.transform.position;
+        //var distanceBetween = Vector3.Distance(_attackGoal.MoveTarget, agentPos);
         //if enemy is in range repeat is possible here
-        //if (MeleeAttackGoal.distanceBetween <= MeleeAttackGoal.attackRange)
-        //     OnActivated(LinkedGoal);
+        //if (distanceBetween <= _attackGoal.attackRange)
+             OnActivated(LinkedGoal);
         
     }
 }
