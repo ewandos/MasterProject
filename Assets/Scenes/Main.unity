@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 1483.4336, g: 1838.0117, b: 2432.791, a: 1}
+  m_IndirectSpecularColor: {r: 0.12806332, g: 0.15867388, b: 0.2099917, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -1135,10 +1135,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: room_m1
       objectReference: {fileID: 0}
-    - target: {fileID: 8187325687376170959, guid: 89389dc480a3d6a40b1d999f8cefaf8c, type: 3}
-      propertyPath: m_StaticEditorFlags
-      value: 8
-      objectReference: {fileID: 0}
     - target: {fileID: 8850956423392957813, guid: 89389dc480a3d6a40b1d999f8cefaf8c, type: 3}
       propertyPath: m_RootOrder
       value: 16
@@ -1580,14 +1576,6 @@ PrefabInstance:
       value: 23
       objectReference: {fileID: 0}
     - target: {fileID: 2563484793566875801, guid: 0b3907a952f1d9d4db4a714f1a9704d0, type: 3}
-      propertyPath: m_LocalScale.y
-      value: 99.999985
-      objectReference: {fileID: 0}
-    - target: {fileID: 2563484793566875801, guid: 0b3907a952f1d9d4db4a714f1a9704d0, type: 3}
-      propertyPath: m_LocalScale.z
-      value: 99.999985
-      objectReference: {fileID: 0}
-    - target: {fileID: 2563484793566875801, guid: 0b3907a952f1d9d4db4a714f1a9704d0, type: 3}
       propertyPath: m_LocalPosition.x
       value: -1.1300535
       objectReference: {fileID: 0}
@@ -1631,10 +1619,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: floor_tile_T
       objectReference: {fileID: 0}
-    - target: {fileID: 2943246920272513571, guid: 0b3907a952f1d9d4db4a714f1a9704d0, type: 3}
-      propertyPath: m_StaticEditorFlags
-      value: 8
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0b3907a952f1d9d4db4a714f1a9704d0, type: 3}
 --- !u!4 &727160938 stripped
@@ -1655,7 +1639,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7942171413855309410, guid: 9e0508727e596134f997432769889daf, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -8.8
+      value: -4.14
       objectReference: {fileID: 0}
     - target: {fileID: 7942171413855309410, guid: 9e0508727e596134f997432769889daf, type: 3}
       propertyPath: m_LocalPosition.y
@@ -1663,7 +1647,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7942171413855309410, guid: 9e0508727e596134f997432769889daf, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -63.09
+      value: -65.55
       objectReference: {fileID: 0}
     - target: {fileID: 7942171413855309410, guid: 9e0508727e596134f997432769889daf, type: 3}
       propertyPath: m_LocalRotation.w
@@ -1703,6 +1687,14 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7942171413855309414, guid: 9e0508727e596134f997432769889daf, type: 3}
       propertyPath: m_UseGravity
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7942171413855309414, guid: 9e0508727e596134f997432769889daf, type: 3}
+      propertyPath: m_Constraints
+      value: 72
+      objectReference: {fileID: 0}
+    - target: {fileID: 7942171413855309415, guid: 9e0508727e596134f997432769889daf, type: 3}
+      propertyPath: m_Enabled
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7942171414026170331, guid: 9e0508727e596134f997432769889daf, type: 3}
@@ -2079,10 +2071,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: room_m2 (1)
       objectReference: {fileID: 0}
-    - target: {fileID: 3927655775694839700, guid: c3a80dd883fbc6c4ca33fb15c1f83c46, type: 3}
-      propertyPath: m_StaticEditorFlags
-      value: 8
-      objectReference: {fileID: 0}
     - target: {fileID: 4452378546756453678, guid: c3a80dd883fbc6c4ca33fb15c1f83c46, type: 3}
       propertyPath: m_RootOrder
       value: 15
@@ -2267,10 +2255,6 @@ PrefabInstance:
     - target: {fileID: 7319575489054839850, guid: a905ee6221d6e3542819e962d6798aa5, type: 3}
       propertyPath: m_Name
       value: room_s (1)
-      objectReference: {fileID: 0}
-    - target: {fileID: 7319575489054839850, guid: a905ee6221d6e3542819e962d6798aa5, type: 3}
-      propertyPath: m_StaticEditorFlags
-      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 7989257701575446160, guid: a905ee6221d6e3542819e962d6798aa5, type: 3}
       propertyPath: m_RootOrder
@@ -3309,10 +3293,6 @@ PrefabInstance:
     - target: {fileID: 1132857799205445723, guid: e464123883567584694575dc3b0e6f02, type: 3}
       propertyPath: m_Name
       value: floor_tile_corner1 (1)
-      objectReference: {fileID: 0}
-    - target: {fileID: 1132857799205445723, guid: e464123883567584694575dc3b0e6f02, type: 3}
-      propertyPath: m_StaticEditorFlags
-      value: 8
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e464123883567584694575dc3b0e6f02, type: 3}
