@@ -38,7 +38,7 @@ public class Gun : MonoBehaviour
         {
             nexTimeToFire = Time.time + 1f / firerate;
             Shoot();
-            muzzleFlash.Flash();
+            muzzleFlash.Effect();
         }
         if (Input.GetKeyDown(KeyCode.R))
         {

@@ -977,6 +977,10 @@ PrefabInstance:
       propertyPath: lightRandomAngleRange
       value: 20
       objectReference: {fileID: 0}
+    - target: {fileID: 1662092143, guid: 355fa457b343a63499445da2741140de, type: 3}
+      propertyPath: soundRandomPitchRange
+      value: 0.3
+      objectReference: {fileID: 0}
     - target: {fileID: 293846526519309437, guid: 355fa457b343a63499445da2741140de, type: 3}
       propertyPath: m_Intensity
       value: 11025.977

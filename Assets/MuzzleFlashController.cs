@@ -11,9 +11,13 @@ public class MuzzleFlashController : MonoBehaviour
     public float lightRandomAngleRange = 0.1f;
     private float lightCountdown = 0;
 
+    private AudioSource audio;
+    public float soundRandomPitchRange = 0.1f;
+
     private void Start()
     {
         light = GetComponent<Light>();
+        audio = GetComponent<AudioSource>();
     }
 
     private void Update()
@@ -28,7 +32,7 @@ public class MuzzleFlashController : MonoBehaviour
         }
     }
 
-    public void Flash()
+    public void Effect()
     {
         lightCountdown = lightDuration;
         light.enabled = true;
@@ -37,5 +41,8 @@ public class MuzzleFlashController : MonoBehaviour
         float max = 130 + lightRandomAngleRange;
         float randomAngle = Random.Range(min, max);
         light.spotAngle = randomAngle;
+
+        audio.pitch = 1 + Random.Range(-soundRandomPitchRange, soundRandomPitchRange / 2);
+        audio.Play();
     }
 }
