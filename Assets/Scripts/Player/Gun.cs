@@ -24,7 +24,9 @@ public class Gun : MonoBehaviour
     //private ParticleSystem muzzleFlash;
     //[SerializeField] private GameObject impactEffect;
 
-
+    [SerializeField]
+    private MuzzleFlashController muzzleFlash;
+    
     [SerializeField] private float nexTimeToFire = 0f;
     
     
@@ -36,6 +38,7 @@ public class Gun : MonoBehaviour
         {
             nexTimeToFire = Time.time + 1f / firerate;
             Shoot();
+            muzzleFlash.Flash();
         }
         if (Input.GetKeyDown(KeyCode.R))
         {

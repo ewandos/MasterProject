@@ -261,7 +261,7 @@ AudioSource:
   m_PlayOnAwake: 1
   m_Volume: 1
   m_Pitch: 1
-  Loop: 0
+  Loop: 1
   Mute: 0
   Spatialize: 0
   SpatializePostEffects: 0
@@ -388,7 +388,7 @@ AudioSource:
   m_PlayOnAwake: 1
   m_Volume: 1
   m_Pitch: 1
-  Loop: 0
+  Loop: 1
   Mute: 0
   Spatialize: 0
   SpatializePostEffects: 0
@@ -973,6 +973,22 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 7942171412950689240}
     m_Modifications:
+    - target: {fileID: 1662092143, guid: 355fa457b343a63499445da2741140de, type: 3}
+      propertyPath: lightRandomAngleRange
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 293846526519309437, guid: 355fa457b343a63499445da2741140de, type: 3}
+      propertyPath: m_Intensity
+      value: 11025.977
+      objectReference: {fileID: 0}
+    - target: {fileID: 293846526519309437, guid: 355fa457b343a63499445da2741140de, type: 3}
+      propertyPath: m_SpotAngle
+      value: 130
+      objectReference: {fileID: 0}
+    - target: {fileID: 293846526519309437, guid: 355fa457b343a63499445da2741140de, type: 3}
+      propertyPath: m_InnerSpotAngle
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4237211839770121394, guid: 355fa457b343a63499445da2741140de, type: 3}
       propertyPath: m_RootOrder
       value: 0
@@ -1028,6 +1044,10 @@ PrefabInstance:
     - target: {fileID: 4241630866056798218, guid: 355fa457b343a63499445da2741140de, type: 3}
       propertyPath: impactEffect
       value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 7742054651641652543, guid: 355fa457b343a63499445da2741140de, type: 3}
+      propertyPath: m_CustomSpotLightShadowCone
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 355fa457b343a63499445da2741140de, type: 3}
