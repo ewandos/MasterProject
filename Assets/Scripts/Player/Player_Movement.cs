@@ -18,9 +18,15 @@ public class Player_Movement : MonoBehaviour
 	private float sprintDepletionSpeed = 20f;
 	private float sprintRechargeSpeed = 10f;
 
+	private bool isMoving = false;
+	
+	public AudioSource _normalStepsAudioSource;
+	public AudioSource _sprintStepsAudioSource;
 	void Start()
 	{
 		Cursor.lockState = CursorLockMode.Locked;
+		_normalStepsAudioSource.Stop();
+		_sprintStepsAudioSource.Stop();
 	}
 
 	void Update()
@@ -28,8 +34,27 @@ public class Player_Movement : MonoBehaviour
 		HandleMovement();
 		HandleMouseLook();
 
-		//Debug.Log("Sprint Energy: " + sprintEnergy);
-	}
+		if (isMoving)
+		{
+			if (IsSprinting(isMoving) && !_sprintStepsAudioSource.isPlaying)
+			{
+				_sprintStepsAudioSource.Play();
+				_normalStepsAudioSource.Stop();
+			}
+
+			if (!IsSprinting(isMoving) && !_normalStepsAudioSource.isPlaying)
+			{
+				_sprintStepsAudioSource.Stop();
+				_normalStepsAudioSource.Play();
+			}
+		}
+		else if (!isMoving)
+		{
+			_sprintStepsAudioSource.Stop();
+			_normalStepsAudioSource.Stop();
+		}
+			
+    }
 
 	void HandleMovement()
 	{
@@ -38,7 +63,7 @@ public class Player_Movement : MonoBehaviour
 		float x = Input.GetAxis("Horizontal");
 		float z = Input.GetAxis("Vertical");
 
-		bool isMoving = (x != 0) || (z != 0);
+		isMoving = (x != 0) || (z != 0);
 
 		if (IsSprinting(isMoving))
 		{
