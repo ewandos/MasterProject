@@ -20,9 +20,9 @@ public class Gun : MonoBehaviour
     
     [SerializeField]
     private Camera fpsCam;
-    //[SerializeField]
-    //private ParticleSystem muzzleFlash;
-    //[SerializeField] private GameObject impactEffect;
+
+    [SerializeField] 
+    private GameObject impactEffect;
 
     [SerializeField]
     private MuzzleFlashController muzzleFlash;
@@ -81,8 +81,7 @@ public class Gun : MonoBehaviour
                 hit.rigidbody.AddForce(-hit.normal * knockback);
             }
 
-            //GameObject impactGo =  Instantiate(impactEffect, hit.point, Quaternion.LookRotation(hit.normal));
-            //Destroy(impactGo, 1);
+            Instantiate(impactEffect, hit.point, Quaternion.LookRotation(hit.normal));
         }
         
     }

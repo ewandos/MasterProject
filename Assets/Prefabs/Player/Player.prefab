@@ -1048,7 +1048,7 @@ PrefabInstance:
     - target: {fileID: 4241630866056798218, guid: 355fa457b343a63499445da2741140de, type: 3}
       propertyPath: impactEffect
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 8676605820278683901, guid: 17af6b1c397364f6dad1213e974e65d2, type: 3}
     - target: {fileID: 7742054651641652543, guid: 355fa457b343a63499445da2741140de, type: 3}
       propertyPath: m_CustomSpotLightShadowCone
       value: 1
