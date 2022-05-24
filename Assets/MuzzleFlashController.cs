@@ -14,10 +14,13 @@ public class MuzzleFlashController : MonoBehaviour
     private AudioSource audio;
     public float soundRandomPitchRange = 0.1f;
 
+    private ParticleSystem particles;
+
     private void Start()
     {
         light = GetComponent<Light>();
         audio = GetComponent<AudioSource>();
+        particles = GetComponent<ParticleSystem>();
     }
 
     private void Update()
@@ -44,5 +47,7 @@ public class MuzzleFlashController : MonoBehaviour
 
         audio.pitch = 1 + Random.Range(-soundRandomPitchRange, soundRandomPitchRange / 2);
         audio.Play();
+        
+        particles.Play();
     }
 }
