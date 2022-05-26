@@ -12,9 +12,9 @@ public class Gun : MonoBehaviour
     [SerializeField] 
     private float firerate = 15f;
 
-    [SerializeField] private float maxAmunition = 10f;
-    [SerializeField] private float amunition = 10f;
-    [SerializeField] private float amunitionCarried = 100f;
+    [SerializeField] private int maxAmunition = 10;
+    [SerializeField] private int amunition = 10;
+    [SerializeField] private int amunitionCarried = 100;
     
     
     
@@ -46,7 +46,7 @@ public class Gun : MonoBehaviour
         }
     }
 
-    void AddAmmo(float amount)
+    public void AddAmmo(int amount)
     {
         amunitionCarried += amount;
     }
@@ -58,8 +58,6 @@ public class Gun : MonoBehaviour
     
     void Shoot()
     {
-        Debug.Log("shooting");
-        //muzzleFlash.Play();
         StatTracker.Instance.RangeAttackPerformed();
         amunition--;
         RaycastHit hit;

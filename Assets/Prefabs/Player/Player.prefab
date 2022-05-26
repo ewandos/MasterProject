@@ -532,6 +532,7 @@ GameObject:
   - component: {fileID: 7942171413855309411}
   - component: {fileID: 7233829383713000307}
   - component: {fileID: 4661245566186904524}
+  - component: {fileID: 2131901790}
   m_Layer: 6
   m_Name: Player
   m_TagString: Untagged
@@ -684,6 +685,20 @@ MonoBehaviour:
   sprintMultiplier: 2.25
   _normalStepsAudioSource: {fileID: 16912015606218553}
   _sprintStepsAudioSource: {fileID: 719917311325443467}
+--- !u!114 &2131901790
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7942171413855309413}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 618ffea5b6504254b13c837835c8f2d8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gun: {fileID: 7942171414001323988}
+  health: {fileID: 0}
 --- !u!1 &7942171414026170335
 GameObject:
   m_ObjectHideFlags: 0
@@ -711,7 +726,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7942171414026170335}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0.512, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 7942171412950689240}
@@ -1060,3 +1075,14 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 4237211839770121394, guid: 355fa457b343a63499445da2741140de, type: 3}
   m_PrefabInstance: {fileID: 6117311195082551262}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &7942171414001323988 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4241630866056798218, guid: 355fa457b343a63499445da2741140de, type: 3}
+  m_PrefabInstance: {fileID: 6117311195082551262}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 92d7cc55049eb0943ac381b37dbae548, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
