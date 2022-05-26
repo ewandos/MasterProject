@@ -1,6 +1,7 @@
 ﻿using System;
+using System.Security.Cryptography;
 using UnityEngine;
-
+using UnityEngine.SceneManagement;
 
 public class HealthSystem : MonoBehaviour
 {
@@ -21,7 +22,14 @@ public class HealthSystem : MonoBehaviour
 
     void Death()
     {
-        Destroy(gameObject);
+        if (GetComponent<Player_Movement>())
+        {
+            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex - 1);
+        }
+        else
+        {
+            Destroy(gameObject);
+        }
     }
 
     public void AddHealth(int amount)
