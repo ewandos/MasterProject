@@ -1,15 +1,19 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 
 
 public class HealthSystem : MonoBehaviour
 {
     [SerializeField]
-    private float Health = 50f;
+    private int health = 50;
 
-    public void TakeDamage(float amount)
+    [SerializeField] 
+    private int maxHealth = 50;
+
+    public void TakeDamage(int amount)
     {
-        Health -= amount;
-        if (Health <= 0)
+        health -= amount;
+        if (health <= 0)
         {
             Death();
         }
@@ -18,5 +22,12 @@ public class HealthSystem : MonoBehaviour
     void Death()
     {
         Destroy(gameObject);
+    }
+
+    public void AddHealth(int amount)
+    {
+        health += amount;
+        if (health > maxHealth)
+            health = maxHealth;
     }
 }

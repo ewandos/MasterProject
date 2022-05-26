@@ -4,10 +4,12 @@ using UnityEngine;
 
 public class HealthPickable : MonoBehaviour
 {
-    public int amount = 5;
+    public int amount = 10;
     private void OnTriggerEnter(Collider other)
     {
-        Debug.Log("Not Implemented Health System for Player");
+        PlayerManager manager = other.GetComponent<PlayerManager>();
+        if (manager == null) return;
+        manager.health.AddHealth(amount);
         Destroy(gameObject);
     }
 }
