@@ -679,11 +679,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 19be20ba8b57cde4db35d8a567ec2f5c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mouseSensitivity: 1.5
+  mouseSensitivity: 2.5
   playerCamera: {fileID: 7942171414026170330}
   controller: {fileID: 7233829383713000307}
   speed: 3.5
   sprintMultiplier: 2.25
+  sprintEnergy: 250
   _normalStepsAudioSource: {fileID: 16912015606218553}
   _sprintStepsAudioSource: {fileID: 719917311325443467}
 --- !u!114 &2131901790
@@ -699,7 +700,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gun: {fileID: 7942171414001323988}
-  health: {fileID: 0}
+  health: {fileID: 2261812855360602779}
 --- !u!114 &2261812855360602779
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -712,7 +713,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b92c63808e7f45a1bf1e7fa40461e51d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Health: 50
+  health: 50
+  maxHealth: 50
 --- !u!1 &7942171414026170335
 GameObject:
   m_ObjectHideFlags: 0

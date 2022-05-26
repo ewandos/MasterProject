@@ -14,6 +14,7 @@ public class Player_Movement : MonoBehaviour
 	public float speed = 3.5f;
 	public float sprintMultiplier = 2.25f;
 
+	[SerializeField]
 	private float sprintEnergy = 100f;
 	private float sprintDepletionSpeed = 20f;
 	private float sprintRechargeSpeed = 10f;

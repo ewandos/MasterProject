@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Melee : MonoBehaviour
 {
-    [SerializeField] private float damage = 10f;
+    [SerializeField] private int damage = 10;
     [SerializeField] private float knockback = 30f;
     [SerializeField] private float firerate = 15f;
     
