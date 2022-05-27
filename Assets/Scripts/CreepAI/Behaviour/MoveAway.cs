@@ -1,5 +1,6 @@
 using BehaviorDesigner.Runtime;
 using BehaviorDesigner.Runtime.Tasks;
+using Drawing;
 using UnityEngine;
 using UnityEngine.AI;
 
@@ -25,9 +26,10 @@ namespace CreepAI.Behaviour
                 return TaskStatus.Success;
 
             Vector3 localAwayVector = target.Value.position - transform.position;
-            Vector3 moveDestination = (transform.position - localAwayVector) * multiplier;
-            
+            Vector3 moveDestination = transform.position - localAwayVector * multiplier ;
+
             navMeshAgent.speed = speed;
+            navMeshAgent.isStopped = false;
             navMeshAgent.SetDestination(moveDestination);
             return TaskStatus.Running;
         }

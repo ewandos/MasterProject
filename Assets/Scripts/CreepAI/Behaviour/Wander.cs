@@ -18,7 +18,7 @@ namespace CreepAI.Behaviour
         public override TaskStatus OnUpdate()
         {
             if (navMeshAgent.hasPath && navMeshAgent.remainingDistance > navMeshAgent.stoppingDistance)
-                return TaskStatus.Success;
+                return TaskStatus.Running;
 
             Vector3 randomPosition = Random.insideUnitSphere * radius;
             randomPosition += transform.position;
@@ -30,6 +30,7 @@ namespace CreepAI.Behaviour
                 return TaskStatus.Failure;
             
             navMeshAgent.speed = speed;
+            navMeshAgent.isStopped = false;
             navMeshAgent.SetDestination(finalPosition);
             return TaskStatus.Success;
         }
