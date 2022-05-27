@@ -346,6 +346,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 611014762}
     - target: {fileID: 4661245566186904524, guid: 9e0508727e596134f997432769889daf, type: 3}
+      propertyPath: energy
+      value: 
+      objectReference: {fileID: 11400000, guid: f2c40fded207e484aae3f82bfdd70e16, type: 2}
+    - target: {fileID: 4661245566186904524, guid: 9e0508727e596134f997432769889daf, type: 3}
       propertyPath: flashlight
       value: 
       objectReference: {fileID: 987785933}
@@ -1415,6 +1419,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   lightSource: {fileID: 987785933}
+  energyDepletionSpeed: 10
+  energyHolder: {fileID: 11400000, guid: f2c40fded207e484aae3f82bfdd70e16, type: 2}
 --- !u!4 &1696609887 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 127152807626382861, guid: 0b5c7004aca264acaad81981eface4a8, type: 3}
