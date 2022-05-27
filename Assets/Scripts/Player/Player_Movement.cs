@@ -18,6 +18,7 @@ public class Player_Movement : MonoBehaviour
 	private float sprintEnergy = 100f;
 	private float sprintDepletionSpeed = 20f;
 	private float sprintRechargeSpeed = 10f;
+	public FloatSO sprintEnergyHolder;
 
 	private bool isMoving = false;
 	
@@ -74,6 +75,8 @@ public class Player_Movement : MonoBehaviour
 		Vector3 move = transform.right * x + transform.forward * z;
 
 		controller.Move(move * finalSpeed * Time.deltaTime);
+
+		sprintEnergyHolder.Value = sprintEnergy;
 	}
 
 	void HandleMouseLook()
