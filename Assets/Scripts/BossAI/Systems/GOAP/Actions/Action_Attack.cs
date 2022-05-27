@@ -7,6 +7,10 @@ public class Action_Attack : Action_Base
     List<System.Type> SupportedGoals = new List<System.Type>(new System.Type[] { typeof(Goal_Attack) });
 
     Goal_Attack _attackGoal;
+    [SerializeField] private DamageTrigger damageTrigger;
+    [SerializeField] 
+    private float firerate = 1f;
+    [SerializeField] private float nexTimeToFire = 0f;
 
     public override List<System.Type> GetSupportedGoals()
     {
@@ -23,14 +27,34 @@ public class Action_Attack : Action_Base
         base.OnActivated(_linkedGoal);
         
         //choose attack animation to play
-        Animator anim = GetComponent<GameObject>().GetComponent<Animator>();
+        //Animator anim = GetComponent<GameObject>().GetComponent<Animator>();
         //AudioSource audio = GetComponent<AudioSource>();
         //audio.PlayOneShot(MeleeAudio);
-        anim.SetTrigger("Attack");
-
+        //anim.SetTrigger("Attack");
+        
+        //spawn collider here
+        if (Time.time >= nexTimeToFire)
+        {
+            nexTimeToFire = Time.time + 1f / firerate;
+            if (StatTracker.Instance.getMoreRangedAttacksPerformed())
+            {
+                damageTrigger.CreateDamageThingForSeconds();
+            }
+            else if (StatTracker.Instance.getMoreMeleeAttacksPerformed())
+            {
+                Debug.Log("ranged attack");
+                damageTrigger.createRangedAttack();
+            }
+        }
+        
+        
+        
+        
+        
+            
         //Actually Attack here
         //then change AttackPriority
-        Debug.Log("Attack");
+        //Debug.Log("Attack");
     }
 
     public override void OnDeactivated()
