@@ -1,4 +1,5 @@
 using System;
+using Drawing;
 using UnityEngine;
 
 public class Gun : MonoBehaviour
@@ -10,7 +11,7 @@ public class Gun : MonoBehaviour
     [SerializeField] 
     private float knockback = 30f;
     [SerializeField] 
-    private float firerate = 15f;
+    private float firerate = 1.5f;
 
     [SerializeField] private int maxAmunition = 10;
     [SerializeField] private int amunition = 10;
@@ -63,6 +64,7 @@ public class Gun : MonoBehaviour
         RaycastHit hit;
         if (Physics.Raycast(fpsCam.transform.position, fpsCam.transform.forward, out hit, range))
         {
+            
             Debug.Log(hit.transform.name);
 
             HealthSystem target = hit.transform.GetComponent<HealthSystem>();
@@ -75,7 +77,7 @@ public class Gun : MonoBehaviour
             
             if (hit.rigidbody != null)
             {
-                //emit event
+                //das geht gerade nicht weil raycast den rigidbody des targets auf is kinematic braucht
                 hit.rigidbody.AddForce(-hit.normal * knockback);
             }
 
