@@ -2172,6 +2172,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 9183221089610961391, guid: 052479e36e8263546a976d92a950c7fe, type: 3}
+      propertyPath: player
+      value: 
+      objectReference: {fileID: 1575603380}
     - target: {fileID: 9183566978320210996, guid: 052479e36e8263546a976d92a950c7fe, type: 3}
       propertyPath: m_Name
       value: Boss

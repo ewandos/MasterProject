@@ -16,8 +16,10 @@ public class DamageTrigger: MonoBehaviour
     public void createRangedAttack()
     {
         var newBullet = Instantiate(bulletPrefab);
-        newBullet.GetComponent<Rigidbody>().AddForce(gameObject.transform.position * bulletFlySpeed, ForceMode.VelocityChange);
-        LateCall2(2, newBullet);
+        newBullet.transform.position = EnemyCube.transform.position;
+        
+        newBullet.GetComponent<Rigidbody>().AddForce(gameObject.transform.forward * bulletFlySpeed, ForceMode.VelocityChange);
+        Destroy(newBullet, 2);
         //Debug.Log("bullet should be kaputt");
     }
   
@@ -29,12 +31,5 @@ public class DamageTrigger: MonoBehaviour
         yield return new WaitForSeconds(seconds);
   
         EnemyCube.SetActive(false);
-    }
-    
-    IEnumerator LateCall2(float seconds, GameObject bullet)
-    {
-        yield return new WaitForSeconds(seconds);
-  
-        Destroy(bullet);
     }
 }
