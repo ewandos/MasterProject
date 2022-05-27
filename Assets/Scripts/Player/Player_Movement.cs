@@ -55,7 +55,6 @@ public class Player_Movement : MonoBehaviour
 			_sprintStepsAudioSource.Stop();
 			_normalStepsAudioSource.Stop();
 		}
-			
     }
 
 	void HandleMovement()
@@ -110,12 +109,12 @@ public class Player_Movement : MonoBehaviour
 	void DepleteSprintEnergy()
 	{
 		sprintEnergy -= sprintDepletionSpeed * Time.deltaTime;
-		sprintEnergy = sprintEnergy < 0.0f ? 0.0f : sprintEnergy;
+		sprintEnergy = Mathf.Max(0.0f, sprintEnergy);
 	}
 
 	void RechargeSprintEnergy()
 	{
 		sprintEnergy += sprintRechargeSpeed * Time.deltaTime;
-		sprintEnergy = sprintEnergy > 100.0f ? 100.0f : sprintEnergy;
+		sprintEnergy = Mathf.Min(sprintEnergy, 100.0f);
 	}
 }
