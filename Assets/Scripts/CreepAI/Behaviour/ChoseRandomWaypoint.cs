@@ -1,5 +1,7 @@
+using System.Collections.Generic;
 using BehaviorDesigner.Runtime;
 using BehaviorDesigner.Runtime.Tasks;
+using BehaviorDesigner.Runtime.Tasks.Unity.UnityGameObject;
 using UnityEngine;
 using UnityEngine.AI;
 
@@ -11,13 +13,18 @@ namespace CreepAI.Behaviour
         public SharedInt activeWaypointIndex;
         public float strictness = 0.5f;
         public float cooldown = 10f;
-
         private float timer;
-        private NavMeshAgent navMeshAgent;
 
         public override void OnAwake()
         {
-            navMeshAgent = GetComponent<NavMeshAgent>();
+            List<Transform> w = new List<Transform>();
+            foreach (GameObject waypoint in GameObject.FindGameObjectsWithTag("Waypoint"))
+            {
+                w.Add(waypoint.transform);
+            }
+
+            Debug.Log("DDDDD");
+            waypoints.Value = w;
         }
 
         public override TaskStatus OnUpdate()
