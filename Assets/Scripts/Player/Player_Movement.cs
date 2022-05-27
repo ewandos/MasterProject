@@ -24,23 +24,17 @@ public class Player_Movement : MonoBehaviour
 	public AudioSource _normalStepsAudioSource;
 	public AudioSource _sprintStepsAudioSource;
 
-	public GameObject flashlight;
-	private Light light;
-
 	void Start()
 	{
 		Cursor.lockState = CursorLockMode.Locked;
 		_normalStepsAudioSource.Stop();
 		_sprintStepsAudioSource.Stop();
-
-		this.light = this.flashlight.GetComponent<Light>();
 	}
 
 	void Update()
     {
 		HandleMovement();
 		HandleMouseLook();
-		HandleFlashlight();
 
 		if (isMoving)
 		{
@@ -123,13 +117,5 @@ public class Player_Movement : MonoBehaviour
 	{
 		sprintEnergy += sprintRechargeSpeed * Time.deltaTime;
 		sprintEnergy = sprintEnergy > 100.0f ? 100.0f : sprintEnergy;
-	}
-
-	void HandleFlashlight()
-	{
-		if (Input.GetKeyUp(KeyCode.F))
-		{
-			this.light.enabled = !this.light.enabled;
-		}
 	}
 }
