@@ -3,13 +3,14 @@ using BehaviorDesigner.Runtime.Tasks;
 using UnityEngine;
 using UnityEngine.AI;
 
-namespace CreepAI.Behaviour
+namespace Player
 {
-    public class MoveTowards : Action
+    public class MoveToWaypoint : Action
     {
-        public float speed = 0;
-        public float stoppingDistance = 1;
-        public SharedTransform target;
+        public SharedInt activeWaypointIndex;
+        public SharedTransformList waypoints;
+        public float speed = 1f;
+        public float stoppingDistance = 1f;
         private NavMeshAgent navMeshAgent;
 
         public override void OnAwake()
@@ -19,15 +20,16 @@ namespace CreepAI.Behaviour
 
         public override TaskStatus OnUpdate()
         {
-            float distanceToTarget = Vector3.Distance(target.Value.transform.position, transform.position);
+            Vector3 activeWaypointPosition = waypoints.Value[activeWaypointIndex.Value].position;
+            float distanceToTarget = Vector3.Distance(activeWaypointPosition, transform.position);
             if (navMeshAgent.stoppingDistance >= distanceToTarget)
                 return TaskStatus.Success;
 
             navMeshAgent.speed = speed;
             navMeshAgent.isStopped = false;
             navMeshAgent.stoppingDistance = stoppingDistance;
-            navMeshAgent.SetDestination(target.Value.transform.position);
-            return TaskStatus.Running;
+            navMeshAgent.SetDestination(activeWaypointPosition);
+            return TaskStatus.Success;
         }
     }
 }

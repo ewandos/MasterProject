@@ -13,6 +13,7 @@ public enum EOffmeshLinkStatus
 public class CharacterAgent : CharacterBase
 {
     [SerializeField] float NearestPointSearchRange = 5f;
+    [SerializeField] GameObject player;
 
     NavMeshAgent Agent;
     bool DestinationSet = false;
@@ -32,6 +33,12 @@ public class CharacterAgent : CharacterBase
     // Update is called once per frame
     protected void Update()
     {
+        
+        Vector3 lookVector = player.transform.position - transform.position;
+        lookVector.y = transform.position.y;
+        Quaternion rot = Quaternion.LookRotation(lookVector);
+        transform.rotation = Quaternion.Slerp(transform.rotation, rot, 1);
+
         // have a path and near the end point?
         if (!Agent.pathPending && !Agent.isOnOffMeshLink && DestinationSet && (Agent.remainingDistance <= Agent.stoppingDistance))
         {
