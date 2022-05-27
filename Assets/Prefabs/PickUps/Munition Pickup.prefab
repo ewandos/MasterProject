@@ -520,7 +520,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5d530c8aa0be349d4832ddda972be79f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  destroyPossibility: 0.6
+  destroyPossibility: 0.5
 --- !u!82 &6704617545224934626
 AudioSource:
   m_ObjectHideFlags: 0
