@@ -12,6 +12,7 @@ public class Flashlight : MonoBehaviour
 
 	private float energy = 100.0f;
 	public float energyDepletionSpeed = 10.0f;
+	public float energyRechargeSpeed = 25.0f;
 	public FloatSO energyHolder;
 
     void Start()
