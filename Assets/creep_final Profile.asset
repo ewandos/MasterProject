@@ -29,13 +29,13 @@ MonoBehaviour:
   active: 1
   m_AdvancedMode: 0
   enable:
-    m_OverrideState: 0
-    m_Value: 0
+    m_OverrideState: 1
+    m_Value: 1
   layerMask:
     m_OverrideState: 0
     m_Value:
       serializedVersion: 2
-      m_Bits: 4294967295
+      m_Bits: 1023
   maxDepth:
     m_OverrideState: 0
     m_Value: 4
