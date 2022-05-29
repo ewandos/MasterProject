@@ -534,6 +534,7 @@ GameObject:
   - component: {fileID: 4661245566186904524}
   - component: {fileID: 2131901790}
   - component: {fileID: 2261812855360602779}
+  - component: {fileID: 5316871955819435835}
   m_Layer: 6
   m_Name: Player
   m_TagString: Untagged
@@ -685,6 +686,7 @@ MonoBehaviour:
   speed: 3.5
   sprintMultiplier: 2.25
   sprintEnergy: 250
+  sprintEnergyHolder: {fileID: 11400000, guid: da649ace43f17b44cbb11ab6a5769cbd, type: 2}
   _normalStepsAudioSource: {fileID: 16912015606218553}
   _sprintStepsAudioSource: {fileID: 719917311325443467}
 --- !u!114 &2131901790
@@ -715,6 +717,23 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   health: 50
   maxHealth: 50
+  bossDead: 0
+--- !u!114 &5316871955819435835
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7942171413855309413}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 908bfd55d8f1dee44aa4ab5c4a5a7ded, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  lightSource: {fileID: 23903505}
+  energyDepletionSpeed: 10
+  energyRechargeSpeed: 25
+  energyHolder: {fileID: 11400000, guid: f2c40fded207e484aae3f82bfdd70e16, type: 2}
 --- !u!1 &7942171414026170335
 GameObject:
   m_ObjectHideFlags: 0
