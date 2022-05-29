@@ -392,6 +392,117 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9e0508727e596134f997432769889daf, type: 3}
+--- !u!1001 &280491888
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 445775376}
+    m_Modifications:
+    - target: {fileID: 5997387755834144720, guid: 67be7d6c691f149cab3cca0e5eda5dcf, type: 3}
+      propertyPath: m_RootOrder
+      value: 12
+      objectReference: {fileID: 0}
+    - target: {fileID: 5997387755834144720, guid: 67be7d6c691f149cab3cca0e5eda5dcf, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -73
+      objectReference: {fileID: 0}
+    - target: {fileID: 5997387755834144720, guid: 67be7d6c691f149cab3cca0e5eda5dcf, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 1.376
+      objectReference: {fileID: 0}
+    - target: {fileID: 5997387755834144720, guid: 67be7d6c691f149cab3cca0e5eda5dcf, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 181
+      objectReference: {fileID: 0}
+    - target: {fileID: 5997387755834144720, guid: 67be7d6c691f149cab3cca0e5eda5dcf, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5997387755834144720, guid: 67be7d6c691f149cab3cca0e5eda5dcf, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5997387755834144720, guid: 67be7d6c691f149cab3cca0e5eda5dcf, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5997387755834144720, guid: 67be7d6c691f149cab3cca0e5eda5dcf, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5997387755834144720, guid: 67be7d6c691f149cab3cca0e5eda5dcf, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5997387755834144720, guid: 67be7d6c691f149cab3cca0e5eda5dcf, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5997387755834144720, guid: 67be7d6c691f149cab3cca0e5eda5dcf, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5997387755834144731, guid: 67be7d6c691f149cab3cca0e5eda5dcf, type: 3}
+      propertyPath: m_Icon
+      value: 
+      objectReference: {fileID: 5132851093641282708, guid: 0000000000000000d000000000000000, type: 0}
+    - target: {fileID: 5997387755834144731, guid: 67be7d6c691f149cab3cca0e5eda5dcf, type: 3}
+      propertyPath: m_Name
+      value: Creep+ (12)
+      objectReference: {fileID: 0}
+    - target: {fileID: 5997387755834144731, guid: 67be7d6c691f149cab3cca0e5eda5dcf, type: 3}
+      propertyPath: m_TagString
+      value: Untagged
+      objectReference: {fileID: 0}
+    - target: {fileID: 5997387755834144732, guid: 67be7d6c691f149cab3cca0e5eda5dcf, type: 3}
+      propertyPath: mBehaviorSource.mTaskData.JSONSerialization
+      value: '{"EntryTask":{"Type":"BehaviorDesigner.Runtime.Tasks.EntryTask","NodeData":{"Offset":"(419.641876,28.81955)"},"ID":0,"Name":"Entry","Instant":true},"RootTask":{"Type":"BehaviorDesigner.Runtime.Tasks.Selector","NodeData":{"Offset":"(2.65979767,106.570755)"},"ID":1,"Name":"Selector","Instant":true,"AbortTypeabortType":"None","Children":[{"Type":"BehaviorDesigner.Runtime.Tasks.Sequence","NodeData":{"Offset":"(-304.136444,104.304306)"},"ID":2,"Name":"Flocking","Instant":true,"AbortTypeabortType":"None","Children":[{"Type":"CreepAI.Behaviour.ObjectsInRange","NodeData":{"Offset":"(-167.240738,105.8705)"},"ID":3,"Name":"Objects
+        In Range","Instant":true,"SinglefovRange":15,"LayerMasklayerMask":128,"Int32minExpectedAmount":2},{"Type":"BehaviorDesigner.Runtime.Tasks.Selector","NodeData":{"Offset":"(-7.11031532,112.04155)"},"ID":4,"Name":"Selector","Instant":false,"AbortTypeabortType":"None","Children":[{"Type":"BehaviorDesigner.Runtime.Tasks.Sequence","NodeData":{"Offset":"(-333.973,117.0449)"},"ID":5,"Name":"Attack","Instant":true,"AbortTypeabortType":"None","Children":[{"Type":"BehaviorDesigner.Runtime.Tasks.Selector","NodeData":{"Offset":"(-122.4802,108.087982)"},"ID":6,"Name":"Selector","Instant":true,"AbortTypeabortType":"None","Children":[{"Type":"CreepAI.Behaviour.HasTarget","NodeData":{"Offset":"(-60.8209076,120.214218)"},"ID":7,"Name":"Has
+        Target","Instant":true,"SharedTransformtarget":{"Type":"BehaviorDesigner.Runtime.SharedTransform","Name":"Target","IsShared":true}},{"Type":"CreepAI.Behaviour.WithinSight","NodeData":{"Offset":"(49.81566,116.7486)"},"ID":8,"Name":"Within
+        Sight","Instant":true,"SinglefovAngle":45,"SinglefovDistance":25,"StringtargetTag":"Player","SharedTransformsharedTarget":{"Type":"BehaviorDesigner.Runtime.SharedTransform","Name":"Target","IsShared":true}}]},{"Type":"CreepAI.Behaviour.CalloutTarget","NodeData":{"Offset":"(-1.69760132,108.804756)"},"ID":9,"Name":"Callout
+        Target","Instant":true,"Singlerange":20,"SharedTransformtarget":{"Type":"BehaviorDesigner.Runtime.SharedTransform","Name":"Target","IsShared":true},"LayerMasklayerMask":128},{"Type":"CreepAI.Behaviour.MoveTowards","NodeData":{"Offset":"(123.44442,109.66684)"},"ID":10,"Name":"Move
+        Towards","Instant":true,"Singlespeed":3,"SinglestoppingDistance":1,"SharedTransformtarget":{"Type":"BehaviorDesigner.Runtime.SharedTransform","Name":"Target","IsShared":true}},{"Type":"CreepAI.Behaviour.DealDamage","NodeData":{"Offset":"(243.4254,108.2778)"},"ID":11,"Name":"Deal
+        Damage","Instant":true,"SharedTransformtarget":{"Type":"BehaviorDesigner.Runtime.SharedTransform","Name":"Target","IsShared":true},"Int32amount":25,"Singlecooldown":1}]},{"Type":"BehaviorDesigner.Runtime.Tasks.Sequence","NodeData":{"Offset":"(112.269547,114.787041)"},"ID":12,"Name":"Sequence","Instant":true,"AbortTypeabortType":"None","Children":[{"Type":"CreepAI.Behaviour.FlockWaypoint","NodeData":{"Offset":"(-51.80589,106.7609)"},"ID":13,"Name":"Flock
+        Waypoint","Instant":true,"SharedTransformListwaypoints":{"Type":"BehaviorDesigner.Runtime.SharedTransformList","Name":"Waypoints","IsShared":true,"List`1mValue":[0,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null]},"SharedIntactiveWaypointIndex":{"Type":"BehaviorDesigner.Runtime.SharedInt","Name":"ActiveWaypointIndex","IsShared":true,"Int32mValue":0},"Singlestrictness":0.5,"Singlecooldown":10,"SinglefovRange":15,"LayerMasklayerMask":128},{"Type":"Player.MoveToWaypoint","NodeData":{"Offset":"(84.77325,108.099915)"},"ID":14,"Name":"Move
+        To Waypoint","Instant":true,"SharedIntactiveWaypointIndex":{"Type":"BehaviorDesigner.Runtime.SharedInt","Name":"ActiveWaypointIndex","IsShared":true,"Int32mValue":0},"SharedTransformListwaypoints":{"Type":"BehaviorDesigner.Runtime.SharedTransformList","Name":"Waypoints","IsShared":true,"List`1mValue":[1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null]},"Singlespeed":1,"SinglestoppingDistance":1}]}]}]},{"Type":"BehaviorDesigner.Runtime.Tasks.Selector","NodeData":{"Offset":"(295.889221,100)"},"ID":15,"Name":"Isolated","Instant":true,"AbortTypeabortType":"None","Children":[{"Type":"BehaviorDesigner.Runtime.Tasks.Sequence","NodeData":{"Offset":"(-85.51854,115.166519)"},"ID":16,"Name":"Observe
+        & Flee","Instant":true,"AbortTypeabortType":"None","Children":[{"Type":"CreepAI.Behaviour.WithinSight","NodeData":{"Offset":"(-110.709091,119.028687)"},"ID":17,"Name":"Within
+        Sight","Instant":true,"SinglefovAngle":45,"SinglefovDistance":25,"StringtargetTag":"Player","SharedTransformsharedTarget":{"Type":"BehaviorDesigner.Runtime.SharedTransform","Name":"Target","IsShared":true}},{"Type":"CreepAI.Behaviour.Bait","NodeData":{"Offset":"(-3.76360321,115.523766)"},"ID":18,"Name":"Bait","Instant":true,"SharedTransformtarget":{"Type":"BehaviorDesigner.Runtime.SharedTransform","Name":"Target","IsShared":true},"Singlerange":15},{"Type":"CreepAI.Behaviour.MoveAway","NodeData":{"Offset":"(110.349,118.176132)"},"ID":19,"Name":"Move
+        Away","Instant":true,"Singlespeed":5,"SinglestoppingDistance":50,"Singlemultiplier":5,"SharedTransformtarget":{"Type":"BehaviorDesigner.Runtime.SharedTransform","Name":"Target","IsShared":true}}]},{"Type":"BehaviorDesigner.Runtime.Tasks.Sequence","NodeData":{"Offset":"(213.821777,117.759369)"},"ID":20,"Name":"Sequence","Instant":true,"AbortTypeabortType":"None","Children":[{"Type":"CreepAI.Behaviour.ChoseRandomWaypoint","NodeData":{"Offset":"(-22.5021362,107.589119)"},"ID":21,"Name":"Chose
+        Random Waypoint","Instant":true,"SharedTransformListwaypoints":{"Type":"BehaviorDesigner.Runtime.SharedTransformList","Name":"Waypoints","IsShared":true,"List`1mValue":[2,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null]},"SharedIntactiveWaypointIndex":{"Type":"BehaviorDesigner.Runtime.SharedInt","Name":"ActiveWaypointIndex","IsShared":true,"Int32mValue":0},"Singlestrictness":0.5,"Singlecooldown":3},{"Type":"Player.MoveToWaypoint","NodeData":{"Offset":"(138.17897,107.589111)"},"ID":22,"Name":"Move
+        To Waypoint","Instant":true,"SharedIntactiveWaypointIndex":{"Type":"BehaviorDesigner.Runtime.SharedInt","Name":"ActiveWaypointIndex","IsShared":true,"Int32mValue":0},"SharedTransformListwaypoints":{"Type":"BehaviorDesigner.Runtime.SharedTransformList","Name":"Waypoints","IsShared":true,"List`1mValue":[3,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null]},"Singlespeed":1,"SinglestoppingDistance":1}]}]}]},"Variables":[{"Type":"BehaviorDesigner.Runtime.SharedTransform","Name":"Target","IsShared":true},{"Type":"BehaviorDesigner.Runtime.SharedTransformList","Name":"Waypoints","IsShared":true,"List`1mValue":[4,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null]},{"Type":"BehaviorDesigner.Runtime.SharedInt","Name":"ActiveWaypointIndex","IsShared":true,"Int32mValue":0}]}'
+      objectReference: {fileID: 0}
+    - target: {fileID: 5997387755834144732, guid: 67be7d6c691f149cab3cca0e5eda5dcf, type: 3}
+      propertyPath: mBehaviorSource.mTaskData.fieldSerializationData.unityObjects.Array.size
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 5997387755834144732, guid: 67be7d6c691f149cab3cca0e5eda5dcf, type: 3}
+      propertyPath: mBehaviorSource.mTaskData.fieldSerializationData.unityObjects.Array.data[0]
+      value: 
+      objectReference: {fileID: 1169670395}
+    - target: {fileID: 5997387755834144732, guid: 67be7d6c691f149cab3cca0e5eda5dcf, type: 3}
+      propertyPath: mBehaviorSource.mTaskData.fieldSerializationData.unityObjects.Array.data[1]
+      value: 
+      objectReference: {fileID: 1169670395}
+    - target: {fileID: 5997387755834144732, guid: 67be7d6c691f149cab3cca0e5eda5dcf, type: 3}
+      propertyPath: mBehaviorSource.mTaskData.fieldSerializationData.unityObjects.Array.data[2]
+      value: 
+      objectReference: {fileID: 1169670395}
+    - target: {fileID: 5997387755834144732, guid: 67be7d6c691f149cab3cca0e5eda5dcf, type: 3}
+      propertyPath: mBehaviorSource.mTaskData.fieldSerializationData.unityObjects.Array.data[3]
+      value: 
+      objectReference: {fileID: 1169670395}
+    - target: {fileID: 5997387755834144732, guid: 67be7d6c691f149cab3cca0e5eda5dcf, type: 3}
+      propertyPath: mBehaviorSource.mTaskData.fieldSerializationData.unityObjects.Array.data[4]
+      value: 
+      objectReference: {fileID: 1169670395}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 67be7d6c691f149cab3cca0e5eda5dcf, type: 3}
+--- !u!4 &280491889 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 5997387755834144720, guid: 67be7d6c691f149cab3cca0e5eda5dcf, type: 3}
+  m_PrefabInstance: {fileID: 280491888}
+  m_PrefabAsset: {fileID: 0}
 --- !u!82 &372571206 stripped
 AudioSource:
   m_CorrespondingSourceObject: {fileID: 4250102779621153651, guid: 127311729802446dca0376599a2ab60c, type: 3}
@@ -441,6 +552,7 @@ Transform:
   - {fileID: 1962009653}
   - {fileID: 585916732}
   - {fileID: 215718019}
+  - {fileID: 280491889}
   m_Father: {fileID: 0}
   m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -1208,7 +1320,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5997387755834144720, guid: 67be7d6c691f149cab3cca0e5eda5dcf, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 32.1
+      value: 16
       objectReference: {fileID: 0}
     - target: {fileID: 5997387755834144720, guid: 67be7d6c691f149cab3cca0e5eda5dcf, type: 3}
       propertyPath: m_LocalPosition.y
@@ -1216,7 +1328,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5997387755834144720, guid: 67be7d6c691f149cab3cca0e5eda5dcf, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 149.4
+      value: 192
       objectReference: {fileID: 0}
     - target: {fileID: 5997387755834144720, guid: 67be7d6c691f149cab3cca0e5eda5dcf, type: 3}
       propertyPath: m_LocalRotation.w
@@ -1598,7 +1710,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5997387755834144720, guid: 67be7d6c691f149cab3cca0e5eda5dcf, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 21.7
+      value: 65
       objectReference: {fileID: 0}
     - target: {fileID: 5997387755834144720, guid: 67be7d6c691f149cab3cca0e5eda5dcf, type: 3}
       propertyPath: m_LocalPosition.y
@@ -1606,7 +1718,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5997387755834144720, guid: 67be7d6c691f149cab3cca0e5eda5dcf, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 113.7
+      value: 180
       objectReference: {fileID: 0}
     - target: {fileID: 5997387755834144720, guid: 67be7d6c691f149cab3cca0e5eda5dcf, type: 3}
       propertyPath: m_LocalRotation.w
@@ -1714,7 +1826,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5997387755834144720, guid: 67be7d6c691f149cab3cca0e5eda5dcf, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -14.2
+      value: -25
       objectReference: {fileID: 0}
     - target: {fileID: 5997387755834144720, guid: 67be7d6c691f149cab3cca0e5eda5dcf, type: 3}
       propertyPath: m_LocalPosition.y
@@ -1722,7 +1834,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5997387755834144720, guid: 67be7d6c691f149cab3cca0e5eda5dcf, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 140.8
+      value: 148
       objectReference: {fileID: 0}
     - target: {fileID: 5997387755834144720, guid: 67be7d6c691f149cab3cca0e5eda5dcf, type: 3}
       propertyPath: m_LocalRotation.w
