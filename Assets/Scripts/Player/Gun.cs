@@ -1,5 +1,6 @@
 using System;
 using Drawing;
+using TMPro;
 using UnityEngine;
 
 public class Gun : MonoBehaviour
@@ -29,8 +30,16 @@ public class Gun : MonoBehaviour
     private MuzzleFlashController muzzleFlash;
     
     [SerializeField] private float nexTimeToFire = 0f;
-    
-    
+
+    [SerializeField] private TextMeshProUGUI ammoUI;
+
+
+    private void Start()
+    {
+        amunition = maxAmunition;
+        ammoUI.text = (amunition.ToString() + '/' + maxAmunition.ToString());
+    }
+
     void Update()
     {
         if (Input.GetButton("Fire1") 
@@ -55,12 +64,14 @@ public class Gun : MonoBehaviour
     {
         amunitionCarried -= (maxAmunition - amunition);
         amunition = maxAmunition;
+        ammoUI.text = (amunition.ToString() + '/' + maxAmunition.ToString());
     }
     
     void Shoot()
     {
         StatTracker.Instance.RangeAttackPerformed();
         amunition--;
+        ammoUI.text = (amunition.ToString() + '/' + maxAmunition.ToString());
         RaycastHit hit;
         if (Physics.Raycast(fpsCam.transform.position, fpsCam.transform.forward, out hit, range))
         {

@@ -1,5 +1,7 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 
 public class Flashlight : MonoBehaviour
@@ -11,15 +13,17 @@ public class Flashlight : MonoBehaviour
 	private bool isOn = true;
 
 	private float energy = 100.0f;
+	private float maxenergy = 100.0f;
 	public float energyDepletionSpeed = 10.0f;
 	public float energyRechargeSpeed = 25.0f;
 	public FloatSO energyHolder;
-
+	[SerializeField] private TextMeshProUGUI flashlightUI;
     void Start()
     {
 		light = lightSource.GetComponent<Light>();
 		maxIntensity = light.intensity;
-	}
+		text();
+    }
 
     void Update()
     {
@@ -44,17 +48,25 @@ public class Flashlight : MonoBehaviour
 		light.intensity = isOn? maxIntensity * energy / 100.0f : 0;
 
 		energyHolder.Value = energy;
-	}
+	} 
 
 	void DepleteEnergy()
 	{
 		energy -= energyDepletionSpeed * Time.deltaTime;
 		energy = Mathf.Max(0.0f, energy);
+		text();
 	}
 
 	void RechargeEnergy()
 	{
 		energy += energyDepletionSpeed * Time.deltaTime;
 		energy = Mathf.Min(energy, 100.0f);
+		text();
+	}
+
+	void text()
+	{
+		flashlightUI.text = Math.Round(energy / maxenergy * 100) + "%";
+		
 	}
 }

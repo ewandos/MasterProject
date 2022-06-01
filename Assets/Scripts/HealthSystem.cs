@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Security.Cryptography;
+using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -13,18 +14,39 @@ public class HealthSystem : MonoBehaviour
 
     [SerializeField] public bool bossDead = false;
 
+    [SerializeField] private TextMeshProUGUI text;
+    [SerializeField] private bool player;
+    public void Start()
+    {
+        health = maxHealth;
+        if (GetComponent<Player_Movement>())
+        {
+            player = true;
+            text.text = health.ToString();
+        }
+    }
+
     public void TakeDamage(int amount)
     {
         health -= amount;
+        if (player)
+        {
+            text.text = health.ToString();
+        }
+        
         if (health <= 0)
         {
+            if (player)
+            {
+                text.text = "0";
+            }
             Death();
         }
     }
 
     void Death()
     {
-        if (GetComponent<Player_Movement>())
+        if (player)
         {
             SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex - 1);
         }
