@@ -1,23 +1,28 @@
 using UnityEngine;
 
-public class MunitionPickable : MonoBehaviour
+public abstract class IPickable : MonoBehaviour
 {
     public GameObject model;
-    public int amount = 5;
-    
-    private AudioSource audio;
 
+    private AudioSource audio;
+    private bool isCollected;
+    
     private void Awake()
     {
         audio = GetComponent<AudioSource>();
     }
+
     private void OnTriggerEnter(Collider other)
     {
+        if (isCollected) return;
         PlayerManager manager = other.GetComponent<PlayerManager>();
         if (manager == null) return;
-        manager.gun.AddAmmo(amount);
+        OnPickUp(manager);
+        isCollected = true;
         model.SetActive(false);
         audio.Play();
         Destroy(gameObject, 1);
     }
+
+    protected abstract void OnPickUp(PlayerManager manager);
 }
