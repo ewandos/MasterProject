@@ -70,7 +70,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   startOpen: 0
   openOnTriggerEnter: 0
-  code: 0
+  codes: 0000000001000000
+  allCodesRequired: 1
 --- !u!65 &2404712803209086497
 BoxCollider:
   m_ObjectHideFlags: 0
