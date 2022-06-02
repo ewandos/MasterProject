@@ -535,6 +535,7 @@ GameObject:
   - component: {fileID: 2131901790}
   - component: {fileID: 2261812855360602779}
   - component: {fileID: 5316871955819435835}
+  - component: {fileID: 4274541771902197649}
   m_Layer: 6
   m_Name: Player
   m_TagString: Untagged
@@ -704,6 +705,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   gun: {fileID: 7942171414001323988}
   health: {fileID: 2261812855360602779}
+  keychain: {fileID: 0}
 --- !u!114 &2261812855360602779
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -738,6 +740,19 @@ MonoBehaviour:
   energyRechargeSpeed: 10
   energyHolder: {fileID: 11400000, guid: f2c40fded207e484aae3f82bfdd70e16, type: 2}
   flashlightUI: {fileID: 0}
+--- !u!114 &4274541771902197649
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7942171413855309413}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2b17116da26c24385a897aa44af2836f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  keychain: 
 --- !u!1 &7942171414026170335
 GameObject:
   m_ObjectHideFlags: 0
