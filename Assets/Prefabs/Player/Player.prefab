@@ -685,7 +685,8 @@ MonoBehaviour:
   controller: {fileID: 7233829383713000307}
   speed: 3.5
   sprintMultiplier: 2.25
-  sprintEnergy: 250
+  maxSpringEnergy: 300
+  sprintEnergy: 300
   sprintEnergyHolder: {fileID: 11400000, guid: da649ace43f17b44cbb11ab6a5769cbd, type: 2}
   _normalStepsAudioSource: {fileID: 16912015606218553}
   _sprintStepsAudioSource: {fileID: 719917311325443467}
@@ -718,6 +719,8 @@ MonoBehaviour:
   health: 50
   maxHealth: 50
   bossDead: 0
+  text: {fileID: 0}
+  player: 0
 --- !u!114 &5316871955819435835
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -731,9 +734,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   lightSource: {fileID: 23903505}
-  energyDepletionSpeed: 10
-  energyRechargeSpeed: 25
+  energyDepletionSpeed: 1
+  energyRechargeSpeed: 10
   energyHolder: {fileID: 11400000, guid: f2c40fded207e484aae3f82bfdd70e16, type: 2}
+  flashlightUI: {fileID: 0}
 --- !u!1 &7942171414026170335
 GameObject:
   m_ObjectHideFlags: 0

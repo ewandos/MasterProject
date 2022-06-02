@@ -15,6 +15,9 @@ public class Player_Movement : MonoBehaviour
 	public float sprintMultiplier = 2.25f;
 
 	[SerializeField]
+	private float maxSpringEnergy = 100f;
+	
+	[SerializeField]
 	private float sprintEnergy = 100f;
 	private float sprintDepletionSpeed = 20f;
 	private float sprintRechargeSpeed = 10f;
@@ -118,6 +121,6 @@ public class Player_Movement : MonoBehaviour
 	void RechargeSprintEnergy()
 	{
 		sprintEnergy += sprintRechargeSpeed * Time.deltaTime;
-		sprintEnergy = Mathf.Min(sprintEnergy, 100.0f);
+		sprintEnergy = Mathf.Min(sprintEnergy, maxSpringEnergy);
 	}
 }

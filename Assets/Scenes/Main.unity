@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.12806332, g: 0.15867388, b: 0.2099917, a: 1}
+  m_IndirectSpecularColor: {r: 0.12805283, g: 0.15865767, b: 0.20996952, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -342,6 +342,14 @@ PrefabInstance:
       propertyPath: flashlightUI
       value: 
       objectReference: {fileID: 815075548}
+    - target: {fileID: 5316871955819435835, guid: 9e0508727e596134f997432769889daf, type: 3}
+      propertyPath: energyRechargeSpeed
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 5316871955819435835, guid: 9e0508727e596134f997432769889daf, type: 3}
+      propertyPath: energyDepletionSpeed
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 7942171413855309410, guid: 9e0508727e596134f997432769889daf, type: 3}
       propertyPath: m_RootOrder
       value: 2
