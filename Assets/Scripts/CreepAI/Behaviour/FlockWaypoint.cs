@@ -67,6 +67,9 @@ namespace CreepAI.Behaviour
                 if (distance <= selectionRange)
                     validWaypointIndices.Add(i);
             }
+            
+            if (validWaypointIndices.Count == 0)
+                return (int) Mathf.Floor(Random.Range(0, waypoints.Value.Count));
 
             int randomIndexForSelectingIndex = (int) Mathf.Floor(Random.Range(0, validWaypointIndices.Count));
             return validWaypointIndices[randomIndexForSelectingIndex];
