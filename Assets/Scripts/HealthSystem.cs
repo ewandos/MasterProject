@@ -31,7 +31,7 @@ public class HealthSystem : MonoBehaviour
         health -= amount;
         if (player)
         {
-            text.text = health.ToString();
+            text.text = health + "/" + maxHealth;
         }
         
         if (health <= 0)

@@ -37,7 +37,7 @@ public class Gun : MonoBehaviour
     private void Start()
     {
         amunition = maxAmunition;
-        ammoUI.text = (amunition.ToString() + '/' + maxAmunition.ToString());
+        ammoUI.text = (amunition.ToString() + '/' + amunitionCarried);
     }
 
     void Update()
