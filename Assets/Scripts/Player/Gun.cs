@@ -17,9 +17,7 @@ public class Gun : MonoBehaviour
     [SerializeField] private int maxAmunition = 10;
     [SerializeField] private int amunition = 10;
     [SerializeField] private int amunitionCarried = 100;
-    
-    
-    
+
     [SerializeField]
     private Camera fpsCam;
 
@@ -37,7 +35,7 @@ public class Gun : MonoBehaviour
     private void Start()
     {
         amunition = maxAmunition;
-        ammoUI.text = (amunition.ToString() + '/' + amunitionCarried);
+        SetUI();
     }
 
     void Update()
@@ -64,14 +62,14 @@ public class Gun : MonoBehaviour
     {
         amunitionCarried -= (maxAmunition - amunition);
         amunition = maxAmunition;
-        ammoUI.text = (amunition.ToString() + '/' + maxAmunition.ToString());
+        SetUI();
     }
     
     void Shoot()
     {
         StatTracker.Instance.RangeAttackPerformed();
         amunition--;
-        ammoUI.text = (amunition.ToString() + '/' + maxAmunition.ToString());
+        SetUI();
         RaycastHit hit;
         if (Physics.Raycast(fpsCam.transform.position, fpsCam.transform.forward, out hit, range))
         {
@@ -95,5 +93,10 @@ public class Gun : MonoBehaviour
             Instantiate(impactEffect, hit.point, Quaternion.LookRotation(hit.normal));
         }
         
+    }
+
+    void SetUI()
+    {
+        ammoUI.text = (amunition.ToString() + '/' + amunitionCarried);
     }
 }

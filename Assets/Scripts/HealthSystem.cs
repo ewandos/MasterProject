@@ -22,7 +22,7 @@ public class HealthSystem : MonoBehaviour
         if (GetComponent<Player_Movement>())
         {
             player = true;
-            text.text = health.ToString();
+            text.text = health + "/" + maxHealth;
         }
     }
 

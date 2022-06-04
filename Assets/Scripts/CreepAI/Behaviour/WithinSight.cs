@@ -23,7 +23,7 @@ namespace CreepAI.Behaviour
         public override TaskStatus OnUpdate()
         {
             float deg = fovAngle * 0.5f;
-            float passiveDistance = fovDistance * 0.4f;
+            float passiveDistance = fovDistance * 0.2f;
             
             Vector3 position = transform.position;
             Vector3 foo = transform.forward * fovDistance;
