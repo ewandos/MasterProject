@@ -397,10 +397,6 @@ PrefabInstance:
       propertyPath: ammoUI
       value: 
       objectReference: {fileID: 3595022114901495165}
-    - target: {fileID: 7942171414001323988, guid: 9e0508727e596134f997432769889daf, type: 3}
-      propertyPath: firerate
-      value: 1.5
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9e0508727e596134f997432769889daf, type: 3}
 --- !u!224 &252246870 stripped
