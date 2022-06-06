@@ -1,0 +1,115 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &5697382853746666657
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4925525293315716635}
+  - component: {fileID: 8355620680418982334}
+  - component: {fileID: 6057860420190276980}
+  - component: {fileID: 6802861423870358251}
+  m_Layer: 0
+  m_Name: boss_TEST
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4925525293315716635
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5697382853746666657}
+  m_LocalRotation: {x: -0.10358349, y: 0.69959813, z: 0.699354, w: 0.10361966}
+  m_LocalPosition: {x: -43.55678, y: 2.018, z: 292.28143}
+  m_LocalScale: {x: 40, y: 40, z: 40}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: -89.98, y: 163.15, z: 0}
+--- !u!33 &8355620680418982334
+MeshFilter:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5697382853746666657}
+  m_Mesh: {fileID: 5461710062891721444, guid: eb96b55a35d684749ada0a9100761a79, type: 3}
+--- !u!23 &6057860420190276980
+MeshRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5697382853746666657}
+  m_Enabled: 1
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
+  m_DynamicOccludee: 1
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 2
+  m_RayTraceProcedural: 0
+  m_RenderingLayerMask: 257
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: 2100000, guid: c72a5e2bce0a08f4aa566e5334adab98, type: 2}
+  - {fileID: 2100000, guid: fac3211bdbf35d24d932bbd21ba7297b, type: 2}
+  - {fileID: 2100000, guid: 001846482b11146469b82fa54e915aba, type: 2}
+  - {fileID: 2100000, guid: d30bb87c3d78f1a49b3fd88737b2f39e, type: 2}
+  - {fileID: 2100000, guid: aac1ef77670641d47b09ae9de0b187a0, type: 2}
+  - {fileID: 2100000, guid: 9417a7ce38f1c5c46a35a6603e209aae, type: 2}
+  - {fileID: 2100000, guid: bd21391a9b3bdd34dbba0e9012e5b93e, type: 2}
+  - {fileID: 2100000, guid: 959c68edb41c42b4f95348e630903e0f, type: 2}
+  - {fileID: 2100000, guid: 9fa6b99d9d2b7f54b8b659a33888244a, type: 2}
+  - {fileID: 2100000, guid: 83f0f37bef2f16840bcdc8333b5d5738, type: 2}
+  - {fileID: 2100000, guid: a58e5c4aa8b426241abe74e898931951, type: 2}
+  - {fileID: 2100000, guid: 53f0a1abaf8b2bd4bac25afedf1c0dba, type: 2}
+  - {fileID: 2100000, guid: 16c8a68ff46808546ab526417ef36909, type: 2}
+  - {fileID: 2100000, guid: ea022b2b8e6ca6b438557ab7f21d52bd, type: 2}
+  - {fileID: 2100000, guid: 52e248ced18275a4792d7f04b1bfd06e, type: 2}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 1
+  m_SelectedEditorRenderState: 3
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+  m_AdditionalVertexStreams: {fileID: 0}
+--- !u!114 &6802861423870358251
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5697382853746666657}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 172515602e62fb746b5d573b38a5fe58, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isGlobal: 1
+  priority: 0
+  blendDistance: 0
+  weight: 1
+  sharedProfile: {fileID: 11400000, guid: db8d3980066d2514a9f16515b990de0d, type: 2}
