@@ -23,7 +23,7 @@ namespace Player
             Vector3 activeWaypointPosition = waypoints.Value[activeWaypointIndex.Value].position;
             float distanceToTarget = Vector3.Distance(activeWaypointPosition, transform.position);
             if (navMeshAgent.stoppingDistance >= distanceToTarget)
-                return TaskStatus.Success;
+                return TaskStatus.Running;
 
             navMeshAgent.speed = speed;
             navMeshAgent.isStopped = false;

@@ -57,6 +57,7 @@ public class Gun : MonoBehaviour
     public void AddAmmo(int amount)
     {
         amunitionCarried += amount;
+        SetUI();
     }
     void Reload()
     {

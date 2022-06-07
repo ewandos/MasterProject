@@ -37,7 +37,7 @@ namespace CreepAI.Behaviour
 
             if (Random.Range(0f, 1f) > strictness || activeWaypointIndex.Value == -1)
                 activeWaypointIndex.Value = SelectRandomNearWaypointIndex();
-            
+
             return TaskStatus.Success;
         }
         
@@ -48,7 +48,7 @@ namespace CreepAI.Behaviour
             for (int i = 0; i < waypoints.Value.Count; i++)
             {
                 float distance = Vector3.Distance(waypoints.Value[i].position, transform.position);
-                if (distance <= selectionRange)
+                if (distance <= selectionRange && distance > 3f)
                     validWaypointIndices.Add(i);
             }
             
