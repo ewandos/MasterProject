@@ -14,8 +14,8 @@ public class Flashlight : MonoBehaviour
 
 	private float energy = 100.0f;
 	private float maxenergy = 100.0f;
-	public float energyDepletionSpeed = 10.0f;
-	public float energyRechargeSpeed = 25.0f;
+	public float energyDepletionSpeed = 1f;
+	public float energyRechargeSpeed = 5f;
 	public FloatSO energyHolder;
 	[SerializeField] private TextMeshProUGUI flashlightUI;
     void Start()
@@ -59,7 +59,7 @@ public class Flashlight : MonoBehaviour
 
 	void RechargeEnergy()
 	{
-		energy += energyDepletionSpeed * Time.deltaTime;
+		energy += energyRechargeSpeed * Time.deltaTime;
 		energy = Mathf.Min(energy, 100.0f);
 		text();
 	}
