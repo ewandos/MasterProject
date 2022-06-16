@@ -1,10 +1,10 @@
 using UnityEngine;
 
-public abstract class IPickable : MonoBehaviour
+public abstract class Pickable : MonoBehaviour
 {
     public GameObject model;
 
-    private AudioSource audio;
+    private new AudioSource audio;
     private bool isCollected;
     
     private void Awake()

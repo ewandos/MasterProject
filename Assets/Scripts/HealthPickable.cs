@@ -1,4 +1,4 @@
-public class HealthPickable : IPickable
+public class HealthPickable : Pickable
 {
     public int amount = 10;
 

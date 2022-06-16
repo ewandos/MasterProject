@@ -1,4 +1,4 @@
-public class MunitionPickable : IPickable
+public class MunitionPickable : Pickable
 {
     public int amount = 5;
 

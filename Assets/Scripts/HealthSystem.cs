@@ -19,7 +19,7 @@ public class HealthSystem : MonoBehaviour
     public void Start()
     {
         health = maxHealth;
-        if (GetComponent<Player_Movement>())
+        if (GetComponent<PlayerMovement>())
         {
             player = true;
             text.text = health + "/" + maxHealth;

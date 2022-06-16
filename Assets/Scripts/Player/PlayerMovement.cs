@@ -1,8 +1,6 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
-public class Player_Movement : MonoBehaviour
+public class PlayerMovement : MonoBehaviour
 {
 	// Mouselook-related variables
 	public float mouseSensitivity = 1.5f;
@@ -24,44 +22,25 @@ public class Player_Movement : MonoBehaviour
 	public FloatSO sprintEnergyHolder;
 
 	private bool isMoving = false;
-	
-	public AudioSource _normalStepsAudioSource;
-	public AudioSource _sprintStepsAudioSource;
+	public AudioClipSequencer audioClipSequencer;
 
 	void Start()
 	{
 		Cursor.lockState = CursorLockMode.Locked;
-		_normalStepsAudioSource.Stop();
-		_sprintStepsAudioSource.Stop();
 	}
 
 	void Update()
     {
-		HandleMovement();
+		float finalSpeed = HandleMovement();
 		HandleMouseLook();
-
+		
 		if (isMoving)
-		{
-			if (IsSprinting(isMoving) && !_sprintStepsAudioSource.isPlaying)
-			{
-				_sprintStepsAudioSource.Play();
-				_normalStepsAudioSource.Stop();
-			}
-
-			if (!IsSprinting(isMoving) && !_normalStepsAudioSource.isPlaying)
-			{
-				_sprintStepsAudioSource.Stop();
-				_normalStepsAudioSource.Play();
-			}
-		}
-		else if (!isMoving)
-		{
-			_sprintStepsAudioSource.Stop();
-			_normalStepsAudioSource.Stop();
-		}
+			audioClipSequencer.SetInterval(2 / finalSpeed);
+		else
+			audioClipSequencer.Stop();
     }
 
-	void HandleMovement()
+	float HandleMovement()
 	{
 		float finalSpeed = speed;
 
@@ -80,6 +59,8 @@ public class Player_Movement : MonoBehaviour
 		controller.Move(move * finalSpeed * Time.deltaTime);
 
 		sprintEnergyHolder.Value = sprintEnergy;
+
+		return finalSpeed;
 	}
 
 	void HandleMouseLook()

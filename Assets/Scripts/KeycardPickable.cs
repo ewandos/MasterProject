@@ -1,4 +1,4 @@
-public class KeycardPickable : IPickable
+public class KeycardPickable : Pickable
 {
     public int code = 0;
 
