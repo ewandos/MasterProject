@@ -2,6 +2,7 @@
 using System.Security.Cryptography;
 using TMPro;
 using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.SceneManagement;
 
 public class HealthSystem : MonoBehaviour
@@ -16,6 +17,8 @@ public class HealthSystem : MonoBehaviour
 
     [SerializeField] private TextMeshProUGUI text;
     [SerializeField] private bool player;
+
+    public UnityAction onDamageTaken;
     public void Start()
     {
         health = maxHealth;

@@ -15,7 +15,7 @@ namespace CreepAI.Behaviour
         public override TaskStatus OnUpdate()
         {
             Draw.CircleXZ(transform.position, fovRange, Color.gray);
-            Collider[] result = Physics.OverlapSphere(transform.position, CreepBehaviorTree.fovRange, layerMask);
+            Collider[] result = Physics.OverlapSphere(transform.position, fovRange, layerMask);
             return result.Length >= minExpectedAmount ? TaskStatus.Success : TaskStatus.Failure;
         }
     }

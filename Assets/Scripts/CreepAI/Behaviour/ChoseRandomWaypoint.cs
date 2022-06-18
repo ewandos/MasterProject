@@ -14,17 +14,6 @@ namespace CreepAI.Behaviour
         public float selectionRange = 25f;
         private float timer;
 
-        public override void OnAwake()
-        {
-            List<Transform> w = new List<Transform>();
-            foreach (GameObject waypoint in GameObject.FindGameObjectsWithTag("Waypoint"))
-            {
-                w.Add(waypoint.transform);
-            }
-            
-            waypoints.Value = w;
-        }
-
         public override TaskStatus OnUpdate()
         {
             if (timer > 0f)

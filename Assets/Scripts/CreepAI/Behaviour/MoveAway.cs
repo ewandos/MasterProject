@@ -30,7 +30,11 @@ namespace CreepAI.Behaviour
 
             navMeshAgent.speed = speed;
             navMeshAgent.isStopped = false;
-            navMeshAgent.SetDestination(moveDestination);
+
+            NavMeshHit hit;
+            NavMesh.SamplePosition(moveDestination, out hit, 50f, NavMesh.AllAreas);
+            
+            bool successful = navMeshAgent.SetDestination(hit.position);
             return TaskStatus.Running;
         }
     }
