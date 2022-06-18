@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 6483490009148964160}
   m_Layer: 0
   m_Name: room_l3
-  m_TagString: Untagged
+  m_TagString: Waypoint
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
