@@ -10,13 +10,13 @@ public class DoorController : MonoBehaviour
     public bool openOnTriggerEnter;
     public bool allCodesRequired;
     public List<int> codes = new List<int>();
-    public UnityEvent onFirstOpen;
 
     private Animator animator;
     private BoxCollider collider;
     private NavMeshObstacle obstacle;
     private DoorStatusLightsController doorStatusLightsController;
-    private bool neverOpened = true;
+    private DoorAudioController doorAudioController;
+    private bool isClosed;
 
     private void Awake()
     {
@@ -24,33 +24,31 @@ public class DoorController : MonoBehaviour
         collider = GetComponent<BoxCollider>();
         obstacle = GetComponent<NavMeshObstacle>();
         doorStatusLightsController = GetComponentInChildren<DoorStatusLightsController>();
-
-        if (startOpen)
-        {
-            animator.SetBool("isOpen", true);
-            collider.enabled = false;
-            obstacle.enabled = false;
-        }
-        
+        doorAudioController = GetComponentInChildren<DoorAudioController>();
+        isClosed = !startOpen;
+        animator.SetBool("isClosed", isClosed);
+        collider.enabled = isClosed;
+        obstacle.enabled = isClosed;
         doorStatusLightsController.Initialize(codes.Count);
     }
 
     private void Open()
     {
-        if (neverOpened)
-            onFirstOpen.Invoke();
-        
-        animator.SetBool("isOpen", true);
-        collider.enabled = false;
-        obstacle.enabled = false;
-        neverOpened = false;
+        if (!isClosed) return;
+        isClosed = false;
+        animator.SetBool("isClosed", isClosed);
+        collider.enabled = isClosed;
+        obstacle.enabled = isClosed;
+        doorAudioController.PlayOpen();
     }
 
     private void Close()
     {
-        animator.SetBool("isOpen", false);
-        collider.enabled = true;
-        obstacle.enabled = true;
+        isClosed = true;
+        animator.SetBool("isClosed", isClosed);
+        collider.enabled = isClosed;
+        obstacle.enabled = isClosed;
+        doorAudioController.PlayClose();
     }
 
     private void OnTriggerEnter(Collider other)
@@ -78,17 +76,18 @@ public class DoorController : MonoBehaviour
             doorStatusLightsController.DisplayValidState();
             Open();
         }
-
-
+        
         if (!allCodesRequired && foundCodeResults.Contains(true))
         {
             Open();
             doorStatusLightsController.DisplayValidState();
         }
-        
-        
+
         int numberOfValidKeys = foundCodeResults.Count(foundCodeResult => foundCodeResult);
         doorStatusLightsController.DisplayDoorState(numberOfValidKeys);
+        
+        if (numberOfValidKeys < codes.Count)
+            doorAudioController.PlayLocked();
     }
 
     private void OnTriggerExit(Collider other)
