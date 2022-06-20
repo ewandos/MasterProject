@@ -25,7 +25,7 @@ public class HealthSystem : MonoBehaviour
         if (GetComponent<PlayerMovement>())
         {
             player = true;
-            text.text = health + "/" + maxHealth;
+            text.text = health.ToString();
         }
     }
 
@@ -34,7 +34,7 @@ public class HealthSystem : MonoBehaviour
         health -= amount;
         if (player)
         {
-            text.text = health + "/" + maxHealth;
+            text.text = health.ToString();
         }
         
         if (health <= 0)
