@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Goal_Attack : Goal_Base
 {
-    [SerializeField] int AttackPriority = 70;
+    [SerializeField] int AttackPriority = 60;
     [SerializeField] float MinAwarenessToChase = 1.5f;
     [SerializeField] float AwarenessToStopChase = 1f;
     [SerializeField] public float attackRange = 5f;
@@ -29,30 +29,15 @@ public class Goal_Attack : Goal_Base
             {
                 if (candidate.Detectable == CurrentTarget)
                 {
-                    CurrentPriority = candidate.Awareness < AwarenessToStopChase ? 0 : AttackPriority;
-                    
                     var agentPos = Agent.transform.position;
                     distanceBetween = Vector3.Distance(candidate.RawPosition, agentPos);
 
                     var moreRanged = StatTracker.Instance.getMoreRangedAttacksPerformed();
                     var moreMelee = StatTracker.Instance.getMoreMeleeAttacksPerformed();
                     
-                    if (distanceBetween <= attackRange 
-                        && CurrentPriority < 100
-                        && moreRanged)
+                    if (distanceBetween <= attackRange)
                     {
-                        CurrentPriority += 1;
-                    }
-                    
-                    else if (distanceBetween >= attackRange 
-                             && CurrentPriority < 100
-                             && moreMelee)
-                    {
-                        CurrentPriority += 1;
-                    }
-                    else if (CurrentPriority > 50) 
-                    {
-                        CurrentPriority -= 1;
+                        CurrentPriority = candidate.Awareness < AwarenessToStopChase ? 0 : AttackPriority;
                     }
 
                     return;
@@ -102,15 +87,7 @@ public class Goal_Attack : Goal_Base
             distanceBetween = Vector3.Distance(candidate.RawPosition, agentPos);
 
             if (candidate.Awareness >= MinAwarenessToChase 
-                && distanceBetween <= attackRange 
-                && StatTracker.Instance.getMoreRangedAttacksPerformed())
-            {
-                return true;
-            }
-            
-            if (candidate.Awareness >= MinAwarenessToChase 
-                && distanceBetween >= attackRange 
-                && StatTracker.Instance.getMoreMeleeAttacksPerformed())
+                && distanceBetween <= attackRange)
             {
                 return true;
             }

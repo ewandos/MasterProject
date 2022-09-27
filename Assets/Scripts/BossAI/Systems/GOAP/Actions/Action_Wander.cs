@@ -21,7 +21,9 @@ public class Action_Wander : Action_Base
     public override void OnActivated(Goal_Base _linkedGoal)
     {
         base.OnActivated(_linkedGoal);
-
+        
+        //TODO: anim here
+        
         Vector3 location = Agent.PickLocationInRange(SearchRange);
 
         Agent.MoveTo(location);

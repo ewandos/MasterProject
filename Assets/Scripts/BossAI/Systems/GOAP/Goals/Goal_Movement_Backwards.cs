@@ -1,22 +1,21 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
-public class Goal_Movement : Goal_Base
+public class Goal_Movement_Backwards : Goal_Base
 {
-    [SerializeField] int ChasePriority = 60;
+    [SerializeField] int ChasePriority = 50;
     [SerializeField] float MinAwarenessToChase = 1.5f;
     [SerializeField] float AwarenessToStopChase = 1f;
     [SerializeField] private float stoppingDistance = 5f;
     [SerializeField] private float distanceBetween = 0;
     DetectableTarget CurrentTarget;
-    [SerializeField] int CurrentPriority = 0;
+    [SerializeField] float CurrentPriority = 0;
+    [SerializeField] float PriorityBuildRate = 1f;
 
     public Vector3 MoveTarget => CurrentTarget != null ? CurrentTarget.transform.position : transform.position;
 
     public override void OnTickGoal()
     {
-        CurrentPriority = 0;
+        CurrentPriority += PriorityBuildRate * Time.deltaTime;
 
         // no targets
         if (Sensors.ActiveTargets == null || Sensors.ActiveTargets.Count == 0)
@@ -32,13 +31,11 @@ public class Goal_Movement : Goal_Base
                     var agentPos = Agent.transform.position;
                     distanceBetween = Vector3.Distance(candidate.RawPosition, agentPos);
 
-                    var moreRanged = StatTracker.Instance.getMoreRangedAttacksPerformed();
-                    var moreMelee = StatTracker.Instance.getMoreMeleeAttacksPerformed();
-                    
-                   if (distanceBetween > stoppingDistance)
+                    if (distanceBetween < stoppingDistance)
                     {
                         CurrentPriority = candidate.Awareness < AwarenessToStopChase ? 0 : ChasePriority;
                     }
+
                     return;
                 }
             }
@@ -60,6 +57,13 @@ public class Goal_Movement : Goal_Base
         }
     }
 
+    public override void OnGoalActivated(Action_Base _linkedAction)
+    {
+        base.OnGoalActivated(_linkedAction);
+        
+        CurrentPriority = ChasePriority;
+    }
+    
     public override void OnGoalDeactivated()
     {
         base.OnGoalDeactivated();
@@ -69,7 +73,7 @@ public class Goal_Movement : Goal_Base
 
     public override int CalculatePriority()
     {
-        return CurrentPriority;
+        return Mathf.FloorToInt(CurrentPriority);
     }
 
     public override bool CanRun()
@@ -85,7 +89,7 @@ public class Goal_Movement : Goal_Base
             distanceBetween = Vector3.Distance(candidate.RawPosition, agentPos);
 
             if (candidate.Awareness >= MinAwarenessToChase 
-                && distanceBetween >= stoppingDistance)
+                && distanceBetween <= stoppingDistance)
             {
                 return true;
             }

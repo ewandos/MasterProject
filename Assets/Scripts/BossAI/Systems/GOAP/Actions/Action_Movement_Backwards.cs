@@ -2,11 +2,12 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Action_Movement : Action_Base
+public class Action_Movement_Backwards : Action_Base
 {
     List<System.Type> SupportedGoals = new List<System.Type>(new System.Type[] { typeof(Goal_Movement) });
 
     Goal_Movement _movementGoal;
+    [SerializeField] float SearchRange = 10f;
     public override List<System.Type> GetSupportedGoals()
     {
         return SupportedGoals;
@@ -26,7 +27,19 @@ public class Action_Movement : Action_Base
 
         //TODO: anim here
         
-        Agent.MoveTo(_movementGoal.MoveTarget);
+        
+        if (StatTracker.Instance.getMoreRangedAttacksPerformed())
+        {
+            Agent.MoveTo(_movementGoal.MoveTarget);
+        }
+        else
+        {
+            //move away from player
+            Vector3 location = Agent.PickLocationInRange(SearchRange);
+
+            Agent.MoveTo(location);
+        }
+
     }
 
     public override void OnDeactivated()
@@ -38,6 +51,10 @@ public class Action_Movement : Action_Base
 
     public override void OnTick()
     {
-        Agent.MoveTo(_movementGoal.MoveTarget);
+        //move away from player
+        //Vector3 location = Agent.PickLocationInRange(SearchRange);
+
+        //Agent.MoveTo(location);
+        
     }    
 }
