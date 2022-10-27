@@ -33,7 +33,11 @@ public class Goal_Movement_Backwards : Goal_Base
 
                     if (distanceBetween < stoppingDistance)
                     {
-                        CurrentPriority = candidate.Awareness < AwarenessToStopChase ? 0 : ChasePriority;
+                        //CurrentPriority = candidate.Awareness < AwarenessToStopChase ? 0 : ChasePriority;
+                        if (CurrentPriority > 100)
+                        {
+                            CurrentPriority = 100;
+                        }
                     }
 
                     return;
@@ -78,23 +82,6 @@ public class Goal_Movement_Backwards : Goal_Base
 
     public override bool CanRun()
     {
-        // no targets
-        if (Sensors.ActiveTargets == null || Sensors.ActiveTargets.Count == 0)
-            return false;
-
-        // check if we have anything we are aware of
-        foreach(var candidate in Sensors.ActiveTargets.Values)
-        {
-            var agentPos = Agent.transform.position;
-            distanceBetween = Vector3.Distance(candidate.RawPosition, agentPos);
-
-            if (candidate.Awareness >= MinAwarenessToChase 
-                && distanceBetween <= stoppingDistance)
-            {
-                return true;
-            }
-        }
-
-        return false;
+        return true;
     }
 }

@@ -24,13 +24,13 @@ public class Action_Movement : Action_Base
         // cache the chase goal
         _movementGoal = (Goal_Movement)LinkedGoal;
 
-        //TODO: anim here
-        
         Agent.MoveTo(_movementGoal.MoveTarget);
     }
 
     public override void OnDeactivated()
     {
+        Agent.MoveTo(Agent.transform.position);
+        
         base.OnDeactivated();
         
         _movementGoal = null;

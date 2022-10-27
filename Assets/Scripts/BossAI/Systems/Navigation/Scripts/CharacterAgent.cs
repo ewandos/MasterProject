@@ -16,6 +16,7 @@ public class CharacterAgent : CharacterBase
     [SerializeField] GameObject player;
 
     NavMeshAgent Agent;
+    private Animator anim;
     bool DestinationSet = false;
     bool ReachedDestination = false;
     EOffmeshLinkStatus OffMeshLinkStatus = EOffmeshLinkStatus.NotStarted;
@@ -28,6 +29,7 @@ public class CharacterAgent : CharacterBase
     protected void Start()
     {
         Agent = GetComponent<NavMeshAgent>();
+        anim = GetComponent<Animator>();
     }
 
     // Update is called once per frame
@@ -36,8 +38,11 @@ public class CharacterAgent : CharacterBase
         
         Vector3 lookVector = player.transform.position - transform.position;
         lookVector.y = transform.position.y;
-        Quaternion rot = Quaternion.LookRotation(lookVector);
-        transform.rotation = Quaternion.Slerp(transform.rotation, rot, 1);
+        
+        //AudioSource audio = GetComponent<AudioSource>();
+        //audio.PlayOneShot(MeleeAudio);
+        anim.SetBool("isRunning", IsMoving);
+
 
         // have a path and near the end point?
         if (!Agent.pathPending && !Agent.isOnOffMeshLink && DestinationSet && (Agent.remainingDistance <= Agent.stoppingDistance))

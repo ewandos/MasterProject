@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Action_Movement_Backwards : Action_Base
 {
-    List<System.Type> SupportedGoals = new List<System.Type>(new System.Type[] { typeof(Goal_Movement) });
+    List<System.Type> SupportedGoals = new List<System.Type>(new System.Type[] { typeof(Goal_Movement_Backwards) });
 
     Goal_Movement _movementGoal;
     [SerializeField] float SearchRange = 10f;
@@ -22,24 +22,11 @@ public class Action_Movement_Backwards : Action_Base
     {
         base.OnActivated(_linkedGoal);
         
-        // cache the chase goal
-        _movementGoal = (Goal_Movement)LinkedGoal;
-
         //TODO: anim here
         
-        
-        if (StatTracker.Instance.getMoreRangedAttacksPerformed())
-        {
-            Agent.MoveTo(_movementGoal.MoveTarget);
-        }
-        else
-        {
-            //move away from player
-            Vector3 location = Agent.PickLocationInRange(SearchRange);
+        Vector3 location = Agent.PickLocationInRange(SearchRange);
 
-            Agent.MoveTo(location);
-        }
-
+        Agent.MoveTo(location);
     }
 
     public override void OnDeactivated()
@@ -51,10 +38,8 @@ public class Action_Movement_Backwards : Action_Base
 
     public override void OnTick()
     {
-        //move away from player
-        //Vector3 location = Agent.PickLocationInRange(SearchRange);
-
-        //Agent.MoveTo(location);
+        if (Agent.AtDestination)
+            OnActivated(LinkedGoal);
         
     }    
 }
