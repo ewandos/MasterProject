@@ -22,8 +22,6 @@ public class Action_Wander : Action_Base
     {
         base.OnActivated(_linkedGoal);
         
-        //TODO: anim here
-        
         Vector3 location = Agent.PickLocationInRange(SearchRange);
 
         Agent.MoveTo(location);

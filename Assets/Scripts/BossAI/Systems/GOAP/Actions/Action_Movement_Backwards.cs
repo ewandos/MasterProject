@@ -21,12 +21,13 @@ public class Action_Movement_Backwards : Action_Base
     public override void OnActivated(Goal_Base _linkedGoal)
     {
         base.OnActivated(_linkedGoal);
+        Animator anim = GetComponent<Animator>();
         
-        //TODO: anim here
+        anim.Play("BossArmature_jump_back");
         
-        Vector3 location = Agent.PickLocationInRange(SearchRange);
+        Vector3 location = Agent.PickLocationBehind(SearchRange);
 
-        Agent.MoveTo(location);
+        Agent.transform.position = location;
     }
 
     public override void OnDeactivated()

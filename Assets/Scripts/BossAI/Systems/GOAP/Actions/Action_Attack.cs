@@ -25,26 +25,26 @@ public class Action_Attack : Action_Base
     public override void OnActivated(Goal_Base _linkedGoal)
     {
         base.OnActivated(_linkedGoal);
-        
+
         //choose attack animation to play
-        
+
         Animator anim = GetComponent<Animator>();
 
         //spawn collider here
         if (Time.time >= nexTimeToFire)
         {
-            nexTimeToFire = Time.time + 1f / firerate;
+            nexTimeToFire = Time.time + firerate;
             if (StatTracker.Instance.getMoreRangedAttacksPerformed())
             {
                 //AudioSource audio = GetComponent<AudioSource>();
                 //audio.PlayOneShot(MeleeAudio);
-                anim.SetBool("isAttacking", false);
-                anim.SetBool("isAttacking", true);
+                anim.Play("BossArmature_meele_hit");
                 damageTrigger.CreateDamageThingForSeconds();
             }
             else if (StatTracker.Instance.getMoreMeleeAttacksPerformed())
             {
                 Debug.Log("ranged attack");
+                anim.Play("BossArmature_range_hit");
                 damageTrigger.createRangedAttack();
             }
         }

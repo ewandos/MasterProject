@@ -57,6 +57,7 @@ public class HealthSystem : MonoBehaviour
         {
             //enable you win screen
             bossDead = true;
+            Destroy(gameObject);
         }
         else
         {

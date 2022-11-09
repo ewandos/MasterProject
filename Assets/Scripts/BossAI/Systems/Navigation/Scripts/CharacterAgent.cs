@@ -100,6 +100,18 @@ public class CharacterAgent : CharacterBase
 
         return transform.position;
     }
+    
+    public Vector3 PickLocationBehind(float range)
+    {
+        Vector3 searchLocation = transform.position;
+        searchLocation += Random.Range(-range, range) * Vector3.back;
+
+        NavMeshHit hitResult;
+        if (NavMesh.SamplePosition(searchLocation, out hitResult, NearestPointSearchRange, NavMesh.AllAreas))
+            return hitResult.position;
+
+        return transform.position;
+    }
 
     protected virtual void CancelCurrentCommand()
     {

@@ -3,14 +3,20 @@ using UnityEngine;
 
 public class DamageTrigger: MonoBehaviour
 {
-    public float sec = 1f;
+    public float sec = 0.5f;
     public GameObject EnemyCube;
     public GameObject bulletPrefab;
     public float bulletFlySpeed = 0.5f;
+    public bool running;
     
     public void CreateDamageThingForSeconds()
     {
-        StartCoroutine(LateCall(sec));
+        
+        if (!running)
+        {
+            StartCoroutine(LateCall(sec));
+            running = true;
+        }
     }
 
     public void createRangedAttack()
@@ -20,7 +26,6 @@ public class DamageTrigger: MonoBehaviour
         
         newBullet.GetComponent<Rigidbody>().AddForce(gameObject.transform.forward * bulletFlySpeed, ForceMode.VelocityChange);
         Destroy(newBullet, 2);
-        //Debug.Log("bullet should be kaputt");
     }
   
     IEnumerator LateCall(float seconds)
@@ -29,7 +34,13 @@ public class DamageTrigger: MonoBehaviour
             EnemyCube.SetActive(true);
          
         yield return new WaitForSeconds(seconds);
-  
+
+        running = false;
         EnemyCube.SetActive(false);
+    }
+    
+    IEnumerator Wait(float seconds)
+    {
+        yield return new WaitForSeconds(seconds);
     }
 }
