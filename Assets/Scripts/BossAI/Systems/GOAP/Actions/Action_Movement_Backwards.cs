@@ -7,6 +7,7 @@ public class Action_Movement_Backwards : Action_Base
     List<System.Type> SupportedGoals = new List<System.Type>(new System.Type[] { typeof(Goal_Movement_Backwards) });
 
     Goal_Movement _movementGoal;
+    private Vector3 location;
     [SerializeField] float SearchRange = 10f;
     public override List<System.Type> GetSupportedGoals()
     {
@@ -25,7 +26,7 @@ public class Action_Movement_Backwards : Action_Base
         
         anim.Play("BossArmature_jump_back");
         
-        Vector3 location = Agent.PickLocationBehind(SearchRange);
+        location = Agent.PickLocationInRange(SearchRange);
 
         Agent.transform.position = location;
     }

@@ -43,7 +43,7 @@ public class Action_Attack : Action_Base
             }
             else if (StatTracker.Instance.getMoreMeleeAttacksPerformed())
             {
-                Debug.Log("ranged attack");
+                //Debug.Log("ranged attack");
                 anim.Play("BossArmature_range_hit");
                 damageTrigger.createRangedAttack();
             }

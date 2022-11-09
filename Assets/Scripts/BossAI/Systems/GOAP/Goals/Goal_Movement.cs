@@ -32,10 +32,7 @@ public class Goal_Movement : Goal_Base
                     var agentPos = Agent.transform.position;
                     distanceBetween = Vector3.Distance(candidate.RawPosition, agentPos);
 
-                    var moreRanged = StatTracker.Instance.getMoreRangedAttacksPerformed();
-                    var moreMelee = StatTracker.Instance.getMoreMeleeAttacksPerformed();
-                    
-                   if (distanceBetween > stoppingDistance)
+                    if (distanceBetween > stoppingDistance)
                     {
                         CurrentPriority = candidate.Awareness < AwarenessToStopChase ? 0 : ChasePriority;
                     }

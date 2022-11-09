@@ -1165,7 +1165,7 @@ MonoBehaviour:
   stoppingDistance: 5
   distanceBetween: 0
   CurrentPriority: 0
-  PriorityBuildRate: 5
+  PriorityBuildRate: 2
 --- !u!114 &2072328182
 MonoBehaviour:
   m_ObjectHideFlags: 0
