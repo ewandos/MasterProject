@@ -2,15 +2,15 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 using UnityEngine.AI;
-using UnityEngine.Events;
 
 public class DoorController : MonoBehaviour
 {
-    public bool startOpen;
+    public bool startClosed;
     public bool openOnTriggerEnter;
     public bool allCodesRequired;
     public List<int> codes = new List<int>();
-
+    public List<DoorController> siblingDoors = new List<DoorController>();
+    
     private Animator animator;
     private BoxCollider collider;
     private NavMeshObstacle obstacle;
@@ -18,21 +18,21 @@ public class DoorController : MonoBehaviour
     private DoorAudioController doorAudioController;
     private bool isClosed;
 
-    private void Awake()
+    private void Start()
     {
         animator = GetComponent<Animator>();
         collider = GetComponent<BoxCollider>();
         obstacle = GetComponent<NavMeshObstacle>();
         doorStatusLightsController = GetComponentInChildren<DoorStatusLightsController>();
         doorAudioController = GetComponentInChildren<DoorAudioController>();
-        isClosed = !startOpen;
+        isClosed = startClosed;
         animator.SetBool("isClosed", isClosed);
         collider.enabled = isClosed;
         obstacle.enabled = isClosed;
         doorStatusLightsController.Initialize(codes.Count);
     }
 
-    private void Open()
+    public void Open()
     {
         if (!isClosed) return;
         isClosed = false;
@@ -40,9 +40,14 @@ public class DoorController : MonoBehaviour
         collider.enabled = isClosed;
         obstacle.enabled = isClosed;
         doorAudioController.PlayOpen();
+
+        foreach (DoorController doorController in siblingDoors)
+        {
+            doorController.Open();
+        }
     }
 
-    private void Close()
+    public void Close()
     {
         isClosed = true;
         animator.SetBool("isClosed", isClosed);

@@ -77,7 +77,8 @@ public class Gun : MonoBehaviour
             if (target != null)
                 target.TakeDamage(damage);
             
-            Instantiate(impactEffect, hit.point, Quaternion.LookRotation(hit.normal));
+            GameObject impactEffectInstantiate = Instantiate(impactEffect, hit.point, Quaternion.LookRotation(hit.normal));
+            impactEffectInstantiate.transform.parent = hit.transform;
         }
         
     }

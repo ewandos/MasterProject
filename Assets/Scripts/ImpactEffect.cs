@@ -1,6 +1,7 @@
+using System;
 using UnityEngine;
 
-public class ImpactEffectDestroyer : MonoBehaviour
+public class ImpactEffect : MonoBehaviour
 {
     public float duration;
 
