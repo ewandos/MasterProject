@@ -16,7 +16,7 @@ public class HealthSystem : MonoBehaviour
     [SerializeField] public bool bossDead = false;
 
     [SerializeField] private TextMeshProUGUI text;
-    [SerializeField] private bool player;
+    [SerializeField] private bool isPlayer;
 
     public UnityAction onDamageTaken;
     public void Start()
@@ -24,7 +24,7 @@ public class HealthSystem : MonoBehaviour
         health = maxHealth;
         if (GetComponent<PlayerMovement>())
         {
-            player = true;
+            isPlayer = true;
             text.text = health.ToString();
         }
     }
@@ -32,14 +32,14 @@ public class HealthSystem : MonoBehaviour
     public void TakeDamage(int amount)
     {
         health -= amount;
-        if (player)
+        if (isPlayer)
         {
             text.text = health.ToString();
         }
         
         if (health <= 0)
         {
-            if (player)
+            if (isPlayer)
             {
                 text.text = "0";
             }
@@ -49,7 +49,7 @@ public class HealthSystem : MonoBehaviour
 
     void Death()
     {
-        if (player)
+        if (isPlayer)
         {
             SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex - 1);
         }

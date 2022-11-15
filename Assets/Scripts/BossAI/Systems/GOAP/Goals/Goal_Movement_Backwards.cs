@@ -9,7 +9,7 @@ public class Goal_Movement_Backwards : Goal_Base
     [SerializeField] private float distanceBetween = 0;
     DetectableTarget CurrentTarget;
     [SerializeField] float CurrentPriority = 0;
-    [SerializeField] float PriorityBuildRate = 1f;
+    [SerializeField] float PriorityBuildRate = 2f;
 
     public Vector3 MoveTarget => CurrentTarget != null ? CurrentTarget.transform.position : transform.position;
 

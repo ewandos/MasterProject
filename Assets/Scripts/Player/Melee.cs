@@ -6,7 +6,7 @@ public class Melee : MonoBehaviour
 {
     [SerializeField] private int damage = 10;
     [SerializeField] private float knockback = 30f;
-    [SerializeField] private float firerate = 15f;
+    [SerializeField] private float firerate = 1.5f;
     
     [SerializeField] private GameObject impactEffect;
     //[SerializeField] private AudioClip MeleeAudio;
@@ -15,10 +15,10 @@ public class Melee : MonoBehaviour
     
     void Update()
     {
-        if (Input.GetButtonDown("Fire1")
+        if (Input.GetMouseButtonDown(0)
             && Time.time >= nexTimeToFire)
         {
-            nexTimeToFire = Time.time + 1f / firerate;
+            nexTimeToFire = Time.time + firerate;
             Attack();
         }
     }
