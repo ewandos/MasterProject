@@ -47,13 +47,13 @@ public class DoorController : MonoBehaviour
         }
     }
 
-    public void Close()
+    public void Close(bool silent = false)
     {
         isClosed = true;
         animator.SetBool("isClosed", isClosed);
         collider.enabled = isClosed;
         obstacle.enabled = isClosed;
-        doorAudioController.PlayClose();
+        if(!silent) doorAudioController.PlayClose();
     }
 
     private void OnTriggerEnter(Collider other)
