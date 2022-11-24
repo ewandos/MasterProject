@@ -9,6 +9,7 @@ public class MazeGenerator : MonoBehaviour
     public HubController startHub;
     public HubController targetHub;
     public int maxLockedHubs = 5;
+    public bool debug;
     
     private List<HubController> hubs = new List<HubController>();
     private HubController obstacleHub;
@@ -30,14 +31,15 @@ public class MazeGenerator : MonoBehaviour
         NavMesh.CalculatePath(startHub.transform.position, targetHub.transform.position, NavMesh.AllAreas, fastestPath);
 
         NavMesh.onPreUpdate = IterateMapGeneration;
-        Debug.Log("Generation Started!");
+        if(debug) Debug.Log("Generation Started!");
     }
 
     private void FixedUpdate()
     {
         if (fastestPath == null) return;
+        
         for (int i = 0; i < fastestPath.corners.Length - 1; i++)
-            Debug.DrawLine(fastestPath.corners[i], fastestPath.corners[i + 1], Color.red);
+            if(debug) Debug.DrawLine(fastestPath.corners[i], fastestPath.corners[i + 1], Color.red);
     }
 
     private void IterateMapGeneration()
@@ -49,7 +51,7 @@ public class MazeGenerator : MonoBehaviour
 
         if (numberOfLockedHubs <= maxLockedHubs)
         {
-            Debug.Log("Iteration " + numberOfLockedHubs + " >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>");
+            if(debug) Debug.Log("Iteration " + numberOfLockedHubs + " >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>");
 
             // filter all hubs that aren't reachable
             HubController[] copiedList = new HubController[hubs.Count];
@@ -61,7 +63,7 @@ public class MazeGenerator : MonoBehaviour
                 if (path.status != NavMeshPathStatus.PathComplete)
                 {
                     hubs.Remove(hubController);
-                    Debug.Log("Remove hub " + hubController + " from list.", hubController);
+                    if(debug) Debug.Log("Remove hub " + hubController + " from list.", hubController);
                 }
             }
 
@@ -71,7 +73,7 @@ public class MazeGenerator : MonoBehaviour
             
             if (pathFound || needToPlaceNewObstacle)
             {
-                Debug.Log( "Searched Path from " + startHub + " to " + targetHub);
+                if(debug) Debug.Log( "Searched Path from " + startHub + " to " + targetHub);
 
                 // calculate path from start to obstacle hub, since this is the furthest the player is currently able to travel
                 NavMesh.CalculatePath(startHub.transform.position, obstacleHub.transform.position, NavMesh.AllAreas, path);
@@ -115,7 +117,7 @@ public class MazeGenerator : MonoBehaviour
                 obstacleHub = hubsOnPath[randomIndex];
                 hubs.Remove(obstacleHub);
                 recentHubCode = obstacleHub.LockHub();
-                Debug.Log("New Obstacle Hub: " + obstacleHub + "with code " + recentHubCode, obstacleHub);
+                if(debug) Debug.Log("New Obstacle Hub: " + obstacleHub + "with code " + recentHubCode, obstacleHub);
                 numberOfLockedHubs++;
                 needToPlaceNewObstacle = false;
             }
@@ -123,9 +125,18 @@ public class MazeGenerator : MonoBehaviour
             {
                 // take random reachable hub and place keycard
                 int randomIndex = Random.Range(0, hubs.Count);
+                int i = 0;
                 hubs[randomIndex].SpawnKey(recentHubCode);
 
-                Debug.Log("New KeyCard at: " + hubs[randomIndex] + " with code " + recentHubCode, hubs[randomIndex]);
+                while (i < hubs.Count && hubs[randomIndex].hasKey)
+                {
+                    i++;
+                    randomIndex = Random.Range(0, hubs.Count);
+                }
+                
+                hubs[randomIndex].SpawnKey(recentHubCode);
+                
+                if(debug) Debug.Log("New KeyCard at: " + hubs[randomIndex] + " with code " + recentHubCode, hubs[randomIndex]);
                 
                 targetHub = obstacleHub;
                 needToPlaceNewObstacle = true;
