@@ -336,9 +336,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bc05f44c75af4936a514fd0c11ab1562, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  AttackPriority: 50
-  MinAwarenessToAttack: 1.5
-  AwarenessToStopAttack: 1
+  AttackPriority: 0
+  MinAwarenessToAttack: 1
+  CurrentAwareness: 0
   minDistanceToAttack: 6
   distanceBetween: 0
   CurrentPriority: 0
@@ -363,6 +363,38 @@ MonoBehaviour:
   DetectionMask:
     serializedVersion: 2
     m_Bits: 64
+--- !u!114 &249596710
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 249596687}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 156db846af6d48aa974d544886f9c681, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  SearchRange: 10
+--- !u!114 &249596711
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 249596687}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4e831b62d994cf19bf188eb5551062e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  teleportPriority: 20
+  MinAwarenessToChase: 1.5
+  AwarenessToStopChase: 1
+  stoppingDistance: 5
+  distanceBetween: 0
+  CurrentPriority: 0
+  PriorityBuildRate: 2
 --- !u!114 &293909834 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 2383629391630430737, guid: 2158870728a4c454c9ab00dea304ba1d, type: 3}
@@ -1552,6 +1584,10 @@ PrefabInstance:
       propertyPath: m_Enabled
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 5890511926925699728, guid: 2158870728a4c454c9ab00dea304ba1d, type: 3}
+      propertyPath: MinAwarenessToChase
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8113091969065618732, guid: 2158870728a4c454c9ab00dea304ba1d, type: 3}
       propertyPath: text
       value: 
@@ -1578,12 +1614,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 2064158950073582929, guid: 2158870728a4c454c9ab00dea304ba1d, type: 3}
-    - {fileID: 684694335773515640, guid: 2158870728a4c454c9ab00dea304ba1d, type: 3}
-    - {fileID: 8366051699976206726, guid: 2158870728a4c454c9ab00dea304ba1d, type: 3}
-    - {fileID: 2555845487143013444, guid: 2158870728a4c454c9ab00dea304ba1d, type: 3}
-    - {fileID: 5890511926925699728, guid: 2158870728a4c454c9ab00dea304ba1d, type: 3}
-    - {fileID: 8262995741857627179, guid: 2158870728a4c454c9ab00dea304ba1d, type: 3}
-    - {fileID: 8791496550961082748, guid: 2158870728a4c454c9ab00dea304ba1d, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 2158870728a4c454c9ab00dea304ba1d, type: 3}
 --- !u!1 &2072328160 stripped
 GameObject:
@@ -1607,7 +1637,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f4e831b62d994cf19bf188eb5551062e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ChasePriority: 50
+  teleportPriority: 20
   MinAwarenessToChase: 1.5
   AwarenessToStopChase: 1
   stoppingDistance: 5
