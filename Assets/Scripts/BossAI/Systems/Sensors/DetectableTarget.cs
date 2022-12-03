@@ -10,12 +10,6 @@ public class DetectableTarget : MonoBehaviour
         DetectableTargetManager.Instance.Register(this);
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
     void OnDestroy()
     {
         if (DetectableTargetManager.Instance != null)

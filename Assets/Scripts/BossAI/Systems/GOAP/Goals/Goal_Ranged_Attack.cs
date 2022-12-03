@@ -1,12 +1,12 @@
 using UnityEngine;
 
-public class Goal_Movement_Backwards : Goal_Base
+public class Goal_Ranged_Attack : Goal_Base
 {
-    [SerializeField] int ChasePriority = 50;
-    [SerializeField] float MinAwarenessToChase = 1.5f;
-    [SerializeField] float AwarenessToStopChase = 1f;
-    [SerializeField] private float stoppingDistance = 5f;
-    [SerializeField] private float distanceBetween = 0;
+    [SerializeField] int AttackPriority = 0;
+    [SerializeField] float MinAwarenessToAttack = 1f;
+    [SerializeField] float CurrentAwareness = 0f;
+    [SerializeField] private float minDistanceToAttack = 5f;
+    [SerializeField] float distanceBetween = 0;
     DetectableTarget CurrentTarget;
     [SerializeField] float CurrentPriority = 0;
     [SerializeField] float PriorityBuildRate = 2f;
@@ -15,8 +15,6 @@ public class Goal_Movement_Backwards : Goal_Base
 
     public override void OnTickGoal()
     {
-        CurrentPriority += PriorityBuildRate * Time.deltaTime;
-
         // no targets
         if (Sensors.ActiveTargets == null || Sensors.ActiveTargets.Count == 0)
             return;
@@ -31,9 +29,9 @@ public class Goal_Movement_Backwards : Goal_Base
                     var agentPos = Agent.transform.position;
                     distanceBetween = Vector3.Distance(candidate.RawPosition, agentPos);
 
-                    if (distanceBetween < stoppingDistance)
+                    if (distanceBetween >= minDistanceToAttack)
                     {
-                        //CurrentPriority = candidate.Awareness < AwarenessToStopChase ? 0 : ChasePriority;
+                        CurrentPriority += PriorityBuildRate * Time.deltaTime;
                         if (CurrentPriority > 100)
                         {
                             CurrentPriority = 100;
@@ -51,11 +49,12 @@ public class Goal_Movement_Backwards : Goal_Base
         // acquire a new target if possible
         foreach (var candidate in Sensors.ActiveTargets.Values)
         {
+            
             // found a target to acquire
-            if (candidate.Awareness >= MinAwarenessToChase)
+            if (candidate.Awareness >= MinAwarenessToAttack)
             {
                 CurrentTarget = candidate.Detectable;
-                CurrentPriority = ChasePriority;
+                CurrentPriority = AttackPriority;
                 return;
             }
         }
@@ -65,7 +64,7 @@ public class Goal_Movement_Backwards : Goal_Base
     {
         base.OnGoalActivated(_linkedAction);
         
-        CurrentPriority = ChasePriority;
+        CurrentPriority = AttackPriority;
     }
     
     public override void OnGoalDeactivated()
@@ -82,6 +81,25 @@ public class Goal_Movement_Backwards : Goal_Base
 
     public override bool CanRun()
     {
-        return true;
+        // no targets
+        if (Sensors.ActiveTargets == null || Sensors.ActiveTargets.Count == 0)
+            return false;
+
+        // check if we have anything we are aware of
+        foreach(var candidate in Sensors.ActiveTargets.Values)
+        {
+            var agentPos = Agent.transform.position;
+            distanceBetween = Vector3.Distance(candidate.RawPosition, agentPos);
+
+            CurrentAwareness = candidate.Awareness;
+            
+            if (candidate.Awareness >= MinAwarenessToAttack
+                && distanceBetween >= minDistanceToAttack)
+            {
+                return true;
+            }
+        }
+        
+        return false;
     }
 }

@@ -5,8 +5,10 @@ public class DamageTrigger: MonoBehaviour
 {
     public float sec = 0.5f;
     public GameObject EnemyCube;
+    public GameObject EnemyBulletSpawnPoint;
     public GameObject bulletPrefab;
-    public float bulletFlySpeed = 0.5f;
+    public GameObject Player;
+    public float bulletFlySpeed = 2f;
     public bool running;
     
     public void CreateDamageThingForSeconds()
@@ -22,9 +24,14 @@ public class DamageTrigger: MonoBehaviour
     public void createRangedAttack()
     {
         var newBullet = Instantiate(bulletPrefab);
-        newBullet.transform.position = EnemyCube.transform.position;
+        newBullet.transform.position = EnemyBulletSpawnPoint.transform.position;
         
-        newBullet.GetComponent<Rigidbody>().AddForce(gameObject.transform.forward * bulletFlySpeed, ForceMode.VelocityChange);
+        //angle bullet to player
+        newBullet.GetComponent<Rigidbody>().AddForce(
+            (Player.transform.position - newBullet.transform.position) 
+            * bulletFlySpeed, ForceMode.VelocityChange);
+        
+        
         Destroy(newBullet, 2);
     }
   

@@ -2,11 +2,11 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Action_Attack : Action_Base
+public class Action_Ranged_Attack : Action_Base
 {
-    List<System.Type> SupportedGoals = new List<System.Type>(new System.Type[] { typeof(Goal_Attack) });
+    List<System.Type> SupportedGoals = new List<System.Type>(new System.Type[] { typeof(Goal_Ranged_Attack) });
 
-    Goal_Attack _attackGoal;
+    Goal_Ranged_Attack _attackGoal;
     [SerializeField] private DamageTrigger damageTrigger;
     [SerializeField] 
     private float firerate = 1.2f;
@@ -34,11 +34,8 @@ public class Action_Attack : Action_Base
         if (Time.time >= nexTimeToFire)
         {
             nexTimeToFire = Time.time + firerate;
-            
-            //AudioSource audio = GetComponent<AudioSource>();
-            //audio.PlayOneShot(MeleeAudio);
-            anim.Play("BossArmature_meele_hit");
-            damageTrigger.CreateDamageThingForSeconds();
+            damageTrigger.createRangedAttack();
+            anim.Play("BossArmature_range_hit");
         }
     }
 
