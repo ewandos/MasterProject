@@ -20,6 +20,11 @@ public class DamageTrigger: MonoBehaviour
             running = true;
         }
     }
+    
+    public Vector3 getPositionToChargeTo(float chargeDistance)
+    {
+        return (Player.transform.position - transform.position).normalized * chargeDistance;
+    }
 
     public void createRangedAttack()
     {

@@ -343,6 +343,44 @@ MonoBehaviour:
   distanceBetween: 0
   CurrentPriority: 0
   PriorityBuildRate: 2
+--- !u!114 &249596690
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 249596687}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: afc0a1bdc5fe45b9994b4f3057bd9938, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  damageTrigger: {fileID: 293909834}
+  firerate: 1.2
+  nexTimeToFire: 0
+  ChargeSpeed: 55
+  chargeDistance: 10
+  ChargeAcceleration: 30
+--- !u!114 &249596691
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 249596687}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f7cd763ca917480193a32a583dcbba81, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ChargePriority: 30
+  MinAwarenessToChase: 1
+  AwarenessToStopChase: 1
+  PriorityBuildRate: 1
+  PriorityDecayRate: 0.1
+  stoppingDistance: 6
+  distanceBetween: 0
+  CurrentPriority: 0
 --- !u!4 &249596700 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 428985874189259167, guid: 2158870728a4c454c9ab00dea304ba1d, type: 3}
@@ -1594,7 +1632,7 @@ PrefabInstance:
       objectReference: {fileID: 164648592}
     - target: {fileID: 8576678562761422204, guid: 2158870728a4c454c9ab00dea304ba1d, type: 3}
       propertyPath: m_Name
-      value: AttackTriggerController
+      value: DamageTrigger
       objectReference: {fileID: 0}
     - target: {fileID: 9106844271092576582, guid: 2158870728a4c454c9ab00dea304ba1d, type: 3}
       propertyPath: m_UseGravity

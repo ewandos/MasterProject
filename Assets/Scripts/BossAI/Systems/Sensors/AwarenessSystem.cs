@@ -121,7 +121,7 @@ public class AwarenessSystem : MonoBehaviour
         // update target awareness
         if (Targets[targetGO].UpdateAwareness(target, position, awareness, minAwareness))
         {
-            CurrentAwareness = awareness;
+            CurrentAwareness = Targets[targetGO].Awareness;
             
             if (Targets[targetGO].Awareness >= 2f)
                 LinkedAI.OnFullyDetected(targetGO);

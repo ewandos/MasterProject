@@ -6,6 +6,7 @@ public class Action_Movement : Action_Base
 {
     List<System.Type> SupportedGoals = new List<System.Type>(new System.Type[] { typeof(Goal_Movement) });
 
+    [SerializeField] private float movementSpeed = 3.5f;
     Goal_Movement _movementGoal;
     public override List<System.Type> GetSupportedGoals()
     {
@@ -24,12 +25,12 @@ public class Action_Movement : Action_Base
         // cache the chase goal
         _movementGoal = (Goal_Movement)LinkedGoal;
 
-        Agent.MoveTo(_movementGoal.MoveTarget);
+        Agent.MoveTo(_movementGoal.MoveTarget, movementSpeed);
     }
 
     public override void OnDeactivated()
     {
-        Agent.MoveTo(Agent.transform.position);
+        Agent.MoveTo(Agent.transform.position, movementSpeed);
         
         base.OnDeactivated();
         
@@ -38,6 +39,6 @@ public class Action_Movement : Action_Base
 
     public override void OnTick()
     {
-        Agent.MoveTo(_movementGoal.MoveTarget);
+        Agent.MoveTo(_movementGoal.MoveTarget, movementSpeed);
     }    
 }

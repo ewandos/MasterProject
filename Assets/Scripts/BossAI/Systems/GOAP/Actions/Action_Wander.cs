@@ -5,6 +5,7 @@ using UnityEngine;
 public class Action_Wander : Action_Base
 {
     [SerializeField] float SearchRange = 10f;
+    [SerializeField] float WanderSpeed = 2f;
 
     List<System.Type> SupportedGoals = new List<System.Type>(new System.Type[] { typeof(Goal_Wander) });
 
@@ -24,7 +25,7 @@ public class Action_Wander : Action_Base
         
         Vector3 location = Agent.PickLocationInRange(SearchRange);
 
-        Agent.MoveTo(location);
+        Agent.MoveTo(location, WanderSpeed);
     }
 
     public override void OnTick()

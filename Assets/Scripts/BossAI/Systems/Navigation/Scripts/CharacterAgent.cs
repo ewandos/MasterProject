@@ -20,6 +20,8 @@ public class CharacterAgent : CharacterBase
     bool DestinationSet = false;
     bool ReachedDestination = false;
     EOffmeshLinkStatus OffMeshLinkStatus = EOffmeshLinkStatus.NotStarted;
+    private float standardSpeed = 3.5f;
+    private float standardAcceleration = 8f;
 
     public bool IsMoving => Agent.velocity.magnitude > float.Epsilon;
 
@@ -49,6 +51,7 @@ public class CharacterAgent : CharacterBase
         {
             DestinationSet = false;
             ReachedDestination = true;
+            changeSpeed(standardSpeed, standardAcceleration);
         }
 
         // are we on an offmesh link?
@@ -123,10 +126,17 @@ public class CharacterAgent : CharacterBase
         OffMeshLinkStatus = EOffmeshLinkStatus.NotStarted;
     }
 
-    public virtual void MoveTo(Vector3 destination)
+    public virtual void MoveTo(Vector3 destination, float speed)
     {
         CancelCurrentCommand();
-
+        changeSpeed(speed, standardAcceleration);
+        SetDestination(destination);
+    }
+    
+    public virtual void MoveTo(Vector3 destination, float speed, float acceleration)
+    {
+        CancelCurrentCommand();
+        changeSpeed(speed, acceleration);
         SetDestination(destination);
     }
 
@@ -140,5 +150,11 @@ public class CharacterAgent : CharacterBase
             DestinationSet = true;
             ReachedDestination = false;
         }
+    }
+    
+    public virtual void changeSpeed(float newSpeed, float acceleration)
+    {
+        Agent.speed = newSpeed;
+        Agent.acceleration = acceleration;
     }
 }
