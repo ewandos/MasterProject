@@ -28,6 +28,7 @@ public class HubController : MonoBehaviour
         foreach (DoorController doorController in doors)
         {
             doorController.codes.Add(hubCode);
+            doorController.Initialize();
             doorController.Close(true);
         }
 
