@@ -12,8 +12,8 @@ GameObject:
   - component: {fileID: 1404453001995142009}
   - component: {fileID: 3790176944381114291}
   - component: {fileID: 7300493502209995926}
-  - component: {fileID: 2857600300329406349}
-  m_Layer: 0
+  - component: {fileID: 4878272779548951337}
+  m_Layer: 10
   m_Name: Glowstick
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -104,8 +104,8 @@ Rigidbody:
   m_Interpolate: 1
   m_Constraints: 0
   m_CollisionDetection: 1
---- !u!136 &2857600300329406349
-CapsuleCollider:
+--- !u!65 &4878272779548951337
+BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -114,10 +114,9 @@ CapsuleCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  m_Radius: 0.001
-  m_Height: 0.015
-  m_Direction: 2
-  m_Center: {x: 0, y: 0, z: 0.006}
+  serializedVersion: 2
+  m_Size: {x: 0.0016065983, y: 0.0015, z: 0.014202702}
+  m_Center: {x: 0, y: 0, z: 0.007101351}
 --- !u!1 &4822361392531372719
 GameObject:
   m_ObjectHideFlags: 0
@@ -129,7 +128,7 @@ GameObject:
   - component: {fileID: 2250547356935556628}
   - component: {fileID: 6625595708624755750}
   - component: {fileID: 7231000614085985098}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Area Light (4)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -345,7 +344,7 @@ GameObject:
   - component: {fileID: 4422807302911060451}
   - component: {fileID: 1185110940346083134}
   - component: {fileID: 8830910445658057924}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Area Light (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -561,7 +560,7 @@ GameObject:
   - component: {fileID: 1057028135074938470}
   - component: {fileID: 828803808814556638}
   - component: {fileID: 6502478660704833672}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Area Light (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -777,7 +776,7 @@ GameObject:
   - component: {fileID: 8508658460386608071}
   - component: {fileID: 5589157831062706854}
   - component: {fileID: 6097142314753985622}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Area Light
   m_TagString: Untagged
   m_Icon: {fileID: 0}
