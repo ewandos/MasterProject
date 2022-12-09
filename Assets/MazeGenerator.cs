@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
@@ -17,16 +18,20 @@ public class MazeGenerator : MonoBehaviour
     private int iterations = 0;
     private NavMeshPath path;
     private NavMeshPath fastestPath;
+    private NavMeshPath endPath;
     private int recentHubCode = 0;
     private bool needToPlaceNewObstacle = false;
     private bool finishedGeneration = false;
     void Start()
     {
         hubs = GetComponentsInChildren<HubController>().ToList();
+        hubs.Remove(startHub);
+        if (debug) Debug.Log("Found " + hubs.Count + " hubs.");
         
         obstacleHub = targetHub;
         path = new NavMeshPath();
         fastestPath = new NavMeshPath();
+        endPath = new NavMeshPath();
         
         NavMesh.CalculatePath(startHub.transform.position, targetHub.transform.position, NavMesh.AllAreas, fastestPath);
 
@@ -40,13 +45,22 @@ public class MazeGenerator : MonoBehaviour
         
         for (int i = 0; i < fastestPath.corners.Length - 1; i++)
             if(debug) Debug.DrawLine(fastestPath.corners[i], fastestPath.corners[i + 1], Color.red);
+        
+        for (int i = 0; i < endPath.corners.Length - 1; i++)
+            if(debug) Debug.DrawLine(endPath.corners[i], endPath.corners[i + 1], Color.green);
     }
 
     private void IterateMapGeneration()
     {
-        if (finishedGeneration) return;
+        if (finishedGeneration)
+        {
+            if (endPath.corners.Length == 0)
+                NavMesh.CalculatePath(startHub.transform.position, targetHub.transform.position, NavMesh.AllAreas, endPath);
+            return;
+        }
+            
         iterations++;
-        if (iterations % 10 != 0)
+        if (iterations % 20 != 0)
             return;
 
         if (numberOfLockedHubs <= maxLockedHubs)
@@ -56,6 +70,7 @@ public class MazeGenerator : MonoBehaviour
             // filter all hubs that aren't reachable
             HubController[] copiedList = new HubController[hubs.Count];
             hubs.CopyTo(copiedList);
+            int countBeforeRemoval = copiedList.Length;
             foreach (HubController hubController in copiedList.ToList())
             {
                 
@@ -67,6 +82,10 @@ public class MazeGenerator : MonoBehaviour
                 }
             }
 
+            int countOfRemovedHubs = countBeforeRemoval - hubs.Count;
+            
+            if(debug) Debug.Log("Removed " + countOfRemovedHubs + " hubs. " + hubs.Count  + " remaining.");
+
             // calculate path from start to target hub
             NavMesh.CalculatePath(startHub.transform.position, targetHub.transform.position, NavMesh.AllAreas, path);
             bool pathFound = path.status == NavMeshPathStatus.PathComplete;
@@ -76,13 +95,13 @@ public class MazeGenerator : MonoBehaviour
                 if(debug) Debug.Log( "Searched Path from " + startHub + " to " + targetHub);
 
                 // calculate path from start to obstacle hub, since this is the furthest the player is currently able to travel
-                NavMesh.CalculatePath(startHub.transform.position, obstacleHub.transform.position, NavMesh.AllAreas, path);
+                NavMesh.CalculatePath(startHub.transform.position, targetHub.transform.position, NavMesh.AllAreas, path);
                 
                 // determine which hubs are on the path
                 List<HubController> hubsOnPath = new List<HubController>();
                 foreach (HubController hubController in hubs)
                 {
-                    const float threshold = 9f;
+                    const float threshold = 4f;
                     
                     bool isOnPath = false;
                     foreach (Vector3 pathCorner in path.corners)
@@ -101,6 +120,8 @@ public class MazeGenerator : MonoBehaviour
                     }
                 }
                 
+                if(debug) Debug.Log(hubsOnPath.Count + " hubs on path.");
+                
                 // exit generation if number of valid hubs are too few for further generation
                 if (hubsOnPath.Count <= 2)
                 {
@@ -110,8 +131,8 @@ public class MazeGenerator : MonoBehaviour
                 }
 
                 // take random hub on path that is in the last half of the array
-                int offset = hubsOnPath.Count / 2;
-                int randomIndex = Random.Range(offset, hubsOnPath.Count);
+                int offset = hubsOnPath.Count / 4;
+                int randomIndex = Random.Range(Math.Min(0, hubsOnPath.Count - offset), hubsOnPath.Count);
 
                 // set the random hub as new obstacle hub and lock it
                 obstacleHub = hubsOnPath[randomIndex];

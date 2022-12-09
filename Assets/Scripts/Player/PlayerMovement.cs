@@ -63,7 +63,6 @@ public class PlayerMovement : MonoBehaviour
 		
 		Vector3 velocity = transform.right * xInput + transform.forward * zInput;
 		velocity *= finalSpeed;
-
 		verticalSpeed -= gravity * Time.deltaTime;
 		velocity.y = verticalSpeed;
 
