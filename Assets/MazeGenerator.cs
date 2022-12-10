@@ -101,7 +101,7 @@ public class MazeGenerator : MonoBehaviour
                 List<HubController> hubsOnPath = new List<HubController>();
                 foreach (HubController hubController in hubs)
                 {
-                    const float threshold = 4f;
+                    const float threshold = 9f;
                     
                     bool isOnPath = false;
                     foreach (Vector3 pathCorner in path.corners)

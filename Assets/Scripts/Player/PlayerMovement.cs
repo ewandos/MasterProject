@@ -26,6 +26,8 @@ public class PlayerMovement : MonoBehaviour
 	private bool hasMovementInput = false;
 	public AudioClipSequencer audioClipSequencer;
 
+	public Vector3 velocity = Vector3.zero;
+	
 	void Start()
 	{
 		controller = GetComponent<CharacterController>();
@@ -61,7 +63,7 @@ public class PlayerMovement : MonoBehaviour
 		}
 		
 		
-		Vector3 velocity = transform.right * xInput + transform.forward * zInput;
+		velocity = transform.right * xInput + transform.forward * zInput;
 		velocity *= finalSpeed;
 		verticalSpeed -= gravity * Time.deltaTime;
 		velocity.y = verticalSpeed;
