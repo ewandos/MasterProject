@@ -67,8 +67,13 @@ public class Gun : MonoBehaviour
     }
     void Reload()
     {
-        amunitionCarried -= (maxAmunition - amunition);
-        amunition = maxAmunition;
+        if (amunitionCarried <= 0) return;
+        int requiredReloadAmount = maxAmunition - amunition;
+        int possibleReload = Math.Max(0, amunitionCarried - (amunitionCarried - requiredReloadAmount));
+        
+        amunitionCarried -= possibleReload;
+        amunition += possibleReload;
+        
         SetUI();
     }
     
