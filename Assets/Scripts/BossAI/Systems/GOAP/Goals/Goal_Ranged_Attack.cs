@@ -94,7 +94,8 @@ public class Goal_Ranged_Attack : Goal_Base
             CurrentAwareness = candidate.Awareness;
             
             if (candidate.Awareness >= MinAwarenessToAttack
-                && distanceBetween >= minDistanceToAttack)
+                && distanceBetween >= minDistanceToAttack
+                && !blocking)
             {
                 return true;
             }

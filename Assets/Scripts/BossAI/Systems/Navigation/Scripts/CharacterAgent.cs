@@ -103,18 +103,6 @@ public class CharacterAgent : CharacterBase
 
         return transform.position;
     }
-    
-    public Vector3 PickLocationBehind(float range)
-    {
-        Vector3 searchLocation = transform.position;
-        searchLocation += Random.Range(-range, range) * Vector3.back;
-
-        NavMeshHit hitResult;
-        if (NavMesh.SamplePosition(searchLocation, out hitResult, NearestPointSearchRange, NavMesh.AllAreas))
-            return hitResult.position;
-
-        return transform.position;
-    }
 
     protected virtual void CancelCurrentCommand()
     {
@@ -126,10 +114,9 @@ public class CharacterAgent : CharacterBase
         OffMeshLinkStatus = EOffmeshLinkStatus.NotStarted;
     }
 
-    public virtual void MoveTo(Vector3 destination, float speed)
+    public virtual void MoveTo(Vector3 destination)
     {
         CancelCurrentCommand();
-        changeSpeed(speed, standardAcceleration);
         SetDestination(destination);
     }
     
@@ -156,5 +143,10 @@ public class CharacterAgent : CharacterBase
     {
         Agent.speed = newSpeed;
         Agent.acceleration = acceleration;
+    }
+    
+    public virtual float getSpeed()
+    {
+        return Agent.speed;
     }
 }

@@ -59,6 +59,7 @@ public class Goal_Charge_Attack : Goal_Base
     public override void OnGoalActivated(Action_Base _linkedAction)
     {
         base.OnGoalActivated(_linkedAction);
+        blocking = true;
         
         CurrentPriority = ChargePriority;
     }
@@ -66,7 +67,7 @@ public class Goal_Charge_Attack : Goal_Base
     public override void OnGoalDeactivated()
     {
         base.OnGoalDeactivated();
-        
+        blocking = false;
         CurrentTarget = null;
     }
     
@@ -88,7 +89,8 @@ public class Goal_Charge_Attack : Goal_Base
             distanceBetween = Vector3.Distance(candidate.RawPosition, agentPos);
 
             if (candidate.Awareness >= MinAwarenessToChase 
-                && distanceBetween >= stoppingDistance)
+                && distanceBetween >= stoppingDistance
+                && !blocking)
             {
                 return true;
             }

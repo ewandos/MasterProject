@@ -1,27 +1,25 @@
-﻿using System.Collections;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Goal_Attack : Goal_Base
+public class Goal_Charge_Backwards : Goal_Base
 {
-    [SerializeField] int AttackPriority = 60;
-    [SerializeField] float MinAwarenessToChase = 1.5f;
+    [SerializeField] int ChargePriority = 20;
+    [SerializeField] float MinAwarenessToChase = 1f;
     [SerializeField] float AwarenessToStopChase = 1f;
-    [SerializeField] public float attackRange = 5f;
+    [SerializeField] float PriorityBuildRate = 1.5f;
+    [SerializeField] float PriorityDecayRate = 0.1f;
+    [SerializeField] private float stoppingDistance = 3f;
+    [SerializeField] private float distanceBetween = 0;
+    [SerializeField] private float CurrentPriority = 0f;
     DetectableTarget CurrentTarget;
-    [SerializeField] int CurrentPriority = 0;
-    [SerializeField] public float distanceBetween = 0;
-
-    public Vector3 MoveTarget => CurrentTarget != null ? CurrentTarget.transform.position : transform.position;
 
     public override void OnTickGoal()
     {
-        CurrentPriority = 0;
-        
         // no targets
         if (Sensors.ActiveTargets == null || Sensors.ActiveTargets.Count == 0)
             return;
-
+        
         if (CurrentTarget != null)
         {
             // check if the current is still sensed
@@ -31,12 +29,12 @@ public class Goal_Attack : Goal_Base
                 {
                     var agentPos = Agent.transform.position;
                     distanceBetween = Vector3.Distance(candidate.RawPosition, agentPos);
-                    
-                    if (distanceBetween <= attackRange)
-                    {
-                        CurrentPriority = candidate.Awareness < AwarenessToStopChase ? 0 : AttackPriority;
-                    }
 
+                    if (distanceBetween > stoppingDistance && Agent.IsMoving)
+                    {
+                        CurrentPriority = candidate.Awareness < AwarenessToStopChase ? 
+                            0 : (CurrentPriority += PriorityBuildRate * Time.deltaTime);
+                    }
                     return;
                 }
             }
@@ -44,7 +42,7 @@ public class Goal_Attack : Goal_Base
             // clear our current target
             CurrentTarget = null;
         }
-
+        
         // acquire a new target if possible
         foreach (var candidate in Sensors.ActiveTargets.Values)
         {
@@ -52,45 +50,52 @@ public class Goal_Attack : Goal_Base
             if (candidate.Awareness >= MinAwarenessToChase)
             {
                 CurrentTarget = candidate.Detectable;
-                CurrentPriority = AttackPriority;
+                CurrentPriority = ChargePriority;
                 return;
             }
         }
     }
 
+    public override void OnGoalActivated(Action_Base _linkedAction)
+    {
+        base.OnGoalActivated(_linkedAction);
+        blocking = true;
+        
+        CurrentPriority = ChargePriority;
+    }
+
     public override void OnGoalDeactivated()
     {
         base.OnGoalDeactivated();
-        
+        blocking = false;
         CurrentTarget = null;
     }
-
+    
     public override int CalculatePriority()
     {
-        return CurrentPriority;
+        return Mathf.FloorToInt(CurrentPriority);
     }
 
     public override bool CanRun()
     {
-        
         // no targets
         if (Sensors.ActiveTargets == null || Sensors.ActiveTargets.Count == 0)
             return false;
 
         // check if we have anything we are aware of
-        foreach(var candidate in Sensors.ActiveTargets.Values )
+        foreach(var candidate in Sensors.ActiveTargets.Values)
         {
             var agentPos = Agent.transform.position;
             distanceBetween = Vector3.Distance(candidate.RawPosition, agentPos);
 
             if (candidate.Awareness >= MinAwarenessToChase 
-                && distanceBetween <= attackRange
+                && distanceBetween >= stoppingDistance
                 && !blocking)
             {
                 return true;
             }
         }
-        
+
         return false;
     }
 }

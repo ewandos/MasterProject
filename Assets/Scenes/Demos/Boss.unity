@@ -356,10 +356,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   damageTrigger: {fileID: 293909834}
-  firerate: 1.2
-  nexTimeToFire: 0
-  ChargeSpeed: 55
-  chargeDistance: 10
+  ChargeSpeed: 10
+  chargeDistance: 5
   ChargeAcceleration: 30
 --- !u!114 &249596691
 MonoBehaviour:
@@ -376,9 +374,9 @@ MonoBehaviour:
   ChargePriority: 30
   MinAwarenessToChase: 1
   AwarenessToStopChase: 1
-  PriorityBuildRate: 1
+  PriorityBuildRate: 3
   PriorityDecayRate: 0.1
-  stoppingDistance: 6
+  stoppingDistance: 3
   distanceBetween: 0
   CurrentPriority: 0
 --- !u!4 &249596700 stripped
@@ -1516,7 +1514,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1062780026703203109, guid: 2158870728a4c454c9ab00dea304ba1d, type: 3}
       propertyPath: m_Name
-      value: Boss (1)
+      value: Boss
       objectReference: {fileID: 0}
     - target: {fileID: 1062780026703203109, guid: 2158870728a4c454c9ab00dea304ba1d, type: 3}
       propertyPath: m_IsActive

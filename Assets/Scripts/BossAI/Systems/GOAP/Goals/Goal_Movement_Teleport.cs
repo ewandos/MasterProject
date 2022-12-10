@@ -82,6 +82,10 @@ public class Goal_Movement_Teleport : Goal_Base
 
     public override bool CanRun()
     {
+        if (blocking)
+        {
+            return false;
+        }
         return true;
     }
 }

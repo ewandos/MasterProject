@@ -25,6 +25,11 @@ public class DamageTrigger: MonoBehaviour
     {
         return (Player.transform.position - transform.position).normalized * chargeDistance;
     }
+    
+    public Vector3 getPositionToChargeAwayFrom(float chargeDistance)
+    {
+        return (transform.position - Player.transform.position).normalized * chargeDistance;
+    }
 
     public void createRangedAttack()
     {

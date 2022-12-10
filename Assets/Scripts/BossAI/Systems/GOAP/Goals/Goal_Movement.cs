@@ -82,7 +82,8 @@ public class Goal_Movement : Goal_Base
             distanceBetween = Vector3.Distance(candidate.RawPosition, agentPos);
 
             if (candidate.Awareness >= MinAwarenessToChase 
-                && distanceBetween >= stoppingDistance)
+                && distanceBetween >= stoppingDistance
+                && !blocking)
             {
                 return true;
             }
