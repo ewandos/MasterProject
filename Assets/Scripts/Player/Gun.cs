@@ -69,10 +69,10 @@ public class Gun : MonoBehaviour
     {
         if (amunitionCarried <= 0) return;
         int requiredReloadAmount = maxAmunition - amunition;
-        int possibleReload = Math.Max(0, amunitionCarried - (amunitionCarried - requiredReloadAmount));
+        int difference = amunitionCarried - requiredReloadAmount;
         
-        amunitionCarried -= possibleReload;
-        amunition += possibleReload;
+        amunitionCarried = Mathf.Max(0, difference);
+        amunition += requiredReloadAmount + Mathf.Min(0, difference);
         
         SetUI();
     }
