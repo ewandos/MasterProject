@@ -29,6 +29,7 @@ public class Gun : MonoBehaviour
 
     [SerializeField] private TextMeshProUGUI ammoUI;
 
+    float speed = 0.5f;
 
     private void Start()
     {
@@ -50,6 +51,13 @@ public class Gun : MonoBehaviour
         {
             Reload();
         }
+    }
+
+    private void FixedUpdate()
+    {
+        Transform from = transform;
+        Transform to = fpsCam.transform;
+        transform.rotation = Quaternion.Lerp(from.rotation, to.rotation, speed);
     }
 
     public void AddAmmo(int amount)
