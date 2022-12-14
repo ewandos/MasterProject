@@ -31,7 +31,7 @@ public class PlayerMovement : MonoBehaviour
 	public Vector3 velocity = Vector3.zero;
 
 	[SerializeField]
-	private CinemachineVirtualCamera camera;
+	private Camera camera;
 	void Start()
 	{
 		controller = GetComponent<CharacterController>();
@@ -45,7 +45,6 @@ public class PlayerMovement : MonoBehaviour
 
 		if (hasMovementInput)
 		{
-			camera.m_Lens.FieldOfView = Mathf.Lerp(70f, 70f + (finalSpeed - speed) * 2, 3 * sprintingTime);
 			audioClipSequencer.SetInterval(2 / finalSpeed);
 		}
 		else

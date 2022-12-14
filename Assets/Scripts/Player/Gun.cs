@@ -27,26 +27,11 @@ public class Gun : MonoBehaviour
     
     [SerializeField] private float nexTimeToFire = 0f;
 
-    [SerializeField] private TextMeshProUGUI ammoUI;
-
-    [SerializeField] private GameObject model;
-
     float speed = 0.5f;
 
     private void Start()
     {
         amunition = maxAmunition;
-        SetUI();
-    }
-
-    private void OnEnable()
-    {
-        model.SetActive(true);
-    }
-
-    private void OnDisable()
-    {
-        model.SetActive(false);
     }
 
     void Update()
@@ -75,7 +60,6 @@ public class Gun : MonoBehaviour
     public void AddAmmo(int amount)
     {
         amunitionCarried += amount;
-        SetUI();
     }
     void Reload()
     {
@@ -85,15 +69,12 @@ public class Gun : MonoBehaviour
         
         amunitionCarried = Mathf.Max(0, difference);
         amunition += requiredReloadAmount + Mathf.Min(0, difference);
-        
-        SetUI();
     }
     
     void Shoot()
     {
         StatTracker.Instance.RangeAttackPerformed();
         amunition--;
-        SetUI();
         RaycastHit hit;
         if (Physics.Raycast(fpsCam.transform.position, fpsCam.transform.forward, out hit, range))
         {
@@ -106,10 +87,5 @@ public class Gun : MonoBehaviour
             impactEffectInstantiate.transform.parent = hit.transform;
         }
         
-    }
-
-    void SetUI()
-    {
-        ammoUI.text = (amunition.ToString() + '/' + amunitionCarried);
     }
 }

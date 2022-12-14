@@ -11,5 +11,7 @@ public class DoorStatusLight : MonoBehaviour
     public void SetState(bool isValid)
     {
         GetComponent<MeshRenderer>().material = isValid ? valid : invalid;
+        GetComponentInChildren<Light>().enabled = true;
+        GetComponentInChildren<Light>().color = isValid ? Color.green : Color.red;
     }
 }

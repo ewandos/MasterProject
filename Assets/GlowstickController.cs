@@ -20,7 +20,7 @@ public class GlowstickController : MonoBehaviour
         {
             glowstickCount--;
             GameObject go = Instantiate(glowstickGO);
-            go.transform.position = transform.position + new Vector3(0, 0.5f);
+            go.transform.position = playerMovement.transform.position + new Vector3(0, 0.5f);
             go.transform.rotation = new Quaternion(Random.Range(0f, 360f), Random.Range(0f, 360f), Random.Range(0f, 360f), 0);
             go.GetComponent<Rigidbody>().AddForce(playerMovement.velocity * 1.5f + transform.forward * 3, ForceMode.Impulse);
         }
