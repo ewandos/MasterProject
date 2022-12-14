@@ -1,6 +1,4 @@
 using System;
-using Drawing;
-using TMPro;
 using UnityEngine;
 
 public class Gun : MonoBehaviour
@@ -25,23 +23,43 @@ public class Gun : MonoBehaviour
     [SerializeField]
     private GunFeedback gunFeedback;
     
-    [SerializeField] private float nexTimeToFire = 0f;
+    private float nexTimeToFire = 0f;
+
+    [SerializeField] private GameObject model;
 
     private void Start()
     {
         amunition = maxAmunition;
     }
 
+    private void OnDisable()
+    {
+        model.SetActive(enabled);
+    }
+
+    private void OnEnable()
+    {
+        model.SetActive(enabled);
+    }
+
     void Update()
     {
         if (Input.GetButton("Fire1") 
-            && Time.time >= nexTimeToFire
-            && amunition > 0)
+            && Time.time >= nexTimeToFire)
         {
-            nexTimeToFire = Time.time + 1f / firerate;
-            Shoot();
-            gunFeedback.Effect();
+            if (amunition > 0)
+            {
+                nexTimeToFire = Time.time + 1f / firerate;
+                Shoot();
+                gunFeedback.PlayShootEffect();
+            }
+            else
+            {
+                gunFeedback.PlayDryShootEffect();
+                nexTimeToFire = Time.time + 1f / (firerate * 0.65f);
+            }
         }
+
         if (Input.GetKeyDown(KeyCode.R))
         {
             Reload();

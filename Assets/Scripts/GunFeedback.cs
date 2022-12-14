@@ -8,6 +8,7 @@ public class GunFeedback : MonoBehaviour
     public float lightDuration = 0.1f;
     public float lightRandomAngleRange = 0.1f;
     public List<AudioClip> shotSounds;
+    public List<AudioClip> dryShotSounds;
     private float lightCountdown = 0;
 
     private AudioSource audio;
@@ -33,7 +34,7 @@ public class GunFeedback : MonoBehaviour
         }
     }
 
-    public void Effect()
+    public void PlayShootEffect()
     {
         lightCountdown = lightDuration;
         light.enabled = true;
@@ -47,5 +48,11 @@ public class GunFeedback : MonoBehaviour
         audio.Play();
         
         particles.Play();
+    }
+
+    public void PlayDryShootEffect()
+    {
+        audio.clip = dryShotSounds[Random.Range(0, dryShotSounds.Count)];
+        audio.Play();
     }
 }
