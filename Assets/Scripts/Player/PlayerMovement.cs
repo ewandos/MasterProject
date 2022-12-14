@@ -22,7 +22,6 @@ public class PlayerMovement : MonoBehaviour
 	private float sprintEnergy = 100f;
 	private float sprintDepletionSpeed = 20f;
 	private float sprintRechargeSpeed = 10f;
-	float sprintingTime = 0.0f;
 	public FloatSO sprintEnergyHolder;
 
 	private bool hasMovementInput = false;
@@ -101,7 +100,6 @@ public class PlayerMovement : MonoBehaviour
 
 		if (tryingToSprint && sprintEnergy != 0.0f)
 		{
-			sprintingTime += Time.deltaTime;
 			DepleteSprintEnergy();
 			return true;
 		}
@@ -110,8 +108,7 @@ public class PlayerMovement : MonoBehaviour
 		{
 			RechargeSprintEnergy();
 		}
-
-		sprintingTime = 0.0f;
+		
 		return false;
 	}
 
