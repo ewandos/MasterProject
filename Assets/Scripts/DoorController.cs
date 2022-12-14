@@ -29,6 +29,7 @@ public class DoorController : MonoBehaviour
         animator.SetBool("isClosed", isClosed);
         collider.enabled = isClosed;
         obstacle.enabled = isClosed;
+        doorStatusLightsController.Initialize(codes.Count);
     }
 
     public void Initialize()

@@ -1,18 +1,16 @@
-using System;
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
-public class MuzzleFlashController : MonoBehaviour
+public class GunFeedback : MonoBehaviour
 {
     private Light light;
     public float lightDuration = 0.1f;
     public float lightRandomAngleRange = 0.1f;
+    public List<AudioClip> shotSounds;
     private float lightCountdown = 0;
 
     private AudioSource audio;
-    public float soundRandomPitchRange = 0.1f;
 
     private ParticleSystem particles;
 
@@ -45,7 +43,7 @@ public class MuzzleFlashController : MonoBehaviour
         float randomAngle = Random.Range(min, max);
         light.spotAngle = randomAngle;
 
-        audio.pitch = 1 + Random.Range(-soundRandomPitchRange, soundRandomPitchRange / 2);
+        audio.clip = shotSounds[Random.Range(0, shotSounds.Count)];
         audio.Play();
         
         particles.Play();
