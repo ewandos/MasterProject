@@ -1,5 +1,6 @@
 using UnityEngine;
 
+[RequireComponent(typeof(AudioSource), typeof(SphereCollider))]
 public abstract class Pickable : MonoBehaviour
 {
     public GameObject model;

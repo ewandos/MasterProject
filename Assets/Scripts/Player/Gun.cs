@@ -29,12 +29,24 @@ public class Gun : MonoBehaviour
 
     [SerializeField] private TextMeshProUGUI ammoUI;
 
+    [SerializeField] private GameObject model;
+
     float speed = 0.5f;
 
     private void Start()
     {
         amunition = maxAmunition;
         SetUI();
+    }
+
+    private void OnEnable()
+    {
+        model.SetActive(true);
+    }
+
+    private void OnDisable()
+    {
+        model.SetActive(false);
     }
 
     void Update()
