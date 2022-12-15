@@ -1,9 +1,10 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using UnityEngine;
 
 public class DamageTrigger: MonoBehaviour
 {
-    public float sec = 0.5f;
+    public float sec = 0.3f;
     public GameObject EnemyCube;
     public GameObject EnemyBulletSpawnPoint;
     public GameObject bulletPrefab;
@@ -51,7 +52,9 @@ public class DamageTrigger: MonoBehaviour
             EnemyCube.SetActive(true);
          
         yield return new WaitForSeconds(seconds);
-
+        
+        ParticleSystem particleSystem = GetComponentInChildren<ParticleSystem>();
+        particleSystem.Play(true);
         running = false;
         EnemyCube.SetActive(false);
     }
