@@ -118,13 +118,12 @@ public class PlayerMovement : MonoBehaviour
 	{
 		sprintEnergy -= sprintDepletionSpeed * Time.deltaTime;
 		sprintEnergy = Mathf.Max(0.0f, sprintEnergy);
-		breathingFeedback.PlayFeedbacks();
 	}
 
 	void RechargeSprintEnergy()
 	{
 		sprintEnergy += sprintRechargeSpeed * Time.deltaTime;
 		sprintEnergy = Mathf.Min(sprintEnergy, maxSpringEnergy);
-		breathingFeedback.PlayFeedbacks();
+		if (sprintEnergy <= maxSpringEnergy * 0.75f) breathingFeedback.PlayFeedbacks();
 	}
 }
