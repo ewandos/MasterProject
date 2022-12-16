@@ -10,11 +10,11 @@ namespace CreepAI.Behaviour
         public int amount = 25;
         public float cooldown = 1f;
         private float timer;
-        private HealthSystem playerHealthSystem;
+        private IHealth playerHealthSystem;
 
         public override void OnStart()
         {
-            playerHealthSystem = target.Value.gameObject.GetComponent<HealthSystem>();
+            playerHealthSystem = target.Value.gameObject.GetComponent<IHealth>();
         }
 
         public override TaskStatus OnUpdate()

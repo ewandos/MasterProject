@@ -1268,10 +1268,10 @@ GameObject:
   - component: {fileID: 5997387755834144733}
   - component: {fileID: 5997387755834144732}
   - component: {fileID: 5997387755834144721}
-  - component: {fileID: 813498906615394379}
   - component: {fileID: 5956893101112134196}
   - component: {fileID: 1567776250767182536}
   - component: {fileID: 5485176663281546331}
+  - component: {fileID: 6060574965228535131}
   m_Layer: 7
   m_Name: CreepAgent
   m_TagString: Untagged
@@ -1394,7 +1394,7 @@ MonoBehaviour:
         Sight","Instant":true,"SinglefovAngle":45,"SinglefovDistance":25,"StringtargetTag":"Player","SharedTransformsharedTarget":{"Type":"BehaviorDesigner.Runtime.SharedTransform","Name":"Target","IsShared":true}}]},{"Type":"CreepAI.Behaviour.CalloutTarget","NodeData":{"Offset":"(-1.69760132,108.804756)"},"ID":13,"Name":"Callout
         Target","Instant":true,"Singlerange":20,"SharedTransformtarget":{"Type":"BehaviorDesigner.Runtime.SharedTransform","Name":"Target","IsShared":true},"LayerMasklayerMask":128},{"Type":"CreepAI.Behaviour.MoveTowards","NodeData":{"Offset":"(123.44442,109.66684)"},"ID":14,"Name":"Move
         Towards","Instant":true,"Singlespeed":3,"SinglestoppingDistance":1,"SharedTransformtarget":{"Type":"BehaviorDesigner.Runtime.SharedTransform","Name":"Target","IsShared":true}},{"Type":"CreepAI.Behaviour.DealDamage","NodeData":{"Offset":"(243.4254,108.2778)"},"ID":15,"Name":"Deal
-        Damage","Instant":true,"SharedTransformtarget":{"Type":"BehaviorDesigner.Runtime.SharedTransform","Name":"Target","IsShared":true},"Int32amount":5,"Singlecooldown":0.2}]},{"Type":"BehaviorDesigner.Runtime.Tasks.Sequence","NodeData":{"Offset":"(112.269547,114.787041)"},"ID":16,"Name":"Sequence","Instant":true,"AbortTypeabortType":"None","Children":[{"Type":"CreepAI.Behaviour.FlockWaypoint","NodeData":{"Offset":"(-51.80589,106.7609)"},"ID":17,"Name":"Flock
+        Damage","Instant":true,"SharedTransformtarget":{"Type":"BehaviorDesigner.Runtime.SharedTransform","Name":"Target","IsShared":true},"Int32amount":5,"Singlecooldown":0.2}]},{"Type":"BehaviorDesigner.Runtime.Tasks.Sequence","NodeData":{"Offset":"(225.294724,114.787041)"},"ID":16,"Name":"Sequence","Instant":true,"AbortTypeabortType":"None","Children":[{"Type":"CreepAI.Behaviour.FlockWaypoint","NodeData":{"Offset":"(-51.80589,106.7609)"},"ID":17,"Name":"Flock
         Waypoint","Instant":true,"SharedTransformListwaypoints":{"Type":"BehaviorDesigner.Runtime.SharedTransformList","Name":"Waypoints","IsShared":true,"List`1mValue":[]},"SharedIntactiveWaypointIndex":{"Type":"BehaviorDesigner.Runtime.SharedInt","Name":"ActiveWaypointIndex","IsShared":true,"Int32mValue":0},"Singlestrictness":0.9,"Singlecooldown":10,"SingleselectionRange":80,"SinglefovRange":15,"LayerMasklayerMask":128},{"Type":"Player.MoveToWaypoint","NodeData":{"Offset":"(84.77325,108.099915)"},"ID":18,"Name":"Move
         To Waypoint","Instant":true,"SharedIntactiveWaypointIndex":{"Type":"BehaviorDesigner.Runtime.SharedInt","Name":"ActiveWaypointIndex","IsShared":true,"Int32mValue":0},"SharedTransformListwaypoints":{"Type":"BehaviorDesigner.Runtime.SharedTransformList","Name":"Waypoints","IsShared":true,"List`1mValue":[]},"Singlespeed":1,"SinglestoppingDistance":1}]}]}]},{"Type":"BehaviorDesigner.Runtime.Tasks.Selector","NodeData":{"Offset":"(295.889221,100)"},"ID":19,"Name":"Isolated","Instant":true,"AbortTypeabortType":"None","Children":[{"Type":"BehaviorDesigner.Runtime.Tasks.Sequence","NodeData":{"Offset":"(-85.51854,115.166519)"},"ID":20,"Name":"Observe
         & Flee","Instant":true,"AbortTypeabortType":"None","Children":[{"Type":"CreepAI.Behaviour.WithinSight","NodeData":{"Offset":"(-110.709091,119.028687)"},"ID":21,"Name":"Within
@@ -1435,23 +1435,6 @@ NavMeshAgent:
   m_BaseOffset: 1
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
---- !u!114 &813498906615394379
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5997387755834144731}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b92c63808e7f45a1bf1e7fa40461e51d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  health: 100
-  maxHealth: 100
-  bossDead: 0
-  text: {fileID: 0}
-  player: 0
 --- !u!54 &5956893101112134196
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -1576,6 +1559,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3040ed44ee2c64615b5cd7dcd9d1c2c9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &6060574965228535131
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5997387755834144731}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a0b5f53c897b448f87b93f815e2a103b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _health: 50
+  _maxHealth: 50
+  _isAlive: 1
 --- !u!1 &6075805151507519371
 GameObject:
   m_ObjectHideFlags: 0

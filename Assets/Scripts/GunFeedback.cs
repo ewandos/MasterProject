@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using MoreMountains.Feedbacks;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
@@ -14,12 +15,14 @@ public class GunFeedback : MonoBehaviour
     private AudioSource audio;
 
     private ParticleSystem particles;
+    private MMF_Player mmfPlayer;
 
     private void Start()
     {
         light = GetComponent<Light>();
         audio = GetComponent<AudioSource>();
         particles = GetComponent<ParticleSystem>();
+        mmfPlayer = GetComponent<MMF_Player>();
     }
 
     private void Update()
@@ -48,6 +51,7 @@ public class GunFeedback : MonoBehaviour
         audio.Play();
         
         particles.Play();
+        mmfPlayer.PlayFeedbacks();
     }
 
     public void PlayDryShootEffect()

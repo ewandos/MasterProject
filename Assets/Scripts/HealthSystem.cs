@@ -1,9 +1,11 @@
-﻿using System;
-using System.Security.Cryptography;
+﻿using Sirenix.OdinInspector;
 using TMPro;
 using UnityEngine;
-using UnityEngine.Events;
 using UnityEngine.SceneManagement;
+
+/**
+ * THIS WILL BE REPLACED BY AN IMPLEMENTATION OF IHEALTH
+ */
 
 public class HealthSystem : MonoBehaviour
 {
@@ -17,8 +19,7 @@ public class HealthSystem : MonoBehaviour
 
     [SerializeField] private TextMeshProUGUI text;
     [SerializeField] private bool player;
-
-    public UnityAction onDamageTaken;
+    
     public void Start()
     {
         health = maxHealth;
@@ -29,6 +30,7 @@ public class HealthSystem : MonoBehaviour
         }
     }
 
+    [Button]
     public void TakeDamage(int amount)
     {
         health -= amount;

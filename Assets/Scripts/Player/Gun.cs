@@ -1,31 +1,31 @@
 using System;
+using MoreMountains.Feedbacks;
 using UnityEngine;
 
 public class Gun : MonoBehaviour
 {
-    [SerializeField]
-    private int damage = 10;
-    [SerializeField]
-    private float range = 100f;
-    [SerializeField] 
-    private float firerate = 1.5f;
-
+    [SerializeField] private int damage = 10;
+    [SerializeField] private float range = 100f;
+    [SerializeField] private float firerate = 1.5f;
     [SerializeField] private int maxAmunition = 10;
     [SerializeField] private int amunition = 10;
     [SerializeField] private int amunitionCarried = 100;
 
-    [SerializeField]
-    private Camera fpsCam;
+    [SerializeField] private Camera fpsCam;
 
-    [SerializeField] 
-    private GameObject impactEffect;
-
-    [SerializeField]
-    private GunFeedback gunFeedback;
+    [SerializeField] private GameObject impactEffect;
     
+    [SerializeField] private GameObject creepImpactEffect;
+
+    [SerializeField] private GunFeedback shootFeedback;
+    [SerializeField] private MMF_Player reloadFeedback;
+
     private float nexTimeToFire = 0f;
 
     [SerializeField] private GameObject model;
+
+    public event Action<int> updatedAmmo; 
+    public event Action<int> updatedCarriedAmmo;
 
     private void Start()
     {
@@ -51,11 +51,11 @@ public class Gun : MonoBehaviour
             {
                 nexTimeToFire = Time.time + 1f / firerate;
                 Shoot();
-                gunFeedback.PlayShootEffect();
+                shootFeedback.PlayShootEffect();
             }
             else
             {
-                gunFeedback.PlayDryShootEffect();
+                shootFeedback.PlayDryShootEffect();
                 nexTimeToFire = Time.time + 1f / (firerate * 0.65f);
             }
         }
@@ -69,6 +69,7 @@ public class Gun : MonoBehaviour
     public void AddAmmo(int amount)
     {
         amunitionCarried += amount;
+        updatedCarriedAmmo?.Invoke(amunitionCarried);
     }
     void Reload()
     {
@@ -78,6 +79,9 @@ public class Gun : MonoBehaviour
         
         amunitionCarried = Mathf.Max(0, difference);
         amunition += requiredReloadAmount + Mathf.Min(0, difference);
+        updatedAmmo?.Invoke(amunition);
+        updatedCarriedAmmo?.Invoke(amunitionCarried);
+        reloadFeedback.PlayFeedbacks();
     }
     
     void Shoot()
@@ -87,14 +91,21 @@ public class Gun : MonoBehaviour
         RaycastHit hit;
         if (Physics.Raycast(fpsCam.transform.position, fpsCam.transform.forward, out hit, range))
         {
-            HealthSystem target = hit.transform.GetComponent<HealthSystem>();
+            IHealth target = hit.transform.GetComponent<IHealth>();
 
             if (target != null)
+            {
+                GameObject impactEffectInstantiate = Instantiate(creepImpactEffect, hit.point, Quaternion.LookRotation(hit.normal));
+                impactEffectInstantiate.transform.parent = hit.transform;
                 target.TakeDamage(damage);
-            
-            GameObject impactEffectInstantiate = Instantiate(impactEffect, hit.point, Quaternion.LookRotation(hit.normal));
-            impactEffectInstantiate.transform.parent = hit.transform;
+            }
+            else
+            {
+                GameObject impactEffectInstantiate = Instantiate(impactEffect, hit.point, Quaternion.LookRotation(hit.normal));
+                impactEffectInstantiate.transform.parent = hit.transform;
+            }
         }
-        
+
+        updatedAmmo?.Invoke(amunition);
     }
 }

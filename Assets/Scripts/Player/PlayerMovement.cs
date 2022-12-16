@@ -1,5 +1,4 @@
-using System;
-using Cinemachine;
+using MoreMountains.Feedbacks;
 using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
@@ -28,6 +27,9 @@ public class PlayerMovement : MonoBehaviour
 	public AudioClipSequencer audioClipSequencer;
 
 	public Vector3 velocity = Vector3.zero;
+
+	public MMF_Player breathingFeedback;
+	public MMF_Player sprintingFeedback;
 
 	[SerializeField]
 	private Camera camera;
@@ -104,7 +106,7 @@ public class PlayerMovement : MonoBehaviour
 			return true;
 		}
 		
-		if (!tryingToSprint)
+		if (!tryingToSprint && sprintEnergy < maxSpringEnergy)
 		{
 			RechargeSprintEnergy();
 		}
@@ -116,11 +118,13 @@ public class PlayerMovement : MonoBehaviour
 	{
 		sprintEnergy -= sprintDepletionSpeed * Time.deltaTime;
 		sprintEnergy = Mathf.Max(0.0f, sprintEnergy);
+		breathingFeedback.PlayFeedbacks();
 	}
 
 	void RechargeSprintEnergy()
 	{
 		sprintEnergy += sprintRechargeSpeed * Time.deltaTime;
 		sprintEnergy = Mathf.Min(sprintEnergy, maxSpringEnergy);
+		breathingFeedback.PlayFeedbacks();
 	}
 }

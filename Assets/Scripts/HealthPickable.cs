@@ -4,6 +4,6 @@ public class HealthPickable : Pickable
 
     protected override void OnPickUp(PlayerManager manager)
     {
-        manager.health.AddHealth(amount);
+        manager.health.Heal(amount);
     }
 }
