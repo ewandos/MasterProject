@@ -7,7 +7,6 @@ public class Action_Attack : Action_Base
     List<System.Type> SupportedGoals = new List<System.Type>(new System.Type[] { typeof(Goal_Attack) });
 
     Goal_Attack _attackGoal;
-    [SerializeField] private DamageTrigger damageTrigger;
     [SerializeField] 
     private float firerate = 1.2f;
     [SerializeField] private float nexTimeToFire = 0f;
@@ -29,14 +28,15 @@ public class Action_Attack : Action_Base
         //choose attack animation to play
 
         Animator anim = GetComponent<Animator>();
+        Audio audio = GetComponentInChildren<Audio>();
+        DamageTrigger damageTrigger = GetComponentInChildren<DamageTrigger>();
 
         //spawn collider here
         if (Time.time >= nexTimeToFire)
         {
             nexTimeToFire = Time.time + firerate;
-            
-            //AudioSource audio = GetComponent<AudioSource>();
-            //audio.PlayOneShot(MeleeAudio);
+
+            audio.playAttackBossAudio();
             anim.Play("BossArmature_meele_hit");
             damageTrigger.CreateDamageThingForSeconds();
         }
@@ -51,11 +51,6 @@ public class Action_Attack : Action_Base
 
     public override void OnTick()
     {
-        //var agentPos = Agent.transform.position;
-        //var distanceBetween = Vector3.Distance(_attackGoal.MoveTarget, agentPos);
-        //if enemy is in range repeat is possible here
-        //if (distanceBetween <= _attackGoal.attackRange)
-             OnActivated(LinkedGoal);
-        
+        OnActivated(LinkedGoal);
     }
 }

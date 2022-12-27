@@ -25,6 +25,8 @@ public class Action_Movement : Action_Base
         _movementGoal = (Goal_Movement)LinkedGoal;
 
         Agent.MoveTo(_movementGoal.MoveTarget);
+        Audio audio = GetComponentInChildren<Audio>();
+        audio.playstarterClip(); // plays the first time the player engages the enemy
     }
 
     public override void OnDeactivated()

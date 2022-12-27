@@ -7,7 +7,6 @@ public class Action_Charge_Attack : Action_Base
     List<System.Type> SupportedGoals = new List<System.Type>(new System.Type[] {typeof(Goal_Charge_Attack)});
 
     Goal_Attack _attackGoal;
-    [SerializeField] private DamageTrigger damageTrigger;
 
     [SerializeField] private float ChargeSpeed = 55f;
     [SerializeField] private float chargeDistance = 3f;
@@ -28,14 +27,14 @@ public class Action_Charge_Attack : Action_Base
         base.OnActivated(_linkedGoal);
 
         Animator anim = GetComponent<Animator>();
-        
-        //AudioSource audio = GetComponent<AudioSource>();
-        //audio.PlayOneShot(MeleeAudio);
+        Audio audio = GetComponentInChildren<Audio>();
+        DamageTrigger damageTrigger = GetComponentInChildren<DamageTrigger>();
 
         Vector3 location = damageTrigger.getPositionToChargeTo(chargeDistance);
 
         Agent.MoveTo(location, ChargeSpeed, ChargeAcceleration);
 
+        audio.playAttackBossAudio();
         anim.Play("BossArmature_meele_hit");
         damageTrigger.CreateDamageThingForSeconds();
     }

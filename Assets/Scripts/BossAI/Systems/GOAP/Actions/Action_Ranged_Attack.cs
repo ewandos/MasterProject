@@ -7,7 +7,6 @@ public class Action_Ranged_Attack : Action_Base
     List<System.Type> SupportedGoals = new List<System.Type>(new System.Type[] { typeof(Goal_Ranged_Attack) });
 
     Goal_Ranged_Attack _attackGoal;
-    [SerializeField] private DamageTrigger damageTrigger;
     [SerializeField] 
     private float firerate = 1.2f;
     [SerializeField] private float nexTimeToFire = 0f;
@@ -25,17 +24,18 @@ public class Action_Ranged_Attack : Action_Base
     public override void OnActivated(Goal_Base _linkedGoal)
     {
         base.OnActivated(_linkedGoal);
-
-        //choose attack animation to play
-
+        
         Animator anim = GetComponent<Animator>();
+        Audio audio = GetComponentInChildren<Audio>();
+        DamageTrigger damageTrigger = GetComponentInChildren<DamageTrigger>();
 
         //spawn collider here
         if (Time.time >= nexTimeToFire)
         {
             nexTimeToFire = Time.time + firerate;
-            damageTrigger.createRangedAttack();
             anim.Play("BossArmature_range_hit");
+            audio.playAttackBossAudio();
+            damageTrigger.createRangedAttack();
         }
     }
 
