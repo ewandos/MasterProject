@@ -42,8 +42,8 @@ MonoBehaviour:
     min: 1
     max: 10
   rayLength:
-    m_OverrideState: 0
-    m_Value: 10
+    m_OverrideState: 1
+    m_Value: 200
     min: 0
     max: 500
   minSmoothness:

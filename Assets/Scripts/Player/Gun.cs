@@ -29,6 +29,7 @@ public class Gun : MonoBehaviour
 
     [SerializeField] private TextMeshProUGUI ammoUI;
 
+    float speed = 0.5f;
 
     private void Start()
     {
@@ -52,6 +53,13 @@ public class Gun : MonoBehaviour
         }
     }
 
+    private void FixedUpdate()
+    {
+        Transform from = transform;
+        Transform to = fpsCam.transform;
+        transform.rotation = Quaternion.Lerp(from.rotation, to.rotation, speed);
+    }
+
     public void AddAmmo(int amount)
     {
         amunitionCarried += amount;
@@ -59,8 +67,13 @@ public class Gun : MonoBehaviour
     }
     void Reload()
     {
-        amunitionCarried -= (maxAmunition - amunition);
-        amunition = maxAmunition;
+        if (amunitionCarried <= 0) return;
+        int requiredReloadAmount = maxAmunition - amunition;
+        int difference = amunitionCarried - requiredReloadAmount;
+        
+        amunitionCarried = Mathf.Max(0, difference);
+        amunition += requiredReloadAmount + Mathf.Min(0, difference);
+        
         SetUI();
     }
     
@@ -77,7 +90,8 @@ public class Gun : MonoBehaviour
             if (target != null)
                 target.TakeDamage(damage);
             
-            Instantiate(impactEffect, hit.point, Quaternion.LookRotation(hit.normal));
+            GameObject impactEffectInstantiate = Instantiate(impactEffect, hit.point, Quaternion.LookRotation(hit.normal));
+            impactEffectInstantiate.transform.parent = hit.transform;
         }
         
     }

@@ -9,6 +9,7 @@ public class ObjectSpawner : MonoBehaviour
     public GameObject entity;
     public float frequency = 5f;
     public bool spawnOnAwake;
+
     public bool limit;
     [ShowIf("limit")] 
     public float range = 5f;
