@@ -35,15 +35,13 @@ public class AudioClipSequencer : MonoBehaviour
         index = ++index % stepsAudioClips.Count;
         audioSource.Play();
     }
-
-    [Button]
+    
     public void SetInterval(float interval = 1f)
     {
         this.interval = interval;
         isActive = true;
     }
-
-    [Button]
+    
     public void Stop()
     {
         cooldown = interval;

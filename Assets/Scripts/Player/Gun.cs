@@ -1,69 +1,79 @@
 using System;
-using Drawing;
-using TMPro;
+using MoreMountains.Feedbacks;
 using UnityEngine;
 
 public class Gun : MonoBehaviour
 {
-    [SerializeField]
-    private int damage = 10;
-    [SerializeField]
-    private float range = 100f;
-    [SerializeField] 
-    private float firerate = 1.5f;
-
+    [SerializeField] private int damage = 10;
+    [SerializeField] private float range = 100f;
+    [SerializeField] private float firerate = 1.5f;
     [SerializeField] private int maxAmunition = 10;
-    [SerializeField] private int amunition = 10;
-    [SerializeField] private int amunitionCarried = 100;
+    public int amunition = 10;
 
-    [SerializeField]
-    private Camera fpsCam;
+    public int amunitionCarried = 100;
 
-    [SerializeField] 
-    private GameObject impactEffect;
+    [SerializeField] private Camera fpsCam;
 
-    [SerializeField]
-    private MuzzleFlashController muzzleFlash;
+    [SerializeField] private GameObject impactEffect;
     
-    [SerializeField] private float nexTimeToFire = 0f;
+    [SerializeField] private GameObject creepImpactEffect;
 
-    [SerializeField] private TextMeshProUGUI ammoUI;
+    [SerializeField] private GunFeedback shootFeedback;
+    [SerializeField] private MMF_Player reloadFeedback;
 
-    float speed = 0.5f;
+    private float nexTimeToFire = 0f;
+
+    [SerializeField] private GameObject model;
+
+    public event Action<int> updatedAmmo; 
+    public event Action<int> updatedCarriedAmmo;
+    public event Action<bool> toggledGun;
 
     private void Start()
     {
         amunition = maxAmunition;
-        SetUI();
+    }
+
+    private void OnDisable()
+    {
+        model.SetActive(enabled);
+        toggledGun?.Invoke(enabled);
+    }
+
+    private void OnEnable()
+    {
+        model.SetActive(enabled);
+        toggledGun?.Invoke(enabled);
     }
 
     void Update()
     {
-        if (Input.GetMouseButtonDown(0) 
-            && Time.time >= nexTimeToFire
-            && amunition > 0)
+        if (Input.GetButton("Fire1") 
+            && Time.time >= nexTimeToFire)
         {
-            nexTimeToFire = Time.time + firerate;
-            Shoot();
-            muzzleFlash.Effect();
+            if (amunition > 0)
+            {
+                nexTimeToFire = Time.time + 1f / firerate;
+                Shoot();
+                shootFeedback.PlayShootEffect();
+            }
+            else
+            {
+                shootFeedback.PlayDryShootEffect();
+                nexTimeToFire = Time.time + 1f / (firerate * 0.65f);
+            }
         }
+
         if (Input.GetKeyDown(KeyCode.R))
         {
             Reload();
         }
     }
 
-    private void FixedUpdate()
-    {
-        Transform from = transform;
-        Transform to = fpsCam.transform;
-        transform.rotation = Quaternion.Lerp(from.rotation, to.rotation, speed);
-    }
-
     public void AddAmmo(int amount)
     {
         amunitionCarried += amount;
-        SetUI();
+        updatedCarriedAmmo?.Invoke(amunitionCarried);
     }
     void Reload()
     {
@@ -73,31 +83,33 @@ public class Gun : MonoBehaviour
         
         amunitionCarried = Mathf.Max(0, difference);
         amunition += requiredReloadAmount + Mathf.Min(0, difference);
-        
-        SetUI();
+        updatedAmmo?.Invoke(amunition);
+        updatedCarriedAmmo?.Invoke(amunitionCarried);
+        reloadFeedback.PlayFeedbacks();
     }
     
     void Shoot()
     {
         StatTracker.Instance.RangeAttackPerformed();
         amunition--;
-        SetUI();
         RaycastHit hit;
         if (Physics.Raycast(fpsCam.transform.position, fpsCam.transform.forward, out hit, range))
         {
-            HealthSystem target = hit.transform.GetComponent<HealthSystem>();
+            IHealth target = hit.transform.GetComponent<IHealth>();
 
             if (target != null)
+            {
+                GameObject impactEffectInstantiate = Instantiate(creepImpactEffect, hit.point, Quaternion.LookRotation(hit.normal));
+                impactEffectInstantiate.transform.parent = hit.transform;
                 target.TakeDamage(damage);
-            
-            GameObject impactEffectInstantiate = Instantiate(impactEffect, hit.point, Quaternion.LookRotation(hit.normal));
-            impactEffectInstantiate.transform.parent = hit.transform;
+            }
+            else
+            {
+                GameObject impactEffectInstantiate = Instantiate(impactEffect, hit.point, Quaternion.LookRotation(hit.normal));
+                impactEffectInstantiate.transform.parent = hit.transform;
+            }
         }
-        
-    }
 
-    void SetUI()
-    {
-        ammoUI.text = (amunition.ToString() + '/' + amunitionCarried);
+        updatedAmmo?.Invoke(amunition);
     }
 }

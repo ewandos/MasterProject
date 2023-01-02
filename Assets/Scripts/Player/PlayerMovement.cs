@@ -1,5 +1,4 @@
-using System;
-using Cinemachine;
+using MoreMountains.Feedbacks;
 using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
@@ -22,7 +21,6 @@ public class PlayerMovement : MonoBehaviour
 	private float sprintEnergy = 100f;
 	private float sprintDepletionSpeed = 20f;
 	private float sprintRechargeSpeed = 10f;
-	float sprintingTime = 0.0f;
 	public FloatSO sprintEnergyHolder;
 
 	private bool hasMovementInput = false;
@@ -30,8 +28,10 @@ public class PlayerMovement : MonoBehaviour
 
 	public Vector3 velocity = Vector3.zero;
 
+	public MMF_Player breathingFeedback;
+
 	[SerializeField]
-	private CinemachineVirtualCamera camera;
+	private Camera camera;
 	void Start()
 	{
 		controller = GetComponent<CharacterController>();
@@ -45,7 +45,6 @@ public class PlayerMovement : MonoBehaviour
 
 		if (hasMovementInput)
 		{
-			camera.m_Lens.FieldOfView = Mathf.Lerp(70f, 70f + (finalSpeed - speed) * 2, 3 * sprintingTime);
 			audioClipSequencer.SetInterval(2 / finalSpeed);
 		}
 		else
@@ -102,17 +101,15 @@ public class PlayerMovement : MonoBehaviour
 
 		if (tryingToSprint && sprintEnergy != 0.0f)
 		{
-			sprintingTime += Time.deltaTime;
 			DepleteSprintEnergy();
 			return true;
 		}
 		
-		if (!tryingToSprint)
+		if ((!tryingToSprint || sprintEnergy == 0) && sprintEnergy < maxSpringEnergy)
 		{
 			RechargeSprintEnergy();
 		}
-
-		sprintingTime = 0.0f;
+		
 		return false;
 	}
 
@@ -126,5 +123,6 @@ public class PlayerMovement : MonoBehaviour
 	{
 		sprintEnergy += sprintRechargeSpeed * Time.deltaTime;
 		sprintEnergy = Mathf.Min(sprintEnergy, maxSpringEnergy);
+		if (sprintEnergy <= maxSpringEnergy * 0.75f) breathingFeedback.PlayFeedbacks();
 	}
 }

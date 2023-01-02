@@ -1,9 +1,8 @@
 using UnityEngine;
 
+[RequireComponent(typeof(AudioSource), typeof(SphereCollider))]
 public abstract class Pickable : MonoBehaviour
 {
-    public GameObject model;
-
     private new AudioSource audio;
     private bool isCollected;
     
@@ -19,9 +18,8 @@ public abstract class Pickable : MonoBehaviour
         if (manager == null) return;
         OnPickUp(manager);
         isCollected = true;
-        model.SetActive(false);
         audio.Play();
-        Destroy(gameObject, 1);
+        Destroy(gameObject, 0.2f);
     }
 
     protected abstract void OnPickUp(PlayerManager manager);

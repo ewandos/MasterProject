@@ -1,9 +1,11 @@
-﻿using System;
-using System.Security.Cryptography;
+﻿using Sirenix.OdinInspector;
 using TMPro;
 using UnityEngine;
-using UnityEngine.Events;
 using UnityEngine.SceneManagement;
+
+/**
+ * THIS WILL BE REPLACED BY AN IMPLEMENTATION OF IHEALTH
+ */
 
 public class HealthSystem : MonoBehaviour
 {
@@ -16,30 +18,30 @@ public class HealthSystem : MonoBehaviour
     [SerializeField] public bool bossDead = false;
 
     [SerializeField] private TextMeshProUGUI text;
-    [SerializeField] private bool isPlayer;
-
-    public UnityAction onDamageTaken;
+    [SerializeField] private bool player;
+    
     public void Start()
     {
         health = maxHealth;
         if (GetComponent<PlayerMovement>())
         {
-            isPlayer = true;
+            player = true;
             text.text = health.ToString();
         }
     }
 
+    [Button]
     public void TakeDamage(int amount)
     {
         health -= amount;
-        if (isPlayer)
+        if (player)
         {
             text.text = health.ToString();
         }
         
         if (health <= 0)
         {
-            if (isPlayer)
+            if (player)
             {
                 text.text = "0";
             }
@@ -49,7 +51,7 @@ public class HealthSystem : MonoBehaviour
 
     void Death()
     {
-        if (isPlayer)
+        if (player)
         {
             SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex - 1);
         }
@@ -57,7 +59,6 @@ public class HealthSystem : MonoBehaviour
         {
             //enable you win screen
             bossDead = true;
-            Destroy(gameObject);
         }
         else
         {
