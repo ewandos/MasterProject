@@ -5,7 +5,7 @@ using UnityEngine;
 public class Goal_Movement : Goal_Base
 {
     [SerializeField] int ChasePriority = 60;
-    [SerializeField] float MinAwarenessToChase = 1.5f;
+    [SerializeField] float MinAwarenessToChase = 1f;
     [SerializeField] float AwarenessToStopChase = 1f;
     [SerializeField] private float stoppingDistance = 5f;
     [SerializeField] private float distanceBetween = 0;
@@ -29,32 +29,12 @@ public class Goal_Movement : Goal_Base
             {
                 if (candidate.Detectable == CurrentTarget)
                 {
-                    CurrentPriority = candidate.Awareness < AwarenessToStopChase ? 0 : ChasePriority;
-                    
                     var agentPos = Agent.transform.position;
                     distanceBetween = Vector3.Distance(candidate.RawPosition, agentPos);
 
-                    var moreRanged = StatTracker.Instance.getMoreRangedAttacksPerformed();
-                    var moreMelee = StatTracker.Instance.getMoreMeleeAttacksPerformed();
-                    
-                    if (distanceBetween > stoppingDistance 
-                        && CurrentPriority < 100
-                        && moreRanged)
+                    if (distanceBetween > stoppingDistance)
                     {
-                        CurrentPriority += 1;
-                    }
-                    
-                    else if (distanceBetween < stoppingDistance 
-                        && CurrentPriority < 100
-                        && moreMelee)
-                    {
-                        CurrentPriority += 1;
-                    }
-                    
-                    
-                    else if (CurrentPriority > 50)
-                    {
-                        CurrentPriority -= 1;
+                        CurrentPriority = candidate.Awareness < AwarenessToStopChase ? 0 : ChasePriority;
                     }
                     return;
                 }
@@ -102,15 +82,8 @@ public class Goal_Movement : Goal_Base
             distanceBetween = Vector3.Distance(candidate.RawPosition, agentPos);
 
             if (candidate.Awareness >= MinAwarenessToChase 
-                && distanceBetween >= stoppingDistance 
-                && StatTracker.Instance.getMoreRangedAttacksPerformed())
-            {
-                return true;
-            }
-            
-            if (candidate.Awareness >= MinAwarenessToChase 
-                && distanceBetween <= stoppingDistance 
-                && StatTracker.Instance.getMoreMeleeAttacksPerformed())
+                && distanceBetween >= stoppingDistance
+                && !blocking)
             {
                 return true;
             }

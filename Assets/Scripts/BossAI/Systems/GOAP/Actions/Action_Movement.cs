@@ -7,7 +7,6 @@ public class Action_Movement : Action_Base
     List<System.Type> SupportedGoals = new List<System.Type>(new System.Type[] { typeof(Goal_Movement) });
 
     Goal_Movement _movementGoal;
-    [SerializeField] float SearchRange = 10f;
     public override List<System.Type> GetSupportedGoals()
     {
         return SupportedGoals;
@@ -25,23 +24,15 @@ public class Action_Movement : Action_Base
         // cache the chase goal
         _movementGoal = (Goal_Movement)LinkedGoal;
 
-
-        if (StatTracker.Instance.getMoreRangedAttacksPerformed())
-        {
-            Agent.MoveTo(_movementGoal.MoveTarget);
-        }
-        else
-        {
-            //move away from player
-            Vector3 location = Agent.PickLocationInRange(SearchRange);
-
-            Agent.MoveTo(location);
-        }
-
+        Agent.MoveTo(_movementGoal.MoveTarget);
+        Audio audio = GetComponentInChildren<Audio>();
+        audio.playstarterClip(); // plays the first time the player engages the enemy
     }
 
     public override void OnDeactivated()
     {
+        Agent.MoveTo(Agent.transform.position);
+        
         base.OnDeactivated();
         
         _movementGoal = null;
@@ -49,16 +40,6 @@ public class Action_Movement : Action_Base
 
     public override void OnTick()
     {
-        if (StatTracker.Instance.getMoreRangedAttacksPerformed())
-        {
-            Agent.MoveTo(_movementGoal.MoveTarget);
-        }
-        else
-        {
-            //move away from player
-            Vector3 location = Agent.PickLocationInRange(SearchRange);
-
-            Agent.MoveTo(location);
-        }
+        Agent.MoveTo(_movementGoal.MoveTarget);
     }    
 }

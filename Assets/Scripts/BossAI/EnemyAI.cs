@@ -12,10 +12,10 @@ public class EnemyAI : MonoBehaviour
 {
     [SerializeField] TextMeshProUGUI FeedbackDisplay;
     
-   /* [SerializeField] float _VisionConeAngle = 60f;
+    [SerializeField] float _VisionConeAngle = 60f;
     [SerializeField] float _VisionConeRange = 30f;
     [SerializeField] Color _VisionConeColour = new Color(1f, 0f, 0f, 0.25f);
-
+/* 
     [SerializeField] float _HearingRange = 20f;
     [SerializeField] Color _HearingRangeColour = new Color(1f, 1f, 0f, 0.25f);
 */
@@ -25,10 +25,10 @@ public class EnemyAI : MonoBehaviour
     public Vector3 EyeLocation => transform.position;
     public Vector3 EyeDirection => transform.forward;
 
-    /*public float VisionConeAngle => _VisionConeAngle;
+    public float VisionConeAngle => _VisionConeAngle;
     public float VisionConeRange => _VisionConeRange;
     public Color VisionConeColour => _VisionConeColour;
-
+/*
     public float HearingRange => _HearingRange;
     public Color HearingRangeColour => _HearingRangeColour;
 */
@@ -41,27 +41,16 @@ public class EnemyAI : MonoBehaviour
 
     void Awake()
     {
-        //CosVisionConeAngle = Mathf.Cos(VisionConeAngle * Mathf.Deg2Rad);
+        CosVisionConeAngle = Mathf.Cos(VisionConeAngle * Mathf.Deg2Rad);
         Awareness = GetComponent<AwarenessSystem>();
     }
 
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
-    /*public void ReportCanSee(DetectableTarget seen)
+    public void ReportCanSee(DetectableTarget seen)
     {
         Awareness.ReportCanSee(seen);
     }
-
+/*
     public void ReportCanHear(GameObject source, Vector3 location, EHeardSoundCategory category, float intensity)
     {
         Awareness.ReportCanHear(source, location, category, intensity);
@@ -120,12 +109,12 @@ public class EnemyAIEditor : Editor
         //Handles.DrawSolidDisc(ai.transform.position, Vector3.up, ai.HearingRange);
 
         // work out the start point of the vision cone
-        //Vector3 startPoint = Mathf.Cos(-ai.VisionConeAngle * Mathf.Deg2Rad) * ai.transform.forward +
-        //                     Mathf.Sin(-ai.VisionConeAngle * Mathf.Deg2Rad) * ai.transform.right;
+        Vector3 startPoint = Mathf.Cos(-ai.VisionConeAngle * Mathf.Deg2Rad) * ai.transform.forward +
+                             Mathf.Sin(-ai.VisionConeAngle * Mathf.Deg2Rad) * ai.transform.right;
 
         // draw the vision cone
-        //Handles.color = ai.VisionConeColour;
-        //Handles.DrawSolidArc(ai.transform.position, Vector3.up, startPoint, ai.VisionConeAngle * 2f, ai.VisionConeRange);        
+        Handles.color = ai.VisionConeColour;
+        Handles.DrawSolidArc(ai.transform.position, Vector3.up, startPoint, ai.VisionConeAngle * 2f, ai.VisionConeRange);        
     }
 }
 #endif // UNITY_EDITOR

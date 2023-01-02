@@ -54,11 +54,11 @@ public class TrackedTarget
 [RequireComponent(typeof(EnemyAI))]
 public class AwarenessSystem : MonoBehaviour
 {
-    /*
+    
     [SerializeField] AnimationCurve VisionSensitivity;
     [SerializeField] float VisionMinimumAwareness = 1f;
     [SerializeField] float VisionAwarenessBuildRate = 10f;
-
+/*
     [SerializeField] float HearingMinimumAwareness = 0f;
     [SerializeField] float HearingAwarenessBuildRate = 0.5f;*/
 
@@ -67,6 +67,9 @@ public class AwarenessSystem : MonoBehaviour
 
     [SerializeField] float AwarenessDecayDelay = 0.1f;
     [SerializeField] float AwarenessDecayRate = 0.1f;
+    
+    
+    [SerializeField] float CurrentAwareness = 0f;
 
     Dictionary<GameObject, TrackedTarget> Targets = new Dictionary<GameObject, TrackedTarget>();
     EnemyAI LinkedAI;
@@ -118,6 +121,8 @@ public class AwarenessSystem : MonoBehaviour
         // update target awareness
         if (Targets[targetGO].UpdateAwareness(target, position, awareness, minAwareness))
         {
+            CurrentAwareness = Targets[targetGO].Awareness;
+            
             if (Targets[targetGO].Awareness >= 2f)
                 LinkedAI.OnFullyDetected(targetGO);
             else if (Targets[targetGO].Awareness >= 1f)
@@ -127,7 +132,7 @@ public class AwarenessSystem : MonoBehaviour
         }
     }
 
-    /*public void ReportCanSee(DetectableTarget seen)
+    public void ReportCanSee(DetectableTarget seen)
     {
         // determine where the target is in the field of view
         var vectorToTarget = (seen.transform.position - LinkedAI.EyeLocation).normalized;
@@ -138,7 +143,7 @@ public class AwarenessSystem : MonoBehaviour
 
         UpdateAwareness(seen.gameObject, seen, seen.transform.position, awareness, VisionMinimumAwareness);
     }
-
+/*
     public void ReportCanHear(GameObject source, Vector3 location, EHeardSoundCategory category, float intensity)
     {
         var awareness = intensity * HearingAwarenessBuildRate * Time.deltaTime;

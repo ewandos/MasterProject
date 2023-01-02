@@ -39,11 +39,11 @@ public class Gun : MonoBehaviour
 
     void Update()
     {
-        if (Input.GetButton("Fire1") 
+        if (Input.GetMouseButtonDown(0) 
             && Time.time >= nexTimeToFire
             && amunition > 0)
         {
-            nexTimeToFire = Time.time + 1f / firerate;
+            nexTimeToFire = Time.time + firerate;
             Shoot();
             muzzleFlash.Effect();
         }

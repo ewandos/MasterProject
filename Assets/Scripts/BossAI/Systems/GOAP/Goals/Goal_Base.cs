@@ -14,6 +14,7 @@ public interface IGoal
 
 public class Goal_Base : MonoBehaviour, IGoal
 {
+    protected bool blocking = false;
     protected CharacterAgent Agent;
     protected AwarenessSystem Sensors;
     protected GOAPUI DebugUI;

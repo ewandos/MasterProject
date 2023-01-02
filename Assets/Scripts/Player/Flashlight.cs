@@ -66,7 +66,7 @@ public class Flashlight : MonoBehaviour
 
 	void text()
 	{
-		flashlightUI.text = Math.Round(energy / maxenergy * 100) + "%";
+		//flashlightUI.text = Math.Round(energy / maxenergy * 100) + "%";
 		
 	}
 }
