@@ -22,7 +22,9 @@ public class CharacterAgent : CharacterBase
     EOffmeshLinkStatus OffMeshLinkStatus = EOffmeshLinkStatus.NotStarted;
     private float standardSpeed = 3.5f;
     private float standardAcceleration = 8f;
-
+    int wait = 3;
+    int waitTix = 3;
+    
     public bool IsMoving => Agent.velocity.magnitude > float.Epsilon;
 
     public bool AtDestination => ReachedDestination;
@@ -35,23 +37,27 @@ public class CharacterAgent : CharacterBase
     }
 
     // Update is called once per frame
-    protected void Update()
+    protected void FixedUpdate()
     {
+        if (--wait > 0) return;
+        if (--wait < 0) wait = 0;
         
         Vector3 lookVector = player.transform.position - transform.position;
         lookVector.y = transform.position.y;
         
-        //AudioSource audio = GetComponent<AudioSource>();
-        //audio.PlayOneShot(MeleeAudio);
         anim.SetBool("isRunning", IsMoving);
 
 
         // have a path and near the end point?
-        if (!Agent.pathPending && !Agent.isOnOffMeshLink && DestinationSet && (Agent.remainingDistance <= Agent.stoppingDistance))
+        if (!Agent.pathPending && !Agent.isOnOffMeshLink && DestinationSet)
         {
-            DestinationSet = false;
-            ReachedDestination = true;
-            changeSpeed(standardSpeed, standardAcceleration);
+            if ((Agent.remainingDistance <= Agent.stoppingDistance))
+            {
+                DestinationSet = false;
+                ReachedDestination = true;
+                changeSpeed(standardSpeed, standardAcceleration);
+                wait = waitTix;
+            }
         }
 
         // are we on an offmesh link?

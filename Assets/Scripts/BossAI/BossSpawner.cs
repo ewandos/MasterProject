@@ -1,18 +1,16 @@
-﻿using System;
+﻿
 using UnityEngine;
-using Random = UnityEngine.Random;
 
 public class BossSpawner : MonoBehaviour
 {
-    public GameObject player;
+    public GameObject DirLight;
     public GameObject boss;
-    private void FixedUpdate()
-    {
-        if (Vector3.Distance(transform.position, player.transform.position) < 20)
-        {
+    //public GameObject door;
 
-            Instantiate(boss,transform.position, transform.rotation);
-            Destroy(this);
-        }
+    private void OnTriggerEnter(Collider other)
+    {
+        DirLight.SetActive(true);
+        boss.SetActive(true);
+        //door.SetActive(true);
     }
 }
