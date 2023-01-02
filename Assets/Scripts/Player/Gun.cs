@@ -8,8 +8,9 @@ public class Gun : MonoBehaviour
     [SerializeField] private float range = 100f;
     [SerializeField] private float firerate = 1.5f;
     [SerializeField] private int maxAmunition = 10;
-    [SerializeField] private int amunition = 10;
-    [SerializeField] private int amunitionCarried = 100;
+    public int amunition = 10;
+
+    public int amunitionCarried = 100;
 
     [SerializeField] private Camera fpsCam;
 
@@ -26,6 +27,7 @@ public class Gun : MonoBehaviour
 
     public event Action<int> updatedAmmo; 
     public event Action<int> updatedCarriedAmmo;
+    public event Action<bool> toggledGun;
 
     private void Start()
     {
@@ -35,11 +37,13 @@ public class Gun : MonoBehaviour
     private void OnDisable()
     {
         model.SetActive(enabled);
+        toggledGun?.Invoke(enabled);
     }
 
     private void OnEnable()
     {
         model.SetActive(enabled);
+        toggledGun?.Invoke(enabled);
     }
 
     void Update()

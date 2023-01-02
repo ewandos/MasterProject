@@ -6,12 +6,14 @@ public class PlayerHealth : IHealth
     public event Action<int> damageTakenEvent;
     public event Action<int> healedEvent;
     public event Action<int> updatedHealthEvent;
-    public event Action deathEvent;
+    public event Action deathEvent; 
     
     public MMF_Player onDamageTakenFeedback;
+    public MMF_Player onDeathFeedback;
     public override void TakeDamage(int amount)
     {
         base.TakeDamage(amount);
+        if (_health <= 0) return;
         damageTakenEvent?.Invoke(amount);
         updatedHealthEvent?.Invoke(_health);
         onDamageTakenFeedback.PlayFeedbacks();
@@ -26,6 +28,7 @@ public class PlayerHealth : IHealth
 
     public override void Death()
     {
-        Destroy(gameObject);
+        onDeathFeedback.PlayFeedbacks();
+        deathEvent?.Invoke();
     }
 }

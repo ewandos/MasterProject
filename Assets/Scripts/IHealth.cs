@@ -3,15 +3,15 @@ using UnityEngine;
 
 public abstract class IHealth: MonoBehaviour
 {
-    [SerializeField] protected int _health = 50;
-    [SerializeField] protected int _maxHealth = 50;
-    [SerializeField] protected bool _isAlive = true;
+    public int _health = 50;
+    public int _maxHealth = 50;
+    public bool _isAlive = true;
 
     public virtual void TakeDamage(int amount)
     {
         _health = Math.Max(0, _health - amount);
 
-        if (_health == 0)
+        if (_health == 0 && _isAlive)
         {
             _isAlive = false;
             Death();

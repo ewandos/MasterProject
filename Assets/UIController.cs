@@ -1,15 +1,16 @@
-using TMPro;
 using UnityEngine;
 
 public class UIController : MonoBehaviour
 {
     public Gun gun;
-    public TextMeshProUGUI ammoUI;
-    public TextMeshProUGUI carrierAmmoUI;
+    public UIAmmo uiAmmo;
 
-    private void Start()
+    public PlayerHealth health;
+    public HealthUI uiHealth;
+
+    public void Start()
     {
-        gun.updatedAmmo += (i => ammoUI.text = i.ToString());
-        gun.updatedCarriedAmmo += (i => carrierAmmoUI.text = i.ToString());
+        uiAmmo.Initialize(gun);
+        uiHealth.Initialize(health);
     }
 }

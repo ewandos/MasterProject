@@ -29,7 +29,6 @@ public class PlayerMovement : MonoBehaviour
 	public Vector3 velocity = Vector3.zero;
 
 	public MMF_Player breathingFeedback;
-	public MMF_Player sprintingFeedback;
 
 	[SerializeField]
 	private Camera camera;
@@ -106,7 +105,7 @@ public class PlayerMovement : MonoBehaviour
 			return true;
 		}
 		
-		if (!tryingToSprint && sprintEnergy < maxSpringEnergy)
+		if ((!tryingToSprint || sprintEnergy == 0) && sprintEnergy < maxSpringEnergy)
 		{
 			RechargeSprintEnergy();
 		}
