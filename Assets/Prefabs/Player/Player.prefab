@@ -2100,6 +2100,7 @@ MonoBehaviour:
   gun: {fileID: 2754961663497212298}
   health: {fileID: 234784756}
   keychain: {fileID: 2456799848304936727}
+  gameSettings: {fileID: 0}
 --- !u!143 &569172280
 CharacterController:
   m_ObjectHideFlags: 0
@@ -2981,19 +2982,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8639069034159246865, guid: 1f7205035191447eb9ae74acbac69fc4, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0.389
+      value: 0.236
       objectReference: {fileID: 0}
     - target: {fileID: 8639069034159246865, guid: 1f7205035191447eb9ae74acbac69fc4, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.484
+      value: -0.313
       objectReference: {fileID: 0}
     - target: {fileID: 8639069034159246865, guid: 1f7205035191447eb9ae74acbac69fc4, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0.485
+      value: 0.304
       objectReference: {fileID: 0}
     - target: {fileID: 8639069034159246865, guid: 1f7205035191447eb9ae74acbac69fc4, type: 3}
       propertyPath: m_LocalRotation.w
-      value: 1
+      value: 0.99939084
       objectReference: {fileID: 0}
     - target: {fileID: 8639069034159246865, guid: 1f7205035191447eb9ae74acbac69fc4, type: 3}
       propertyPath: m_LocalRotation.x
@@ -3001,7 +3002,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8639069034159246865, guid: 1f7205035191447eb9ae74acbac69fc4, type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0
+      value: -0.034899585
       objectReference: {fileID: 0}
     - target: {fileID: 8639069034159246865, guid: 1f7205035191447eb9ae74acbac69fc4, type: 3}
       propertyPath: m_LocalRotation.z
@@ -3013,7 +3014,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8639069034159246865, guid: 1f7205035191447eb9ae74acbac69fc4, type: 3}
       propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
+      value: -4
       objectReference: {fileID: 0}
     - target: {fileID: 8639069034159246865, guid: 1f7205035191447eb9ae74acbac69fc4, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
@@ -3021,22 +3022,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1f7205035191447eb9ae74acbac69fc4, type: 3}
---- !u!1 &1780536080471066246 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 1958672162837415634, guid: 1f7205035191447eb9ae74acbac69fc4, type: 3}
-  m_PrefabInstance: {fileID: 259843003674280020}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &6117311193422752945 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 6304524680637951205, guid: 1f7205035191447eb9ae74acbac69fc4, type: 3}
-  m_PrefabInstance: {fileID: 259843003674280020}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6407530888772151991}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e190747c8695c430fae0e9f6dde1cb78, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &6407530888772151991 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 6590801110959336163, guid: 1f7205035191447eb9ae74acbac69fc4, type: 3}
@@ -3063,6 +3048,22 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 5949385590815848113, guid: 1f7205035191447eb9ae74acbac69fc4, type: 3}
   m_PrefabInstance: {fileID: 259843003674280020}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1780536080471066246 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1958672162837415634, guid: 1f7205035191447eb9ae74acbac69fc4, type: 3}
+  m_PrefabInstance: {fileID: 259843003674280020}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &6117311193422752945 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 6304524680637951205, guid: 1f7205035191447eb9ae74acbac69fc4, type: 3}
+  m_PrefabInstance: {fileID: 259843003674280020}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6407530888772151991}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e190747c8695c430fae0e9f6dde1cb78, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &2075707447
 MonoBehaviour:
   m_ObjectHideFlags: 0
