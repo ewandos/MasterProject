@@ -1,54 +1,9 @@
 fileFormatVersion: 2
-guid: 7fe516a795ef07949a3ab8d837c0f436
+guid: 97c562aa2fd987748b3b3ecc03b7a1cb
 ModelImporter:
   serializedVersion: 20200
   internalIDToNameTable: []
-  externalObjects:
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: boss_inside
-    second: {fileID: 2100000, guid: 001846482b11146469b82fa54e915aba, type: 2}
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: boss_metal
-    second: {fileID: 2100000, guid: c72a5e2bce0a08f4aa566e5334adab98, type: 2}
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: boss_room_flesh
-    second: {fileID: 2100000, guid: 0df88e2126da98442b57f3dfd3fd080f, type: 2}
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: boss_room_flesh_entrance
-    second: {fileID: 2100000, guid: cc0d39e694f9a4449bb2d1008091a6f8, type: 2}
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: boss_room_floor
-    second: {fileID: 2100000, guid: 1f730c910aebb334781b4b007eb2d402, type: 2}
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: ceiling
-    second: {fileID: 2100000, guid: 2110156af9d5852449d8442a741d95ad, type: 2}
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: floor
-    second: {fileID: 2100000, guid: 3d09b5164c2654249a12e647d21cf8b7, type: 2}
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: wall
-    second: {fileID: 2100000, guid: a7915ab4d8c7e354bb307818e4edcc20, type: 2}
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: window
-    second: {fileID: 2100000, guid: 2f921e9099c65fd41a0d4c842985e2a8, type: 2}
+  externalObjects: {}
   materials:
     materialImportMode: 2
     materialName: 0
