@@ -44,7 +44,7 @@ Light:
   m_Type: 2
   m_Shape: 0
   m_Color: {r: 1, g: 0.94130665, b: 0.7311321, a: 1}
-  m_Intensity: 47.746483
+  m_Intensity: 3.2064047
   m_Range: 10
   m_SpotAngle: 30
   m_InnerSpotAngle: 21.80208
@@ -114,7 +114,7 @@ MonoBehaviour:
   m_PointlightHDType: 0
   m_SpotLightShape: 0
   m_AreaLightShape: 0
-  m_Intensity: 600
+  m_Intensity: 40.29287
   m_EnableSpotReflector: 1
   m_LuxAtDistance: 1
   m_InnerSpotPercent: 0
@@ -5215,7 +5215,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Feedbacks: []
-  InitializationMode: 2
+  InitializationMode: 1
   SafeMode: 3
   Direction: 0
   AutoChangeDirectionOnEnd: 0
@@ -5294,7 +5294,7 @@ MonoBehaviour:
       type: {class: MMF_Light, ns: MoreMountains.Feedbacks, asm: MoreMountains.Feedbacks}
       data:
         Active: 1
-        UniqueID: -1443845668
+        UniqueID: 1264816992
         Label: Light
         ChannelMode: 0
         Channel: 0
@@ -5356,9 +5356,9 @@ MonoBehaviour:
         Owner: {fileID: 1554013560792930}
         DebugActive: 0
         BoundLight: {fileID: 3698319532398288450}
-        Mode: 1
-        Duration: 0.2
-        StartsOff: 1
+        Mode: 3
+        Duration: 0.97
+        StartsOff: 0
         DisableOnStop: 1
         RelativeValues: 1
         ResetShakerValuesAfterShake: 1
@@ -5370,8 +5370,8 @@ MonoBehaviour:
         ModifyColor: 1
         ColorOverTime:
           serializedVersion: 2
-          key0: {r: 1, g: 1, b: 1, a: 1}
-          key1: {r: 1, g: 1, b: 1, a: 1}
+          key0: {r: 1, g: 0.31763276, b: 0.19215685, a: 1}
+          key1: {r: 1, g: 0.6403494, b: 0.10849059, a: 1}
           key2: {r: 0, g: 0, b: 0, a: 0}
           key3: {r: 0, g: 0, b: 0, a: 0}
           key4: {r: 0, g: 0, b: 0, a: 0}
@@ -5379,7 +5379,7 @@ MonoBehaviour:
           key6: {r: 0, g: 0, b: 0, a: 0}
           key7: {r: 0, g: 0, b: 0, a: 0}
           ctime0: 0
-          ctime1: 65535
+          ctime1: 11180
           ctime2: 0
           ctime3: 0
           ctime4: 0
@@ -5387,8 +5387,8 @@ MonoBehaviour:
           ctime6: 0
           ctime7: 0
           atime0: 0
-          atime1: 65535
-          atime2: 0
+          atime1: 26792
+          atime2: 65535
           atime3: 0
           atime4: 0
           atime5: 0
@@ -5396,34 +5396,25 @@ MonoBehaviour:
           atime7: 0
           m_Mode: 0
           m_NumColorKeys: 2
-          m_NumAlphaKeys: 2
-        InstantColor: {r: 0.99464744, g: 1, b: 0.8254717, a: 1}
-        ToDestinationColor: {r: 1, g: 0, b: 0, a: 1}
+          m_NumAlphaKeys: 3
+        InstantColor: {r: 1, g: 0.88815296, b: 0.6462264, a: 1}
+        ToDestinationColor: {r: 1, g: 0.6522902, b: 0.5801887, a: 0}
         ModifyIntensity: 1
         IntensityCurve:
           serializedVersion: 2
           m_Curve:
           - serializedVersion: 3
-            time: 0
-            value: 0
-            inSlope: 0
-            outSlope: 0
+            time: -0.16786575
+            value: 1.0047073
+            inSlope: -0.9649402
+            outSlope: -0.9649402
             tangentMode: 0
             weightedMode: 0
             inWeight: 0
-            outWeight: 0
+            outWeight: 0.16528974
           - serializedVersion: 3
-            time: 0.3
-            value: 1
-            inSlope: 0
-            outSlope: 0
-            tangentMode: 0
-            weightedMode: 0
-            inWeight: 0
-            outWeight: 0
-          - serializedVersion: 3
-            time: 1
-            value: 0
+            time: 0.98553467
+            value: 0.0023498535
             inSlope: 0
             outSlope: 0
             tangentMode: 0
@@ -5436,8 +5427,8 @@ MonoBehaviour:
         RemapIntensityZero: 0
         RemapIntensityOne: 1
         InstantIntensity: 1
-        ToDestinationIntensity: 1
-        ModifyRange: 1
+        ToDestinationIntensity: 30
+        ModifyRange: 0
         RangeCurve:
           serializedVersion: 2
           m_Curve:
@@ -5475,13 +5466,13 @@ MonoBehaviour:
         RemapRangeOne: 10
         InstantRange: 10
         ToDestinationRange: 10
-        ModifyShadowStrength: 1
+        ModifyShadowStrength: 0
         ShadowStrengthCurve:
           serializedVersion: 2
           m_Curve:
           - serializedVersion: 3
-            time: 0
-            value: 0
+            time: -0.054164886
+            value: 0.99057007
             inSlope: 0
             outSlope: 0
             tangentMode: 0
@@ -5489,8 +5480,8 @@ MonoBehaviour:
             inWeight: 0
             outWeight: 0
           - serializedVersion: 3
-            time: 0.3
-            value: 1
+            time: 0.19167024
+            value: 0.9764137
             inSlope: 0
             outSlope: 0
             tangentMode: 0
@@ -5679,19 +5670,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7173651779112309228, guid: 17ad832cf1e284843a418d07a4c7f9b9, type: 3}
       propertyPath: m_BoundingSphereOverride.w
-      value: 0.2421875
+      value: 3.8e-44
       objectReference: {fileID: 0}
     - target: {fileID: 7173651779112309228, guid: 17ad832cf1e284843a418d07a4c7f9b9, type: 3}
       propertyPath: m_BoundingSphereOverride.x
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 7173651779112309228, guid: 17ad832cf1e284843a418d07a4c7f9b9, type: 3}
-      propertyPath: m_BoundingSphereOverride.y
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7173651779112309228, guid: 17ad832cf1e284843a418d07a4c7f9b9, type: 3}
+      propertyPath: m_BoundingSphereOverride.y
+      value: 3.6e-43
+      objectReference: {fileID: 0}
+    - target: {fileID: 7173651779112309228, guid: 17ad832cf1e284843a418d07a4c7f9b9, type: 3}
       propertyPath: m_BoundingSphereOverride.z
-      value: NaN
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 17ad832cf1e284843a418d07a4c7f9b9, type: 3}
