@@ -43,6 +43,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1bb82961b21ac4752a19a7f92acf8f00, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  gameSettings: {fileID: 11400000, guid: 1cae91a5fef7f4013b3e850d34d71ace, type: 2}
   entity: {fileID: 5997387755834144731, guid: 67be7d6c691f149cab3cca0e5eda5dcf, type: 3}
   frequency: 5
   spawnOnAwake: 0

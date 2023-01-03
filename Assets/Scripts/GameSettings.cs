@@ -1,6 +1,9 @@
 using UnityEngine;
 
-public static class GameSettings
+[CreateAssetMenu]
+public class GameSettings : ScriptableObject
 {
-    public static bool playerStartsWithGun = false;
+    public bool playerStartsWithGun = false;
+    public bool peacefulMode = false;
+    public bool openLevel = true;
 }

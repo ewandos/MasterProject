@@ -1,11 +1,9 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
 using Sirenix.OdinInspector;
 using UnityEngine;
 
 public class ObjectSpawner : MonoBehaviour
 {
+    public GameSettings gameSettings;
     public GameObject entity;
     public float frequency = 5f;
     public bool spawnOnAwake;
@@ -22,7 +20,7 @@ public class ObjectSpawner : MonoBehaviour
 
     private void Awake()
     {
-        if (spawnOnAwake)
+        if (spawnOnAwake && !gameSettings.peacefulMode)
         {
             SpawnEntity();
             cooldown = frequency;
@@ -33,6 +31,7 @@ public class ObjectSpawner : MonoBehaviour
 
     private void Update()
     {
+        if (gameSettings.peacefulMode) return;
         bool cooldownHasNotExpired = cooldown > 0f;
         if (cooldownHasNotExpired)
         {

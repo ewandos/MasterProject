@@ -5,16 +5,11 @@ public class UIAmmo : MonoBehaviour
 {
     public TextMeshProUGUI ammoUI;
     public TextMeshProUGUI carrierAmmoUI;
-    
+
     public void Initialize(Gun gun)
     {
         ammoUI.text = gun.amunition.ToString();
         carrierAmmoUI.text = gun.amunitionCarried.ToString();
-
-        if(GameSettings.playerStartsWithGun)
-            Show();
-        else
-            Hide();
 
         gun.toggledGun += b =>
         {
