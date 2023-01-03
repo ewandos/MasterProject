@@ -3682,7 +3682,7 @@ Transform:
   - {fileID: 699072711}
   - {fileID: 411023856}
   m_Father: {fileID: 0}
-  m_RootOrder: 2
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &223071252
 PrefabInstance:
@@ -4503,6 +4503,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1276648503, guid: f8ba66dcbe6ec3146885d047ad89fcd1, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2672573636125235095, guid: f8ba66dcbe6ec3146885d047ad89fcd1, type: 3}
       propertyPath: m_Name
       value: boss_room
