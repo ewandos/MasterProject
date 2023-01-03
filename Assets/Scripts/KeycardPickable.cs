@@ -1,9 +1,12 @@
+using System;
+
 public class KeycardPickable : Pickable
 {
     public int code = 0;
-
-    protected override void OnPickUp(PlayerManager manager)
+    public static event Action pickedKeycard;
+    protected override bool OnPickUp(PlayerManager manager)
     {
         manager.keychain.AddCode(code);
+        return true;
     }
 }

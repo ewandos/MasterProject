@@ -7,6 +7,7 @@ using Random = UnityEngine.Random;
 
 public class MazeGenerator : MonoBehaviour
 {
+    public GameSettings gameSettings;
     public HubController startHub;
     public HubController targetHub;
     public int maxLockedHubs = 5;
@@ -24,6 +25,7 @@ public class MazeGenerator : MonoBehaviour
     private bool finishedGeneration = false;
     void Start()
     {
+        if (gameSettings.openLevel) return;
         hubs = GetComponentsInChildren<HubController>().ToList();
         hubs.Remove(startHub);
         if (debug) Debug.Log("Found " + hubs.Count + " hubs.");
@@ -41,6 +43,7 @@ public class MazeGenerator : MonoBehaviour
 
     private void FixedUpdate()
     {
+        if (gameSettings.openLevel) return;
         if (fastestPath == null) return;
         
         for (int i = 0; i < fastestPath.corners.Length - 1; i++)

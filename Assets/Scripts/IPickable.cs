@@ -16,11 +16,11 @@ public abstract class Pickable : MonoBehaviour
         if (isCollected) return;
         PlayerManager manager = other.GetComponent<PlayerManager>();
         if (manager == null) return;
-        OnPickUp(manager);
+        if (!OnPickUp(manager)) return;
         isCollected = true;
         audio.Play();
         Destroy(gameObject, 0.2f);
     }
 
-    protected abstract void OnPickUp(PlayerManager manager);
+    protected abstract bool OnPickUp(PlayerManager manager);
 }

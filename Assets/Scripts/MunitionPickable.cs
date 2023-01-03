@@ -1,9 +1,13 @@
+using System;
+
 public class MunitionPickable : Pickable
 {
     public int amount = 5;
-
-    protected override void OnPickUp(PlayerManager manager)
+    public static event Action pickedMunition;
+    
+    protected override bool OnPickUp(PlayerManager manager)
     {
         manager.gun.AddAmmo(amount);
+        return true;
     }
 }
