@@ -81,6 +81,13 @@ public class DoorController : MonoBehaviour
         foreach (int code in codes)
             foundCodeResults.Add( manager.keychain.HasKeyFor(code));
 
+        if (manager.keychain.hasMasterKey)
+        {
+            doorStatusLightsController.DisplayValidState();
+            Open();
+            return;
+        }
+        
         if (allCodesRequired && !foundCodeResults.Contains(false))
         {
             doorStatusLightsController.DisplayValidState();
