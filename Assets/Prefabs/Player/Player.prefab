@@ -1206,6 +1206,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2b17116da26c24385a897aa44af2836f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  gameSettings: {fileID: 0}
+  hasMasterKey: 0
   keychain: 
 --- !u!1 &1429624353128397880
 GameObject:
@@ -2029,7 +2031,7 @@ Light:
   serializedVersion: 10
   m_Type: 2
   m_Shape: 0
-  m_Color: {r: 0.8443396, g: 0.9819798, b: 1, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_Intensity: 79.828316
   m_Range: 10
   m_SpotAngle: 30
