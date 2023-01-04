@@ -22,4 +22,19 @@ public class Keychain : MonoBehaviour
     {
         return keychain.Contains(code);
     }
+
+    public void RemoveCode(int code)
+    {
+        keychain.Remove(code);
+    }
+
+    public int GetKeycardCount()
+    {
+        return keychain.Count;
+    }
+
+    public void RemoveNumberOfCodes(int count)
+    {
+        keychain.RemoveRange(0, count);
+    }
 }

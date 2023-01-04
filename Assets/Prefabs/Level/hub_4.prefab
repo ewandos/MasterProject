@@ -215,12 +215,20 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8360268934610150417, guid: 8a4c95b6810f5a1489b7bde0767248a3, type: 3}
+      propertyPath: consumesKeycard
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8360268934610150417, guid: 8a4c95b6810f5a1489b7bde0767248a3, type: 3}
       propertyPath: allCodesRequired
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8360268934610150417, guid: 8a4c95b6810f5a1489b7bde0767248a3, type: 3}
       propertyPath: codes.Array.size
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8360268934610150417, guid: 8a4c95b6810f5a1489b7bde0767248a3, type: 3}
+      propertyPath: acceptEveryKeycard
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8360268934610150417, guid: 8a4c95b6810f5a1489b7bde0767248a3, type: 3}
       propertyPath: codes.Array.data[0]
@@ -305,12 +313,20 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8360268934610150417, guid: 8a4c95b6810f5a1489b7bde0767248a3, type: 3}
+      propertyPath: consumesKeycard
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8360268934610150417, guid: 8a4c95b6810f5a1489b7bde0767248a3, type: 3}
       propertyPath: allCodesRequired
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8360268934610150417, guid: 8a4c95b6810f5a1489b7bde0767248a3, type: 3}
       propertyPath: codes.Array.size
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8360268934610150417, guid: 8a4c95b6810f5a1489b7bde0767248a3, type: 3}
+      propertyPath: acceptEveryKeycard
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8360268934610150417, guid: 8a4c95b6810f5a1489b7bde0767248a3, type: 3}
       propertyPath: codes.Array.data[0]
@@ -381,6 +397,14 @@ PrefabInstance:
     - target: {fileID: 593728703068226951, guid: 8a4c95b6810f5a1489b7bde0767248a3, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8360268934610150417, guid: 8a4c95b6810f5a1489b7bde0767248a3, type: 3}
+      propertyPath: consumesKeycard
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8360268934610150417, guid: 8a4c95b6810f5a1489b7bde0767248a3, type: 3}
+      propertyPath: acceptEveryKeycard
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8a4c95b6810f5a1489b7bde0767248a3, type: 3}
@@ -457,12 +481,20 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8360268934610150417, guid: 8a4c95b6810f5a1489b7bde0767248a3, type: 3}
+      propertyPath: consumesKeycard
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8360268934610150417, guid: 8a4c95b6810f5a1489b7bde0767248a3, type: 3}
       propertyPath: allCodesRequired
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8360268934610150417, guid: 8a4c95b6810f5a1489b7bde0767248a3, type: 3}
       propertyPath: codes.Array.size
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8360268934610150417, guid: 8a4c95b6810f5a1489b7bde0767248a3, type: 3}
+      propertyPath: acceptEveryKeycard
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8360268934610150417, guid: 8a4c95b6810f5a1489b7bde0767248a3, type: 3}
       propertyPath: codes.Array.data[0]

@@ -8,6 +8,8 @@ public class DoorController : MonoBehaviour
     public bool startClosed;
     public bool openOnTriggerEnter;
     public bool allCodesRequired;
+    public bool consumesKeycard;
+    public bool acceptEveryKeycard;
     public List<int> codes = new List<int>();
     public List<DoorController> siblingDoors = new List<DoorController>();
     
@@ -17,6 +19,7 @@ public class DoorController : MonoBehaviour
     private DoorStatusLightsController doorStatusLightsController;
     private DoorAudioController doorAudioController;
     private bool isClosed;
+    private bool wasUnlocked;
 
     private void Start()
     {
@@ -37,18 +40,19 @@ public class DoorController : MonoBehaviour
         doorStatusLightsController.Initialize(codes.Count);
     }
 
-    public void Open()
+    public void Open(bool silent = false)
     {
         if (!isClosed) return;
+        wasUnlocked = true;
         isClosed = false;
         animator.SetBool("isClosed", isClosed);
         collider.enabled = isClosed;
         obstacle.enabled = isClosed;
-        doorAudioController.PlayOpen();
+        if (!silent) doorAudioController.PlayOpen();
 
         foreach (DoorController doorController in siblingDoors)
         {
-            doorController.Open();
+            doorController.Open(true);
         }
     }
 
@@ -63,13 +67,15 @@ public class DoorController : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
+        
         if (openOnTriggerEnter)
         {
             Open();
             doorStatusLightsController.DisplayValidState();
             return;
         }
-
+        
+        if (wasUnlocked) return;
         PlayerManager manager = other.GetComponent<PlayerManager>();
         if (manager != null)
             EvaluateKeychain(manager);
@@ -81,30 +87,39 @@ public class DoorController : MonoBehaviour
         foreach (int code in codes)
             foundCodeResults.Add( manager.keychain.HasKeyFor(code));
 
-        if (manager.keychain.hasMasterKey)
+        bool oneKeycardMatches = foundCodeResults.Contains(true);
+        bool everyKeycardMatches = !foundCodeResults.Contains(false);
+        bool numberOfKeycardMatches = manager.keychain.GetKeycardCount() >= codes.Count;
+
+        if (manager.keychain.hasMasterKey 
+            || allCodesRequired && everyKeycardMatches 
+            || !allCodesRequired && oneKeycardMatches
+            || acceptEveryKeycard && numberOfKeycardMatches)
         {
-            doorStatusLightsController.DisplayValidState();
+            wasUnlocked = true;
             Open();
+            doorStatusLightsController.DisplayValidState();
+            if (consumesKeycard) ConsumeKeycards(manager.keychain);
             return;
         }
-        
-        if (allCodesRequired && !foundCodeResults.Contains(false))
-        {
-            doorStatusLightsController.DisplayValidState();
-            Open();
-        }
-        
-        if (!allCodesRequired && foundCodeResults.Contains(true))
-        {
-            Open();
-            doorStatusLightsController.DisplayValidState();
-        }
 
-        int numberOfValidKeys = foundCodeResults.Count(foundCodeResult => foundCodeResult);
+        int numberOfValidKeys = acceptEveryKeycard ? 
+            manager.keychain.GetKeycardCount() 
+            : foundCodeResults.Count(foundCodeResult => foundCodeResult);
+        
         doorStatusLightsController.DisplayDoorState(numberOfValidKeys);
         
         if (numberOfValidKeys < codes.Count)
             doorAudioController.PlayLocked();
+    }
+
+    private void ConsumeKeycards(Keychain keychain)
+    {
+        if (acceptEveryKeycard)
+            keychain.RemoveNumberOfCodes(codes.Count);
+        else
+            foreach (int code in codes)
+                keychain.RemoveCode(code);
     }
 
     private void OnTriggerExit(Collider other)
