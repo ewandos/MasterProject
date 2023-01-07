@@ -3,7 +3,6 @@ using UnityEngine;
 public class MusicController : MonoBehaviour
 {
     public AudioClip suspenseMusic;
-    public AudioClip bossMusic;
     public PlayerHealth playerHealth;
     private bool _playedSuspenseMusic = false;
     
@@ -14,21 +13,10 @@ public class MusicController : MonoBehaviour
         audioSource = GetComponent<AudioSource>();
         playerHealth.damageTakenEvent += i =>
         {
-            if (_playedSuspenseMusic) return;
+            if (_playedSuspenseMusic || playerHealth._health / playerHealth._maxHealth > 0.2f) return;
             _playedSuspenseMusic = true;
-            PlaySuspenseMusic();
-        } ;
-    }
-
-    public void PlaySuspenseMusic()
-    {
-        audioSource.clip = suspenseMusic;
-        audioSource.Play();
-    }
-
-    public void PlayBossMusic()
-    {
-        audioSource.clip = bossMusic;
-        audioSource.Play();
+            audioSource.clip = suspenseMusic;
+            audioSource.Play();
+        };
     }
 }

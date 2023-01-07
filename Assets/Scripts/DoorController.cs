@@ -2,9 +2,11 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 using UnityEngine.AI;
+using UnityEngine.Events;
 
 public class DoorController : MonoBehaviour
 {
+    public UnityEvent onOpen;
     public bool startClosed;
     public bool openOnTriggerEnter;
     public bool allCodesRequired;
@@ -45,6 +47,7 @@ public class DoorController : MonoBehaviour
         if (!isClosed) return;
         wasUnlocked = true;
         isClosed = false;
+        onOpen.Invoke();
         animator.SetBool("isClosed", isClosed);
         collider.enabled = isClosed;
         obstacle.enabled = isClosed;

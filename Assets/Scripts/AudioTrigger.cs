@@ -4,13 +4,18 @@ public class AudioTrigger : MonoBehaviour
 {
     public AudioSource audioSource;
     public AudioClip audioClip;
-    private void OnTriggerEnter(Collider other)
+
+    public void PlaySound()
     {
         if (audioSource != null)
         {
-            audioSource.clip = audioClip;
-            audioSource.Play();
+            audioSource.PlayOneShot(audioClip);
             Destroy(gameObject);
         }
+    }
+    
+    private void OnTriggerEnter(Collider other)
+    {
+        PlaySound();
     }
 }
