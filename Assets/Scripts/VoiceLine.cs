@@ -27,7 +27,8 @@ public abstract class VoiceLine : ScriptableObject
             currentIndex = Random.Range(0, audioClips.Count);
         else
             currentIndex++;
-
+        
+        Debug.Log("Play" + currentIndex);
         GameState.PlayVoiceLine?.Invoke(audioClips[currentIndex]);
     }
 

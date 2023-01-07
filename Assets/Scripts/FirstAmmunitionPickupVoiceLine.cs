@@ -5,7 +5,7 @@ public class FirstAmmunitionPickupVoiceLine : VoiceLine
 {
     protected override void BindEvents()
     {
-        GameState.PlayerPickedUpAmmunitionEvent.Bind(Evaluate);
+        GameState.PlayerPickedUpAmmunitionEvent.Event += b => Evaluate();
     }
 
     protected override bool ConditionCheck()

@@ -5,7 +5,7 @@ public class FirstKeycardPickupVoiceLine : VoiceLine
 {
     protected override void BindEvents()
     {
-        GameState.PlayerPickedUpKeycardEvent.Bind(Evaluate);
+        GameState.PlayerPickedUpKeycardEvent.Event += obj => Evaluate();
     }
 
     protected override bool ConditionCheck()

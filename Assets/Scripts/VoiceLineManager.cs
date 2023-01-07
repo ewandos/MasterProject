@@ -1,4 +1,3 @@
-using System;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
@@ -12,7 +11,7 @@ public class VoiceLineManager : MonoBehaviour
     {
         audioSource = GetComponent<AudioSource>();
         voiceLines = Resources.LoadAll<VoiceLine>("Voicelines").ToList();
-        GameState.PlayVoiceLine.BindWithParameters(PlayVoiceLine);
+        GameState.PlayVoiceLine.Event += PlayVoiceLine;
     }
 
     private void FixedUpdate()
@@ -25,6 +24,7 @@ public class VoiceLineManager : MonoBehaviour
 
     public void PlayVoiceLine(AudioClip audioClip)
     {
+        Debug.Log("Play Voice LIne" , audioClip);
         audioSource.PlayOneShot(audioClip);
     }
 }

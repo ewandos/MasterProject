@@ -5,7 +5,7 @@ public class GameEvent<T>
 {
     public bool wasRaisedOnce;
     public int raisedCount;
-    private event Action<T> Event;
+    public event Action<T> Event;
     private float lastRaiseTimestamp;
 
     public void Invoke(T value)
@@ -14,16 +14,6 @@ public class GameEvent<T>
         wasRaisedOnce = true;
         lastRaiseTimestamp = Time.timeSinceLevelLoad;
         raisedCount++;
-    }
-
-    public void Bind(Action callback)
-    {
-        Event += obj => callback();
-    }
-
-    public void BindWithParameters(Action<T> callback)
-    {
-        Event += callback;
     }
 
     public bool TimePassedSinceLastRaise(float seconds, bool ignoreRaisedOnce = false)

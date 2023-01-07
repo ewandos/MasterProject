@@ -10400,7 +10400,7 @@ MonoBehaviour:
         Owner: {fileID: 348262272}
         DebugActive: 0
         BoundLight: {fileID: 1130827716}
-        Mode: 1
+        Mode: 0
         Duration: 0.2
         StartsOff: 1
         DisableOnStop: 1
@@ -10569,7 +10569,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6ff1500101c0440b59c66803852e0523, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  destroyRange: 20
+  destroyRange: 50
 --- !u!1 &3616628657438741433
 GameObject:
   m_ObjectHideFlags: 0

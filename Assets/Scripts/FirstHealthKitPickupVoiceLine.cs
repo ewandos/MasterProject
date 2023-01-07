@@ -4,7 +4,7 @@ public class FirstHealthKitPickupVoiceLine : VoiceLine
 {
     protected override void BindEvents()
     {
-        GameState.PlayerPickedUpHealthPackEvent.Bind(Evaluate);
+        GameState.PlayerPickedUpHealthPackEvent.Event += b => Evaluate();
     }
 
     protected override bool ConditionCheck()

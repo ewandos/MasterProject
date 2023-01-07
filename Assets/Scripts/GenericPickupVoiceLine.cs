@@ -5,7 +5,7 @@ public class GenericPickupVoiceLine  : VoiceLine
 {
     protected override void BindEvents()
     {
-        GameState.PlayerPickedUpItem.Bind(Evaluate);
+        GameState.PlayerPickedUpItem.Event += b => Evaluate();
     }
 
     protected override bool ConditionCheck()

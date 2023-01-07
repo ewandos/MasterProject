@@ -5,7 +5,7 @@ public class PlayerTriedToPickUpHealthPackFullLifeVoiceLine : VoiceLine
 {
     protected override void BindEvents()
     {
-        GameState.PlayerTriedToPickUpHealthPackButIsFullLifeEvent.Bind(Evaluate);
+        GameState.PlayerTriedToPickUpHealthPackButIsFullLifeEvent.Event += b => Evaluate();
     }
 
     protected override bool ConditionCheck()
