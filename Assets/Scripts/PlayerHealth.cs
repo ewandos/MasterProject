@@ -1,5 +1,6 @@
 using System;
 using MoreMountains.Feedbacks;
+using Sirenix.OdinInspector;
 
 public class PlayerHealth : IHealth
 {
@@ -10,6 +11,8 @@ public class PlayerHealth : IHealth
     
     public MMF_Player onDamageTakenFeedback;
     public MMF_Player onDeathFeedback;
+    
+    [Button]
     public override void TakeDamage(int amount)
     {
         base.TakeDamage(amount);
@@ -26,6 +29,7 @@ public class PlayerHealth : IHealth
         updatedHealthEvent?.Invoke(_health);
     }
 
+    [Button]
     public override void Death()
     {
         onDeathFeedback.PlayFeedbacks();

@@ -946,7 +946,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4008097677856758269}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.024, y: -1.307, z: 0.099}
+  m_LocalPosition: {x: 0, y: -1.199, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 8454433529399457136}
@@ -1287,7 +1287,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5997387755834144731}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -8.8, y: 1.16, z: 12.2}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 0.8, y: 0.8, z: 0.8}
   m_Children:
   - {fileID: 4383215433688810311}
@@ -1574,6 +1574,7 @@ MonoBehaviour:
   _health: 50
   _maxHealth: 50
   _isAlive: 1
+  corpseGO: {fileID: 2355775747042143165, guid: f9706c1e2f2bd445bae16cee124abadb, type: 3}
 --- !u!1 &6075805151507519371
 GameObject:
   m_ObjectHideFlags: 0

@@ -8,6 +8,7 @@ public class GameManager : MonoBehaviour
     private void Start()
     {
         playerManager.health.deathEvent += () => { Invoke(nameof(OnPlayerDeath), 1f);};
+        GameState.GameStartedEvent?.Invoke(true);
     }
 
     private void OnPlayerDeath()
