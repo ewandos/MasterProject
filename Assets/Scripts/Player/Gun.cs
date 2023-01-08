@@ -1,4 +1,5 @@
 using System;
+using Menu;
 using MoreMountains.Feedbacks;
 using UnityEngine;
 
@@ -49,7 +50,8 @@ public class Gun : MonoBehaviour
     void Update()
     {
         if (Input.GetButton("Fire1") 
-            && Time.time >= nexTimeToFire)
+            && Time.time >= nexTimeToFire
+            && !PauseMenu.GameIsPaused)
         {
             if (amunition > 0)
             {

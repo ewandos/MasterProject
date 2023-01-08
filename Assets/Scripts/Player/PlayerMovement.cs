@@ -1,3 +1,4 @@
+using Menu;
 using MoreMountains.Feedbacks;
 using UnityEngine;
 
@@ -40,17 +41,20 @@ public class PlayerMovement : MonoBehaviour
 
 	void Update()
     {
-		float finalSpeed = HandleMovement();
-		HandleMouseLook();
+	    if (!PauseMenu.GameIsPaused)
+	    {
+		    float finalSpeed = HandleMovement();
+		    HandleMouseLook();
 
-		if (hasMovementInput)
-		{
-			audioClipSequencer.SetInterval(2 / finalSpeed);
-		}
-		else
-		{
-			audioClipSequencer.Stop();
-		}
+		    if (hasMovementInput)
+		    {
+			    audioClipSequencer.SetInterval(2 / finalSpeed);
+		    }
+		    else
+		    {
+			    audioClipSequencer.Stop();
+		    }
+	    }
     }
 
 	float HandleMovement() {
