@@ -13,7 +13,7 @@ public class MusicController : MonoBehaviour
         audioSource = GetComponent<AudioSource>();
         playerHealth.damageTakenEvent += i =>
         {
-            if (_playedSuspenseMusic || playerHealth._health / playerHealth._maxHealth > 0.2f) return;
+            if (_playedSuspenseMusic || playerHealth.GetHealthPercentage() > 0.2f) return;
             _playedSuspenseMusic = true;
             audioSource.clip = suspenseMusic;
             audioSource.Play();

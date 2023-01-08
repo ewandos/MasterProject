@@ -35,4 +35,9 @@ public class PlayerHealth : IHealth
         onDeathFeedback.PlayFeedbacks();
         deathEvent?.Invoke();
     }
+
+    public float GetHealthPercentage()
+    {
+        return (float)_health / _maxHealth;
+    }
 }
