@@ -28,14 +28,25 @@ public class Goal_Base : MonoBehaviour, IGoal
 
     void Start()
     {
-        DebugUI = FindObjectOfType<GOAPUI>();
+        if (FindObjectOfType<GOAPUI>())
+        {
+            DebugUI = FindObjectOfType<GOAPUI>();
+        }
+        else
+        {
+            DebugUI = null;
+        }
+        
     }
 
     void Update()
     {
         OnTickGoal();
 
-        DebugUI.UpdateGoal(this, GetType().Name, LinkedAction ? "Running" : "Paused", CalculatePriority());
+        if (DebugUI != null)
+        {
+            DebugUI.UpdateGoal(this, GetType().Name, LinkedAction ? "Running" : "Paused", CalculatePriority());
+        }
     }
 
     public virtual int CalculatePriority()
@@ -61,5 +72,6 @@ public class Goal_Base : MonoBehaviour, IGoal
     public virtual void OnGoalDeactivated()
     {
         LinkedAction = null;
+        blocking = false;
     }
 }

@@ -33,7 +33,7 @@ public class Action_Ranged_Attack : Action_Base
         if (Time.time >= nexTimeToFire)
         {
             nexTimeToFire = Time.time + firerate;
-            anim.Play("BossArmature_range_hit");
+            anim.SetBool("isAttacking", true);
             audio.playAttackBossAudio();
             damageTrigger.createRangedAttack();
         }
@@ -43,16 +43,12 @@ public class Action_Ranged_Attack : Action_Base
     {
         base.OnDeactivated();
         Animator anim = GetComponent<Animator>();
+        anim.SetBool("isAttacking", false);
         _attackGoal = null;
     }
 
     public override void OnTick()
     {
-        //var agentPos = Agent.transform.position;
-        //var distanceBetween = Vector3.Distance(_attackGoal.MoveTarget, agentPos);
-        //if enemy is in range repeat is possible here
-        //if (distanceBetween <= _attackGoal.attackRange)
-             OnActivated(LinkedGoal);
-        
+        OnActivated(LinkedGoal);
     }
 }

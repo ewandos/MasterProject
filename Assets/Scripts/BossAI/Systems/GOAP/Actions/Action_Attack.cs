@@ -27,6 +27,7 @@ public class Action_Attack : Action_Base
 
         //choose attack animation to play
 
+        
         Animator anim = GetComponent<Animator>();
         Audio audio = GetComponentInChildren<Audio>();
         DamageTrigger damageTrigger = GetComponentInChildren<DamageTrigger>();
@@ -37,7 +38,7 @@ public class Action_Attack : Action_Base
             nexTimeToFire = Time.time + firerate;
 
             audio.playAttackBossAudio();
-            anim.Play("BossArmature_meele_hit");
+            anim.SetBool("isAttacking", true);
             damageTrigger.CreateDamageThingForSeconds();
         }
     }
@@ -46,6 +47,7 @@ public class Action_Attack : Action_Base
     {
         base.OnDeactivated();
         Animator anim = GetComponent<Animator>();
+        anim.SetBool("isAttacking", false);
         _attackGoal = null;
     }
 

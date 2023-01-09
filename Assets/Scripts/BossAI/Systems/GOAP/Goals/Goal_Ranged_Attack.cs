@@ -15,6 +15,8 @@ public class Goal_Ranged_Attack : Goal_Base
 
     public override void OnTickGoal()
     {
+        CurrentPriority += PriorityBuildRate * Time.deltaTime;
+        
         // no targets
         if (Sensors.ActiveTargets == null || Sensors.ActiveTargets.Count == 0)
             return;
@@ -31,7 +33,7 @@ public class Goal_Ranged_Attack : Goal_Base
 
                     if (distanceBetween >= minDistanceToAttack)
                     {
-                        CurrentPriority += PriorityBuildRate * Time.deltaTime;
+                        
                         if (CurrentPriority > 100)
                         {
                             CurrentPriority = 100;

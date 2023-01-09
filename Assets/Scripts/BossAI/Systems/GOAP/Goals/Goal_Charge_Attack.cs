@@ -67,7 +67,6 @@ public class Goal_Charge_Attack : Goal_Base
     public override void OnGoalDeactivated()
     {
         base.OnGoalDeactivated();
-        blocking = false;
         CurrentTarget = null;
     }
     
