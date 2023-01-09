@@ -37,7 +37,7 @@ public class Melee : MonoBehaviour
         if (other.tag == "Target" && Time.time >= nexTimeToFire)
         {
             //other.GetComponent<Animator>().SetTrigger("Hit");
-            other.GetComponent<HealthSystem>().TakeDamage(damage);
+            other.GetComponent<PlayerHealth>().TakeDamage(damage);
             Instantiate(impactEffect,
                 new Vector3(other.transform.position.x, transform.position.y, other.transform.position.z),
                 other.transform.rotation);

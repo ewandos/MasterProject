@@ -11,7 +11,12 @@ public class DamageTrigger: MonoBehaviour
     public GameObject Player;
     public float bulletFlySpeed = 2f;
     public bool running;
-    
+
+    private void Start()
+    {
+        Player = FindObjectOfType<PlayerManager>().gameObject;
+    }
+
     public void CreateDamageThingForSeconds()
     {
         

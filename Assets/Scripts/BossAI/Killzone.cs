@@ -5,6 +5,6 @@ public class Killzone : MonoBehaviour
     private HealthSystem healthSystem;
     private void OnTriggerEnter(Collider other)
     {
-        other.GetComponent<HealthSystem>().TakeDamage(10000);
+        other.GetComponent<PlayerHealth>().TakeDamage(10000);
     }
 }
