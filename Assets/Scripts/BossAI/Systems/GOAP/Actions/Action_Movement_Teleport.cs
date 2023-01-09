@@ -24,7 +24,7 @@ public class Action_Movement_Teleport : Action_Base
         base.OnActivated(_linkedGoal);
         Animator anim = GetComponent<Animator>();
         
-        anim.Play("BossArmature_jump_back");
+        // anim.Play("BossArmature_jump_back");
         
         location = Agent.PickLocationInRange(SearchRange);
 

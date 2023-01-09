@@ -13,8 +13,7 @@ public enum EOffmeshLinkStatus
 public class CharacterAgent : CharacterBase
 {
     [SerializeField] float NearestPointSearchRange = 5f;
-    [SerializeField] GameObject player;
-
+    GameObject player;
     NavMeshAgent Agent;
     private Animator anim;
     bool DestinationSet = false;
@@ -34,6 +33,7 @@ public class CharacterAgent : CharacterBase
     {
         Agent = GetComponent<NavMeshAgent>();
         anim = GetComponent<Animator>();
+        player = FindObjectOfType<PlayerManager>().gameObject;
     }
 
     // Update is called once per frame

@@ -9,7 +9,7 @@ public class Bullet : MonoBehaviour
     {
         if (other.tag == "Player")
         {
-            other.GetComponent<HealthSystem>().TakeDamage(damage);
+            other.GetComponent<PlayerHealth>().TakeDamage(damage);
             if (gameObject.name == "MeleeTrigger")
             {
                 gameObject.SetActive(false);
