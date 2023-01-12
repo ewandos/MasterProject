@@ -67,8 +67,7 @@ namespace CreepAI.Behaviour
                     }
                 }
             }
-
-            Debug.Log(mostDistanceToTarget);
+            
             navMeshAgent.SetDestination(bestWaypoint.position);
             
             using (Draw.WithDuration(10))
