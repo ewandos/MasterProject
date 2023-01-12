@@ -5,6 +5,7 @@ using UnityEngine;
 
 public class Gun : MonoBehaviour
 {
+    public LayerMask layerMask;
     [SerializeField] private int damage = 10;
     [SerializeField] private float range = 100f;
     [SerializeField] private float firerate = 1.5f;
@@ -95,7 +96,7 @@ public class Gun : MonoBehaviour
         StatTracker.Instance.RangeAttackPerformed();
         amunition--;
         RaycastHit hit;
-        if (Physics.Raycast(fpsCam.transform.position, fpsCam.transform.forward, out hit, range))
+        if (Physics.Raycast(fpsCam.transform.position, fpsCam.transform.forward, out hit, range, layerMask))
         {
             IHealth target = hit.transform.GetComponent<IHealth>();
 

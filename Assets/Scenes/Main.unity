@@ -3726,6 +3726,10 @@ PrefabInstance:
       propertyPath: gameSettings
       value: 
       objectReference: {fileID: 11400000, guid: 1cae91a5fef7f4013b3e850d34d71ace, type: 2}
+    - target: {fileID: 2754961663497212298, guid: 9e0508727e596134f997432769889daf, type: 3}
+      propertyPath: layerMask.m_Bits
+      value: 1983
+      objectReference: {fileID: 0}
     - target: {fileID: 4307409046187355124, guid: 9e0508727e596134f997432769889daf, type: 3}
       propertyPath: m_Name
       value: Light
