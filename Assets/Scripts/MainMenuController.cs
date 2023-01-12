@@ -1,13 +1,19 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
 public class MainMenuController : MonoBehaviour
 {
+    public GameObject loadingUI;
+    
     public void LoadMainScene()
     {
-        SceneManager.LoadScene("Main");
+        loadingUI.SetActive(true);
+        Invoke(nameof(LoadGameScene), 0.5f);
+    }
+
+    private void LoadGameScene()
+    {
+        SceneManager.LoadSceneAsync("Main");
     }
 
     public void LoadSettingsScene()
