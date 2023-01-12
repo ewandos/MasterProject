@@ -19,6 +19,7 @@ public class PlayerHealth : IHealth
         if (_health <= 0) return;
         damageTakenEvent?.Invoke(amount);
         updatedHealthEvent?.Invoke(_health);
+        GameState.PlayerHealthUpdatedEvent.Invoke(_health);
         onDamageTakenFeedback.PlayFeedbacks();
     }
 
@@ -26,6 +27,7 @@ public class PlayerHealth : IHealth
     {
         base.Heal(amount);
         healedEvent?.Invoke(amount);
+        GameState.PlayerHealthUpdatedEvent.Invoke(_health);
         updatedHealthEvent?.Invoke(_health);
     }
 

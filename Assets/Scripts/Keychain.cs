@@ -35,6 +35,7 @@ public class Keychain : MonoBehaviour
 
     public void RemoveNumberOfCodes(int count)
     {
+        if (keychain.Count < count) return;
         keychain.RemoveRange(0, count);
     }
 }

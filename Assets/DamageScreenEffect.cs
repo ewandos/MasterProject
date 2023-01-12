@@ -9,10 +9,13 @@ public class DamageScreenEffect : MonoBehaviour
     {
         damageMaterial = GetComponent<MeshRenderer>().material;
         playerHealth = FindObjectOfType<PlayerHealth>();
+        GameState.PlayerHealthUpdatedEvent.Event += UpdateDamageOverlay;
     }
 
-    private void Update()
+    private void UpdateDamageOverlay(int health)
     {
-        damageMaterial.SetFloat("_Metallic", 1.0f - playerHealth.GetHealthPercentage());
+        Color color = damageMaterial.color;
+        color.a = Mathf.Clamp( 1 - playerHealth.GetHealthPercentage(), 0, 1 );
+        damageMaterial.color = color;
     }
 }

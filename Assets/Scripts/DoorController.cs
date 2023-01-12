@@ -7,6 +7,8 @@ using UnityEngine.Events;
 public class DoorController : MonoBehaviour
 {
     public UnityEvent onOpen;
+    public UnityEvent onOpenLate;
+    
     public bool startClosed;
     public bool openOnTriggerEnter;
     public bool allCodesRequired;
@@ -48,6 +50,7 @@ public class DoorController : MonoBehaviour
         wasUnlocked = true;
         isClosed = false;
         onOpen.Invoke();
+        Invoke(nameof(InvokeLateEvent), 1f);
         animator.SetBool("isClosed", isClosed);
         collider.enabled = isClosed;
         obstacle.enabled = isClosed;
@@ -57,6 +60,11 @@ public class DoorController : MonoBehaviour
         {
             doorController.Open(true);
         }
+    }
+
+    private void InvokeLateEvent()
+    {
+        onOpenLate.Invoke();
     }
 
     public void Close(bool silent = false)
