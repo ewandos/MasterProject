@@ -4066,6 +4066,14 @@ PrefabInstance:
       propertyPath: clearColorMode
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8394435196883291717, guid: 9e0508727e596134f997432769889daf, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0.188
+      objectReference: {fileID: 0}
+    - target: {fileID: 8394435196883291717, guid: 9e0508727e596134f997432769889daf, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0.317
+      objectReference: {fileID: 0}
     - target: {fileID: 8886768029877364508, guid: 9e0508727e596134f997432769889daf, type: 3}
       propertyPath: glowstickCount
       value: 2
