@@ -6697,7 +6697,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 413806194}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: fdf8207a156a74c1e9d21546fef8deed, type: 3}
   m_Name: 
@@ -19900,12 +19900,12 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1526670736}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: fdf8207a156a74c1e9d21546fef8deed, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  waveform: 0
+  waveform: 5
   baseStart: 1
   amplitude: 1
   phase: 0
@@ -20383,7 +20383,6 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 56ab8d4834ae246369216bf9d30c92f2, type: 3}
   - {fileID: 8300000, guid: 150249ba472594fb2b79cd2a5fd59ad2, type: 3}
   - {fileID: 8300000, guid: 945a63bf76b6344d7bbf734e1fca0a83, type: 3}
-  - {fileID: 8300000, guid: f28e1c324ed56401a84ea74fcba656f6, type: 3}
   - {fileID: 8300000, guid: 081c654f0301a413b91b79d7e66a7f48, type: 3}
   audioClip: {fileID: 0}
   delay: 15
@@ -24410,7 +24409,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1805724532948935547, guid: 45d0fb8969598d7479e08c04eab816f3, type: 3}
       propertyPath: m_RootOrder
-      value: 302
+      value: 301
       objectReference: {fileID: 0}
     - target: {fileID: 1805724532948935547, guid: 45d0fb8969598d7479e08c04eab816f3, type: 3}
       propertyPath: m_LocalScale.x
@@ -24430,7 +24429,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1805724532948935547, guid: 45d0fb8969598d7479e08c04eab816f3, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 7.5
+      value: 8.5
       objectReference: {fileID: 0}
     - target: {fileID: 1805724532948935547, guid: 45d0fb8969598d7479e08c04eab816f3, type: 3}
       propertyPath: m_LocalPosition.z
@@ -51360,6 +51359,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 073ceceda7e8a45258cc8200982fd28e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  gameSettings: {fileID: 11400000, guid: 1cae91a5fef7f4013b3e850d34d71ace, type: 2}
   gun: {fileID: 226724243}
   uiAmmo: {fileID: 1463862027}
   glowstickController: {fileID: 234784755}

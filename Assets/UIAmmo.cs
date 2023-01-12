@@ -11,23 +11,7 @@ public class UIAmmo : MonoBehaviour
         ammoUI.text = gun.amunition.ToString();
         carrierAmmoUI.text = gun.amunitionCarried.ToString();
 
-        gun.toggledGun += b =>
-        {
-            if (b) Show();
-            else Hide();
-        };
-        
         gun.updatedAmmo += (i => ammoUI.text = i.ToString());
         gun.updatedCarriedAmmo += (i => carrierAmmoUI.text = i.ToString());
-    }
-
-    public void Show()
-    {
-        GetComponent<RectTransform>().localScale = Vector3.one;
-    }
-
-    public void Hide()
-    {
-        GetComponent<RectTransform>().localScale = Vector3.zero;
     }
 }
