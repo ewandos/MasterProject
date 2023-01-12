@@ -10,6 +10,7 @@ namespace CreepAI.Behaviour
     {
         public float range = 10f;
         public SharedTransform target;
+        public SharedBool foundGroup;
         public LayerMask layerMask;
 
         public override TaskStatus OnUpdate()

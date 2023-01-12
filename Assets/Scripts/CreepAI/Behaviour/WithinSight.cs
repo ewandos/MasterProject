@@ -38,7 +38,12 @@ namespace CreepAI.Behaviour
             bool withinAngle = Vector3.Angle(direction, transform.forward) < deg;
             bool withingDistance = distance <= fovDistance;
             bool withinPassiveDistance = distance <= passiveDistance;
-            bool withingSight = (withinAngle && withingDistance) || withinPassiveDistance;
+            
+            RaycastHit hit;
+            Physics.Raycast(transform.position, target.transform.position - transform.position, out hit, fovDistance);
+            bool isInLineOfSight = hit.collider != null && hit.collider.gameObject.CompareTag("Player");
+            
+            bool withingSight = ((withinAngle && withingDistance) || withinPassiveDistance) && isInLineOfSight;
 
             if (withingSight)
                 sharedTarget.Value = target;
