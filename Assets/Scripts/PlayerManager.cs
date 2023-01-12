@@ -6,6 +6,7 @@ public class PlayerManager : MonoBehaviour
     public PlayerHealth health;
     public Keychain keychain;
     public GameSettings gameSettings;
+    public GlowstickController glowstickController;
 
     private void Start()
     {

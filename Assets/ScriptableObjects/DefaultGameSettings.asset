@@ -14,5 +14,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerStartsWithGun: 1
   peacefulMode: 1
-  playerHasMasterKey: 0
+  playerHasMasterKey: 1
   openLevel: 0

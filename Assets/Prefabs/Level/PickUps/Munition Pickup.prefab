@@ -493,7 +493,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fac9e4259e6f94160bb412bd58b76360, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  amount: 25
+  munitionAmount: 25
+  glowstickAmount: 2
 --- !u!135 &1330782690543027470
 SphereCollider:
   m_ObjectHideFlags: 0
