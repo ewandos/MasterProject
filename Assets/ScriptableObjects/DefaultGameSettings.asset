@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6a1b96c87cab4be5a12211976dc600f5, type: 3}
   m_Name: DefaultGameSettings
   m_EditorClassIdentifier: 
-  playerStartsWithGun: 1
+  playerStartsWithGun: 0
   peacefulMode: 0
-  playerHasMasterKey: 1
+  playerHasMasterKey: 0
   openLevel: 0
