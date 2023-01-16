@@ -35,13 +35,16 @@ public class Action_Charge_Attack : Action_Base
         Agent.MoveTo(location, ChargeSpeed, ChargeAcceleration);
 
         audio.playAttackBossAudio();
-        anim.Play("BossArmature_meele_hit");
+        anim.Play("BossArmature|charge_attack");
+        anim.SetBool("isAttackingCharge", true);
         damageTrigger.CreateDamageThingForSeconds();
     }
 
     public override void OnDeactivated()
     {
         base.OnDeactivated();
+        Animator anim = GetComponent<Animator>();
+        anim.SetBool("isAttackingCharge", false);
         _attackGoal = null;
     }
 

@@ -5,6 +5,7 @@ using UnityEngine;
 public class Bullet : MonoBehaviour
 {
     private int damage = 5;
+    public bool permanent;
     private void OnTriggerEnter(Collider other)
     {
         if (other.tag == "Player")
@@ -15,7 +16,10 @@ public class Bullet : MonoBehaviour
                 gameObject.SetActive(false);
                 return;
             }
-            Destroy(gameObject);
+            if (!permanent)
+            {
+                Destroy(gameObject);
+            }
         }
     }
 }

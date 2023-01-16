@@ -11,12 +11,14 @@ public class Goal_Movement : Goal_Base
     [SerializeField] private float distanceBetween = 0;
     DetectableTarget CurrentTarget;
     [SerializeField] int CurrentPriority = 0;
+    [SerializeField] bool Currentblocking;
 
     public Vector3 MoveTarget => CurrentTarget != null ? CurrentTarget.transform.position : transform.position;
 
     public override void OnTickGoal()
     {
         CurrentPriority = 0;
+        Currentblocking = blocking;
 
         // no targets
         if (Sensors.ActiveTargets == null || Sensors.ActiveTargets.Count == 0)

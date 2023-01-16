@@ -135,11 +135,30 @@ public class CharacterAgent : CharacterBase
 
     public virtual void SetDestination(Vector3 destination)
     {
-        // find nearest spot on navmesh and move there
-        NavMeshHit hitResult;
-        if (NavMesh.SamplePosition(destination, out hitResult, NearestPointSearchRange, NavMesh.AllAreas))
+        float closestTargetDistance = float.MaxValue;
+        NavMeshPath Path = null;
+        NavMeshPath ShortestPath = null;
+
+        Path = new NavMeshPath();
+        if (NavMesh.CalculatePath(transform.position, destination, Agent.areaMask, Path))
         {
-            Agent.SetDestination(hitResult.position);
+            float dist = Vector3.Distance(transform.position, Path.corners[0]);
+
+            for (int j = 1; j < Path.corners.Length; j++)
+            {
+                dist += Vector3.Distance(Path.corners[j - 1], Path.corners[j]);
+            }
+
+            if (dist < closestTargetDistance)
+            {
+                closestTargetDistance = dist;
+                ShortestPath = Path;
+            }
+        }
+
+        if (ShortestPath != null)
+        {
+            Agent.SetPath(ShortestPath);
             DestinationSet = true;
             ReachedDestination = false;
         }

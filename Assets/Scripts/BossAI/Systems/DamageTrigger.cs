@@ -10,6 +10,7 @@ public class DamageTrigger: MonoBehaviour
     public GameObject bulletPrefab;
     public GameObject Player;
     public float bulletFlySpeed = 2f;
+    public float bulletAmount = 3f;
     public bool running;
 
     private void Start()
@@ -48,9 +49,36 @@ public class DamageTrigger: MonoBehaviour
             * bulletFlySpeed, ForceMode.VelocityChange);
         
         
-        Destroy(newBullet, 2);
+        Destroy(newBullet, 5);
+    }
+    
+    public void createRangedMultiAttack()
+    {
+        var time = 0f;
+        for (int i = 0; i < bulletAmount; i++)
+        {
+            StartCoroutine(SpawnRangedAttackAfter(time));
+            time += 0.4f;
+        }
     }
   
+    IEnumerator SpawnRangedAttackAfter(float seconds)
+    {
+        yield return new WaitForSeconds(seconds);
+        
+        var newBullet = Instantiate(bulletPrefab);
+        
+        newBullet.transform.position = EnemyBulletSpawnPoint.transform.position;
+
+        float slowerBullet = bulletFlySpeed / 2f;
+            
+        //angle bullet to player
+        newBullet.GetComponent<Rigidbody>().AddForce(
+            (Player.transform.position - newBullet.transform.position) 
+            * slowerBullet, ForceMode.VelocityChange);
+        Destroy(newBullet, 2);
+    }
+    
     IEnumerator LateCall(float seconds)
     {
         if (!EnemyCube.activeInHierarchy)

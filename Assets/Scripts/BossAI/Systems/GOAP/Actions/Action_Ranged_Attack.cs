@@ -33,9 +33,19 @@ public class Action_Ranged_Attack : Action_Base
         if (Time.time >= nexTimeToFire)
         {
             nexTimeToFire = Time.time + firerate;
-            anim.SetBool("isAttacking", true);
+            anim.SetBool("isAttackingRanged", true);
             audio.playAttackBossAudio();
-            damageTrigger.createRangedAttack();
+
+            var rand = Random.Range(0, 101);
+            if (rand > 50)
+            {
+                damageTrigger.createRangedAttack();
+            }
+            else
+            {
+                damageTrigger.createRangedMultiAttack();
+            }
+            
         }
     }
 
@@ -43,7 +53,7 @@ public class Action_Ranged_Attack : Action_Base
     {
         base.OnDeactivated();
         Animator anim = GetComponent<Animator>();
-        anim.SetBool("isAttacking", false);
+        anim.SetBool("isAttackingRanged", false);
         _attackGoal = null;
     }
 
