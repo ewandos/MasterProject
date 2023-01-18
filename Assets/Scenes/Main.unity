@@ -1417,6 +1417,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2161741135251404236, guid: 899ad3e1c11979f429768463a815c2ab, type: 3}
+      propertyPath: attackRange
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 4400948816453624695, guid: 899ad3e1c11979f429768463a815c2ab, type: 3}
+      propertyPath: stoppingDistance
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 7067205611380343490, guid: 899ad3e1c11979f429768463a815c2ab, type: 3}
       propertyPath: m_Name
       value: Boss 2
@@ -3850,6 +3858,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1851393451, guid: 9e0508727e596134f997432769889daf, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
     - target: {fileID: 2075707448, guid: 9e0508727e596134f997432769889daf, type: 3}
       propertyPath: PositionWiggleProperties.AmplitudeMax.x
       value: 0.5
@@ -3970,6 +3982,14 @@ PrefabInstance:
       propertyPath: FeedbacksList.Array.data[3].RandomSfx.Array.data[11]
       value: 
       objectReference: {fileID: 8300000, guid: 31aadea51019b49849a0f9abef98d84c, type: 3}
+    - target: {fileID: 1780536080471066246, guid: 9e0508727e596134f997432769889daf, type: 3}
+      propertyPath: m_Name
+      value: GunModel
+      objectReference: {fileID: 0}
+    - target: {fileID: 1780536080471066246, guid: 9e0508727e596134f997432769889daf, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
     - target: {fileID: 2456799848304936727, guid: 9e0508727e596134f997432769889daf, type: 3}
       propertyPath: gameSettings
       value: 
@@ -4010,13 +4030,25 @@ PrefabInstance:
       propertyPath: m_BoundingSphereOverride.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5839853124177082085, guid: 9e0508727e596134f997432769889daf, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 6407530888772151991, guid: 9e0508727e596134f997432769889daf, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 7687418839995620345, guid: 9e0508727e596134f997432769889daf, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
     - target: {fileID: 7942171413855309410, guid: 9e0508727e596134f997432769889daf, type: 3}
       propertyPath: m_RootOrder
       value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 7942171413855309410, guid: 9e0508727e596134f997432769889daf, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -0.459
+      value: -11.901
       objectReference: {fileID: 0}
     - target: {fileID: 7942171413855309410, guid: 9e0508727e596134f997432769889daf, type: 3}
       propertyPath: m_LocalPosition.y
@@ -4024,7 +4056,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7942171413855309410, guid: 9e0508727e596134f997432769889daf, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -24.35
+      value: 188.975
       objectReference: {fileID: 0}
     - target: {fileID: 7942171413855309410, guid: 9e0508727e596134f997432769889daf, type: 3}
       propertyPath: m_LocalRotation.w
@@ -13249,8 +13281,7 @@ PrefabInstance:
       propertyPath: m_Size.z
       value: 18.84
       objectReference: {fileID: 0}
-    m_RemovedComponents:
-    - {fileID: 8677352970990590805, guid: 5aad53848f13d45e789e31afbaee75fa, type: 3}
+    m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5aad53848f13d45e789e31afbaee75fa, type: 3}
 --- !u!1001 &904993617
 PrefabInstance:
