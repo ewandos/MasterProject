@@ -1571,10 +1571,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a0b5f53c897b448f87b93f815e2a103b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _health: 50
-  _maxHealth: 50
+  _health: 30
+  _maxHealth: 30
   _isAlive: 1
-  healthRange: 1
+  healthRange: 5
   corpseGO: {fileID: 2355775747042143165, guid: f9706c1e2f2bd445bae16cee124abadb, type: 3}
 --- !u!1 &6075805151507519371
 GameObject:

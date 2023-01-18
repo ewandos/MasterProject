@@ -33,6 +33,10 @@ public class PlayerMovement : MonoBehaviour
 
 	[SerializeField]
 	private Camera camera;
+
+	// boss teleport
+	public GameObject portPoint;
+
 	void Start()
 	{
 		controller = GetComponent<CharacterController>();
@@ -46,7 +50,14 @@ public class PlayerMovement : MonoBehaviour
 		    float finalSpeed = HandleMovement();
 		    HandleMouseLook();
 
-		    if (hasMovementInput)
+			// handle boss teleport
+			if (Input.GetKeyDown(KeyCode.P))
+			{
+				transform.position = portPoint.transform.position;
+			}
+
+
+			if (hasMovementInput)
 		    {
 			    audioClipSequencer.SetInterval(2 / finalSpeed);
 		    }
